@@ -1,6 +1,8 @@
 local M = {
   config_path = vim.fn.stdpath("config"),
 
+  -- 按键设置
+  -- key settings 
   keys = {
 
     leader_key = " ",
@@ -37,6 +39,8 @@ local M = {
     snip_next_choice = "<C-j>",
     snip_prev_choice = "<C-k>",
 
+    -- 窗口设置
+    -- window settings
     s_windows = {
 
       enable = true,
@@ -92,6 +96,8 @@ local M = {
 
   enable_magic_search = true,
 
+  -- 插件设置
+  -- plugin settings
   nvimTree = {
 
     enable = true,

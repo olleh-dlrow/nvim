@@ -155,12 +155,15 @@ packer.startup({
     -- Rust 增强
     use("simrat39/rust-tools.nvim")
     --------------------- colorschemes --------------------
+    -- warning: 这里有个位置的问题，即如果使用config来require对应的主题，则无法
+    -- 应用设置，暂时的解决办法是，在colorscheme.lua中使用require，此时能够正常
+    -- 配置
     -- tokyonight
     use({
       "folke/tokyonight.nvim",
-      config = function()
-        require("plugin-config.tokyonight")
-      end,
+      -- config = function()
+      --   require("plugin-config.tokyonight")
+      -- end,
     })
 
     -- OceanicNext
