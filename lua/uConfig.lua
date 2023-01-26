@@ -150,6 +150,10 @@ local M = {
     close_pick = "<leader>bp",
   },
 
+  tree_sitter = {
+    enable = true,
+  },
+
   telescope = {
 
     enable = true,

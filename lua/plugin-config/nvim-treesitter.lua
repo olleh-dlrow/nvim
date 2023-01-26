@@ -1,3 +1,9 @@
+local cfg = require("uConfig").tree_sitter
+
+if cfg == nil or not cfg.enable then
+    return
+end
+
 local status, treesitter = pcall(require, "nvim-treesitter.configs")
 if not status then
   vim.notify("没有找到 nvim-treesitter")
@@ -73,7 +79,7 @@ treesitter.setup({
       -- Set to false if you have an `updatetime` of ~100.
       clear_on_cursor_move = true,
     },
-    highlight_current_scope = { enable = true },
+    highlight_current_scope = { enable = false },
   },
   -- nvim-treesitter/nvim-treesitter-textobjects
   textobjects = {
