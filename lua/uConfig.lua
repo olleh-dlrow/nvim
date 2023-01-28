@@ -177,6 +177,10 @@ local M = {
     preview_scrolling_down = "<C-d>",
   },
 
+  dash_board = {
+    enable = true,
+  },
+
   mkdnflow = {
     enable = true,
     next_link = "gn",

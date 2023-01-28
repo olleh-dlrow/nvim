@@ -1,3 +1,9 @@
+local cfg = require("uConfig").dash_board
+
+if cfg == nil or not cfg.enable then
+    return
+end
+
 local status, db = pcall(require, "dashboard")
 if not status then
   vim.notify("没有找到 dashboard")
@@ -5,9 +11,8 @@ if not status then
 end
 
 db.custom_footer = {
-  "",
-  "",
-  "https://github.com/nshen/learn-neovim-lua",
+    "",
+    ""
 }
 
 db.custom_center = {

@@ -31,6 +31,37 @@ if not status_ok then
   return
 end
 
+packer.init({
+    -- 关于snapshot的使用：
+    -- PackerSnapshot v1.json 用于为当前的插件生成commits备份
+    -- 当更新遇到bug时，可以使用PackerSnapshotRollback v1.json来进行恢复
+
+    -- 锁定插件版本在snapshots目录
+    snapshot_path = require("packer.util").join_paths(vim.fn.stdpath("config"), "snapshots"),
+    -- 这里锁定插件版本在v1，不会继续更新插件
+    snapshot = "v1.json",
+
+    -- snapshot = require("packer.util").join_paths(vim.fn.stdpath("config"), "snapshots") .. "/v1",
+
+    -- 最大并发数
+    max_jobs = 10,
+    -- 自定义源
+    git = {
+      -- default_url_format = "https://hub.fastgit.xyz/%s",
+      -- default_url_format = "https://mirror.ghproxy.com/https://github.com/%s",
+      -- default_url_format = "https://gitcode.net/mirrors/%s",
+      -- default_url_format = "https://gitclone.com/github.com/%s",
+    },
+    display = {
+    -- 使用浮动窗口显示
+      open_fn = function()
+        return require("packer.util").float({ border = "single" })
+      end,
+    },
+    -- 预览哪些插件需要更新
+    preview_updates = true,
+})
+
 packer.startup({
   function(use)
     -- Packer 可以升级自己
@@ -87,6 +118,8 @@ packer.startup({
     -- dashboard-nvim
     use({
       "glepnir/dashboard-nvim",
+      -- warning: config has some changes after this version
+      -- commit = "f7d623457d6621b25a1292b24e366fae40cb79ab",
       config = function()
         require("plugin-config.dashboard")
       end,
@@ -118,6 +151,13 @@ packer.startup({
       end,
     })
 
+    -- indent-blankline
+    use({
+      "lukas-reineke/indent-blankline.nvim",
+      config = function()
+        require("plugin-config.indent-blankline")
+      end,
+    })
     --------------------- LSP --------------------
     -- installer
     use({ "williamboman/mason.nvim" })
@@ -206,27 +246,30 @@ packer.startup({
       packer.sync()
     end
   end,
-  config = {
-    -- 锁定插件版本在snapshots目录
-    -- snapshot_path = require("packer.util").join_paths(vim.fn.stdpath("config"), "snapshots"),
-    -- 这里锁定插件版本在v1，不会继续更新插件
-    -- snapshot = require("packer.util").join_paths(vim.fn.stdpath("config"), "snapshots") .. "/v1",
-    -- snapshot = "v1",
-
-    -- 最大并发数
-    max_jobs = 10,
-    -- 自定义源
-    git = {
-      -- default_url_format = "https://hub.fastgit.xyz/%s",
-      -- default_url_format = "https://mirror.ghproxy.com/https://github.com/%s",
-      -- default_url_format = "https://gitcode.net/mirrors/%s",
-      -- default_url_format = "https://gitclone.com/github.com/%s",
-    },
-    -- display = {
-    -- 使用浮动窗口显示
-    --   open_fn = function()
-    --     return require("packer.util").float({ border = "single" })
-    --   end,
-    -- },
-  },
+    -- warning: use packer.init to Custom Initialization
+    -- https://github.com/wbthomason/packer.nvim#custom-initialization
+--   config = {
+--     -- 锁定插件版本在snapshots目录
+--     snapshot_path = require("packer.util").join_paths(vim.fn.stdpath("config"), "snapshots"),
+--     -- 这里锁定插件版本在v1，不会继续更新插件
+--     snapshot = "v1",
+-- 
+--     -- snapshot = require("packer.util").join_paths(vim.fn.stdpath("config"), "snapshots") .. "/v1",
+-- 
+--     -- 最大并发数
+--     max_jobs = 10,
+--     -- 自定义源
+--     git = {
+--       -- default_url_format = "https://hub.fastgit.xyz/%s",
+--       -- default_url_format = "https://mirror.ghproxy.com/https://github.com/%s",
+--       -- default_url_format = "https://gitcode.net/mirrors/%s",
+--       -- default_url_format = "https://gitclone.com/github.com/%s",
+--     },
+--     display = {
+--     -- 使用浮动窗口显示
+--       open_fn = function()
+--         return require("packer.util").float({ border = "single" })
+--       end,
+--     },
+--   },
 })
