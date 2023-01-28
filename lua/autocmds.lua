@@ -63,17 +63,17 @@ autocmd("BufEnter", {
 })
 
 -- 保存Fold
-local saveable_type = { 
-  "*.lua", 
+local saveable_type = {
+  "*.lua",
   "*.py",
   "*.rs",
   "*.c",
   "*.cpp",
   "*.h",
---   "*.js", 
---   "*.jsx", 
---   "*.ts", 
---   "*.tsx",
+  -- "*.js",
+  -- "*.jsx",
+  -- "*.ts",
+  -- "*.tsx",
 }
 
 autocmd("BufWinEnter", {

@@ -1,10 +1,8 @@
 -- https://github.com/kyazdani42/nvim-tree.lua
 -- local nvim_tree = require'nvim-tree'
+local cfg = require("global_configs").plugins.nvim_tree
 
-local uConfig = require("uConfig")
-local uTree = uConfig.nvimTree
-
-if uTree == nil or not uTree.enable then
+if cfg == nil or not cfg.enable then
   return
 end
 
@@ -14,92 +12,92 @@ if not status then
   return
 end
 
-keymap("n", uTree.toggle, ":NvimTreeToggle<CR>")
+keymap("n", cfg.toggle, ":NvimTreeToggle<CR>")
 
 -- 列表操作快捷键
 local list_keys = { -- 打开文件或文件夹
   {
-    key = uTree.edit,
+    key = cfg.edit,
     action = "edit",
   },
   {
-    key = uTree.system_open,
+    key = cfg.system_open,
     action = "system_open",
   }, -- v分屏打开文件
   {
-    key = uTree.vsplit,
+    key = cfg.vsplit,
     action = "vsplit",
   }, -- h分屏打开文件
   {
-    key = uTree.split,
+    key = cfg.split,
     action = "split",
   }, -- gitignore
   {
-    key = uTree.toggle_git_ignored,
+    key = cfg.toggle_git_ignored,
     action = "toggle_git_ignored",
   }, -- Hide (dotfiles)
   {
-    key = uTree.toggle_dotfiles,
+    key = cfg.toggle_dotfiles,
     action = "toggle_dotfiles",
   }, -- toggle filters > custom
   {
-    key = uTree.toggle_custom,
+    key = cfg.toggle_custom,
     action = "toggle_custom",
   },
   {
-    key = uTree.refresh,
+    key = cfg.refresh,
     action = "refresh",
   }, -- 文件操作
   {
-    key = uTree.create,
+    key = cfg.create,
     action = "create",
   },
   {
-    key = uTree.remove,
+    key = cfg.remove,
     action = "remove",
   },
   {
-    key = uTree.rename,
+    key = cfg.rename,
     action = "rename",
   },
   {
-    key = uTree.copy,
+    key = cfg.copy,
     action = "copy",
   },
   {
-    key = uTree.cut,
+    key = cfg.cut,
     action = "cut",
   },
   {
-    key = uTree.paste,
+    key = cfg.paste,
     action = "paste",
   },
   {
-    key = uTree.copy_name,
+    key = cfg.copy_name,
     action = "copy_name",
   },
   {
-    key = uTree.copy_path,
+    key = cfg.copy_path,
     action = "copy_path",
   },
   {
-    key = uTree.copy_absolute_path,
+    key = cfg.copy_absolute_path,
     action = "copy_absolute_path",
   },
   {
-    key = uTree.toggle_file_info,
+    key = cfg.toggle_file_info,
     action = "toggle_file_info",
   },
   {
-    key = uTree.tabnew,
+    key = cfg.tabnew,
     action = "tabnew",
   }, -- 进入下一级
   {
-    key = uTree.cd,
+    key = cfg.cd,
     action = "cd",
   }, -- 进入上一级
   {
-    key = uTree.dir_up,
+    key = cfg.dir_up,
     action = "dir_up",
   },
 }
@@ -126,7 +124,7 @@ nvim_tree.setup({
   },
   view = {
     -- 宽度
-    width = 20,
+    width = 25,
     -- 也可以 'right'
     side = "left",
     -- 隐藏根目录

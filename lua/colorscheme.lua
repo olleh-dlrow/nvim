@@ -11,14 +11,10 @@ local colorscheme = "tokyonight"
 -- nord
 -- onedark
 -- nightfox
-local status, theme = require("plugin-config." .. colorscheme)
+local status, _ = require("plugin-config." .. colorscheme)
 if not status then
   vim.notify(colorscheme .. "没有找到！")
   return
 end
 
-local status_ok, _ = pcall(vim.cmd, "colorscheme " .. colorscheme)
-if not status_ok then
-  vim.notify("colorscheme: " .. colorscheme .. " 没有找到！")
-  return
-end
+pcall(vim.cmd, "colorscheme " .. colorscheme)

@@ -11,7 +11,7 @@ if not status then
   return
 end
 
-local status, config = pcall(require, "uConfig")
+local status, config = pcall(require, "global_configs")
 if not status then
   return
 end

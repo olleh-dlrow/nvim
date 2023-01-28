@@ -1,5 +1,4 @@
-local uConfig = require("uConfig")
-local uTelescope = uConfig.telescope
+local uTelescope = require("global_configs").plugins.telescope
 
 if uTelescope == nil or not uTelescope.enable then
   return

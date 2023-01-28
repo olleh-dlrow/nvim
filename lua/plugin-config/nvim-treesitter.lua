@@ -1,4 +1,4 @@
-local cfg = require("uConfig").tree_sitter
+local cfg = require("global_configs").plugins.tree_sitter
 
 if cfg == nil or not cfg.enable then
     return
@@ -15,13 +15,13 @@ treesitter.setup({
   sync_install = false,
   -- 安装 language parser
   -- :TSInstallInfo 命令查看支持的语言
-  ensure_installed = { 
+  ensure_installed = {
     "rust",
     "cpp",
-    "python", 
-    "vim", 
-    "lua", 
-    "json", 
+    "python",
+    "vim",
+    "lua",
+    "json",
   },
   -- ensure_installed = "maintained",
 

@@ -1,3 +1,5 @@
+local plugin_cfgs = require("global_configs").plugins
+
 -- 自动安装 Packer.nvim
 -- 插件安装目录
 -- ~/.local/share/nvim/site/pack/packer/
@@ -67,179 +69,198 @@ packer.startup({
     -- Packer 可以升级自己
     use("wbthomason/packer.nvim")
     -------------------------- plugins -------------------------------------------
+
+    for _, cfg in pairs(plugin_cfgs) do
+        if cfg.uninstall then
+            return
+        end
+
+        use({
+            cfg.rel_url,
+            requires = cfg.req_tbl,
+        })
+    end
     -- use("lewis6991/impatient.nvim")
     -- use("nathom/filetype.nvim")
 
     -- nvim-tree
-    use({
-      "kyazdani42/nvim-tree.lua",
-      requires = "kyazdani42/nvim-web-devicons",
-      config = function()
-        require("plugin-config.nvim-tree")
-      end,
-    })
-
-    -- bufferline
-    use({
-      "akinsho/bufferline.nvim",
-      requires = { "kyazdani42/nvim-web-devicons", "moll/vim-bbye" },
-      config = function()
-        require("plugin-config.bufferline")
-      end,
-    })
-
-    -- lualine
-    use({
-      "nvim-lualine/lualine.nvim",
-      requires = { "kyazdani42/nvim-web-devicons" },
-      config = function()
-        require("plugin-config.lualine")
-      end,
-    })
-
-    -- telescope
-    -- Bug: https://github.com/nvim-telescope/telescope.nvim/issues/699
-    -- Sol: use zx before zc or zo 
-    -- Ref: see bug.
-    use({
-      "nvim-telescope/telescope.nvim",
-      -- opt = true,
-      -- cmd = "Telescope",
-      requires = {
-        -- telescope extensions
-        { "LinArcX/telescope-env.nvim" },
-        { "nvim-telescope/telescope-ui-select.nvim" },
-      },
-      config = function()
-        require("plugin-config.telescope")
-      end,
-    })
-
-    -- dashboard-nvim
-    use({
-      "glepnir/dashboard-nvim",
-      -- warning: config has some changes after this version
-      -- commit = "f7d623457d6621b25a1292b24e366fae40cb79ab",
-      config = function()
-        require("plugin-config.dashboard")
-      end,
-    })
-
-    -- project
-    use({
-      "ahmedkhalf/project.nvim",
-      config = function()
-        require("plugin-config.project")
-      end,
-    })
-
-    -- treesitter
-    use({
-      "nvim-treesitter/nvim-treesitter",
-      run = function()
-        -- require("nvim-treesitter.install").update({ with_sync = true })
-      end,
-      requires = {
-        { "p00f/nvim-ts-rainbow" },
-        { "JoosepAlviste/nvim-ts-context-commentstring" },
-        { "windwp/nvim-ts-autotag" },
-        { "nvim-treesitter/nvim-treesitter-refactor" },
-        { "nvim-treesitter/nvim-treesitter-textobjects" },
-      },
-      config = function()
-        require("plugin-config.nvim-treesitter")
-      end,
-    })
-
-    -- indent-blankline
-    use({
-      "lukas-reineke/indent-blankline.nvim",
-      config = function()
-        require("plugin-config.indent-blankline")
-      end,
-    })
-    --------------------- LSP --------------------
-    -- installer
-    use({ "williamboman/mason.nvim" })
-    use({ "williamboman/mason-lspconfig.nvim" })
-    -- Lspconfig
-    use({ "neovim/nvim-lspconfig" })
-    -- 补全引擎
-    use("hrsh7th/nvim-cmp")
-    -- Snippet 引擎
-    use("L3MON4D3/LuaSnip")
-    use("saadparwaiz1/cmp_luasnip")
-    -- 补全源
-    use("hrsh7th/cmp-vsnip")
-    use("hrsh7th/cmp-nvim-lsp") -- { name = nvim_lsp }
-    use("hrsh7th/cmp-buffer") -- { name = 'buffer' },
-    use("hrsh7th/cmp-path") -- { name = 'path' }
-    use("hrsh7th/cmp-cmdline") -- { name = 'cmdline' }
-    use("hrsh7th/cmp-nvim-lsp-signature-help") -- { name = 'nvim_lsp_signature_help' }
-    -- 常见编程语言代码段
-    use("rafamadriz/friendly-snippets")
-    -- UI 增强
-    use("onsails/lspkind-nvim")
-    use("tami5/lspsaga.nvim")
-    -- 代码格式化
-    -- use("mhartington/formatter.nvim")
-    -- use({ "jose-elias-alvarez/null-ls.nvim", requires = "nvim-lua/plenary.nvim" })
-    -- TypeScript 增强
-    -- use({ "jose-elias-alvarez/nvim-lsp-ts-utils", requires = "nvim-lua/plenary.nvim" })
-    -- use("jose-elias-alvarez/typescript.nvim")
-
-    -- Lua 增强
-    use("folke/neodev.nvim")
-    -- JSON 增强
-    use("b0o/schemastore.nvim")
-    -- Rust 增强
-    use("simrat39/rust-tools.nvim")
-    --------------------- colorschemes --------------------
-    -- warning: 这里有个位置的问题，即如果使用config来require对应的主题，则无法
-    -- 应用设置，暂时的解决办法是，在colorscheme.lua中使用require，此时能够正常
-    -- 配置
-    -- tokyonight
-    use({
-      "folke/tokyonight.nvim",
-      -- config = function()
-      --   require("plugin-config.tokyonight")
-      -- end,
-    })
-
-    -- OceanicNext
-    -- use({ "mhartington/oceanic-next", event = "VimEnter" })
-
-    -- gruvbox
-    -- use({
-    --   "ellisonleao/gruvbox.nvim",
-    --   requires = { "rktjmp/lush.nvim" },
-    -- })
-
-    -- zephyr
-    -- use("glepnir/zephyr-nvim")
-
-    -- nord
-    -- use("shaunsingh/nord.nvim")
-
-    -- onedark
-    -- use("ful1e5/onedark.nvim")
-
-    -- nightfox
-    -- use("EdenEast/nightfox.nvim")
-
-    -------------------------------------------------------
-    -- vimspector
-    -- Bug: vimspector unavailable: Requires Vim compiled with +python3
-    -- Sol: pip(3) install neovim
-    -- Ref: https://stackoverflow.com/questions/74036547/neovim-vimspector-unavailable-requires-vim-compiled-with-python3
 --     use({
---       "puremourning/vimspector",
---       cmd = { "VimspectorInstall", "VimspectorUpdate" },
---       fn = { "vimspector#Launch()", "vimspector#ToggleBreakpoint", "vimspector#Continue" },
+--       "kyazdani42/nvim-tree.lua",
+--       requires = "kyazdani42/nvim-web-devicons",
 --       config = function()
---         require("dap.vimspector")
+--         require("plugin-config.nvim-tree")
 --       end,
 --     })
+-- 
+--     -- bufferline
+--     use({
+--       "akinsho/bufferline.nvim",
+--       requires = { "kyazdani42/nvim-web-devicons", "moll/vim-bbye" },
+--       config = function()
+--         require("plugin-config.bufferline")
+--       end,
+--     })
+-- 
+--     -- lualine
+--     use({
+--       "nvim-lualine/lualine.nvim",
+--       requires = { "kyazdani42/nvim-web-devicons" },
+--       config = function()
+--         require("plugin-config.lualine")
+--       end,
+--     })
+-- 
+--     -- telescope
+--     -- Bug: https://github.com/nvim-telescope/telescope.nvim/issues/699
+--     -- Sol: use zx before zc or zo 
+--     -- Ref: see bug.
+--     use({
+--       "nvim-telescope/telescope.nvim",
+--       -- opt = true,
+--       -- cmd = "Telescope",
+--       requires = {
+--         -- telescope extensions
+--         { "LinArcX/telescope-env.nvim" },
+--         { "nvim-telescope/telescope-ui-select.nvim" },
+--       },
+--       config = function()
+--         require("plugin-config.telescope")
+--       end,
+--     })
+-- 
+--     -- dashboard-nvim
+--     use({
+--       "glepnir/dashboard-nvim",
+--       -- warning: config has some changes after this version
+--       -- commit = "f7d623457d6621b25a1292b24e366fae40cb79ab",
+--       config = function()
+--         require("plugin-config.dashboard")
+--       end,
+--     })
+-- 
+--     -- project
+--     use({
+--       "ahmedkhalf/project.nvim",
+--       config = function()
+--         require("plugin-config.project")
+--       end,
+--     })
+-- 
+--     -- treesitter
+--     use({
+--       "nvim-treesitter/nvim-treesitter",
+--       run = function()
+--         -- require("nvim-treesitter.install").update({ with_sync = true })
+--       end,
+--       requires = {
+--         { "p00f/nvim-ts-rainbow" },
+--         { "JoosepAlviste/nvim-ts-context-commentstring" },
+--         { "windwp/nvim-ts-autotag" },
+--         { "nvim-treesitter/nvim-treesitter-refactor" },
+--         { "nvim-treesitter/nvim-treesitter-textobjects" },
+--       },
+--       config = function()
+--         require("plugin-config.nvim-treesitter")
+--       end,
+--     })
+-- 
+--     -- indent-blankline
+--     use({
+--       "lukas-reineke/indent-blankline.nvim",
+--       config = function()
+--         require("plugin-config.indent-blankline")
+--       end,
+--     })
+-- 
+--     -- comment
+--     use({
+--         "numToStr/Comment.nvim",
+--         config = function()
+--             require("plugin-config.comment")
+--         end
+--     })
+--     --------------------- LSP --------------------
+--     -- installer
+--     use({ "williamboman/mason.nvim" })
+--     use({ "williamboman/mason-lspconfig.nvim" })
+--     -- Lspconfig
+--     use({ "neovim/nvim-lspconfig" })
+--     -- 补全引擎
+--     use("hrsh7th/nvim-cmp")
+--     -- Snippet 引擎
+--     use("L3MON4D3/LuaSnip")
+--     use("saadparwaiz1/cmp_luasnip")
+--     -- 补全源
+--     use("hrsh7th/cmp-vsnip")
+--     use("hrsh7th/cmp-nvim-lsp") -- { name = nvim_lsp }
+--     use("hrsh7th/cmp-buffer") -- { name = 'buffer' },
+--     use("hrsh7th/cmp-path") -- { name = 'path' }
+--     use("hrsh7th/cmp-cmdline") -- { name = 'cmdline' }
+--     use("hrsh7th/cmp-nvim-lsp-signature-help") -- { name = 'nvim_lsp_signature_help' }
+--     -- 常见编程语言代码段
+--     use("rafamadriz/friendly-snippets")
+--     -- UI 增强
+--     use("onsails/lspkind-nvim")
+--     use("tami5/lspsaga.nvim")
+--     -- 代码格式化
+--     -- use("mhartington/formatter.nvim")
+--     -- use({ "jose-elias-alvarez/null-ls.nvim", requires = "nvim-lua/plenary.nvim" })
+--     -- TypeScript 增强
+--     -- use({ "jose-elias-alvarez/nvim-lsp-ts-utils", requires = "nvim-lua/plenary.nvim" })
+--     -- use("jose-elias-alvarez/typescript.nvim")
+-- 
+--     -- Lua 增强
+--     use("folke/neodev.nvim")
+--     -- JSON 增强
+--     use("b0o/schemastore.nvim")
+--     -- Rust 增强
+--     use("simrat39/rust-tools.nvim")
+--     --------------------- colorschemes --------------------
+--     -- warning: 这里有个位置的问题，即如果使用config来require对应的主题，则无法
+--     -- 应用设置，暂时的解决办法是，在colorscheme.lua中使用require，此时能够正常
+--     -- 配置
+--     -- tokyonight
+--     use({
+--       "folke/tokyonight.nvim",
+--       -- config = function()
+--       --   require("plugin-config.tokyonight")
+--       -- end,
+--     })
+-- 
+--     -- OceanicNext
+--     -- use({ "mhartington/oceanic-next", event = "VimEnter" })
+-- 
+--     -- gruvbox
+--     -- use({
+--     --   "ellisonleao/gruvbox.nvim",
+--     --   requires = { "rktjmp/lush.nvim" },
+--     -- })
+-- 
+--     -- zephyr
+--     -- use("glepnir/zephyr-nvim")
+-- 
+--     -- nord
+--     -- use("shaunsingh/nord.nvim")
+-- 
+--     -- onedark
+--     -- use("ful1e5/onedark.nvim")
+-- 
+--     -- nightfox
+--     -- use("EdenEast/nightfox.nvim")
+-- 
+--     -------------------------------------------------------
+--     -- vimspector
+--     -- Bug: vimspector unavailable: Requires Vim compiled with +python3
+--     -- Sol: pip(3) install neovim
+--     -- Ref: https://stackoverflow.com/questions/74036547/neovim-vimspector-unavailable-requires-vim-compiled-with-python3
+--     -- use({
+--     --   "puremourning/vimspector",
+--     --   cmd = { "VimspectorInstall", "VimspectorUpdate" },
+--     --   fn = { "vimspector#Launch()", "vimspector#ToggleBreakpoint", "vimspector#Continue" },
+--     --   config = function()
+--     --     require("dap.vimspector")
+--     --   end,
+--     -- })
     ----------------------------------------------
 
     if paccker_bootstrap then
@@ -251,3 +272,9 @@ packer.startup({
     -- config = {
     -- },
 })
+
+for _, cfg in pairs(plugin_cfgs) do
+    if cfg.enable and cfg.cfg_lua ~= nil then
+        require("plugin-config." .. cfg.cfg_lua)
+    end
+end

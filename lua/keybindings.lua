@@ -1,5 +1,5 @@
-local uConfig = require("uConfig")
-local keys = uConfig.keys
+local global_configs = require("global_configs")
+local keys = global_configs.keys
 
 -- Modes
 --   normal_mode = "n",
@@ -57,7 +57,7 @@ keymap({ "n", "v" }, keys.n_v_5k, "5k")
 -- keymap({ "n", "v" }, keys.n_v_10k, "10k")
 
 -- magic search
-if uConfig.enable_magic_search then
+if global_configs.enable_magic_search then
   keymap({ "n", "v" }, "/", "/\\v", {
     remap = false,
     silent = false,
@@ -105,10 +105,10 @@ if keys.s_windows ~= nil and keys.s_windows.enable then
   keymap("n", skey.jump_up, "<C-w>k")
   keymap("n", skey.jump_right, "<C-w>l")
   -- 比例控制
-  keymap("n", skey.width_decrease, ":vertical resize -10<CR>")
-  keymap("n", skey.width_increase, ":vertical resize +10<CR>")
-  keymap("n", skey.height_decrease, ":vertical resize -10<CR>")
-  keymap("n", skey.height_increase, ":vertical resize +10<CR>")
+  keymap("n", skey.width_decrease, ":vertical resize -5<CR>")
+  keymap("n", skey.width_increase, ":vertical resize +5<CR>")
+  keymap("n", skey.height_decrease, ":vertical resize -5<CR>")
+  keymap("n", skey.height_increase, ":vertical resize +5<CR>")
   keymap("n", skey.size_equal, "<C-w>=")
 end
 
@@ -147,7 +147,7 @@ keymap("t", keys.terminal_to_normal, "<C-\\><C-n>")
 local pluginKeys = {}
 
 -- lsp 回调函数快捷键设置
-local lsp = uConfig.lsp
+local lsp = global_configs.lsp
 pluginKeys.mapLSP = function(mapbuf)
   -- rename
   --[[

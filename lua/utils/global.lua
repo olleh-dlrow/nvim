@@ -1,4 +1,4 @@
-function _G.requirePlugin(name)
+function _G.require_plugin(name)
   local status_ok, plugin = pcall(require, name)
   if not status_ok then
     vim.notify(" 没有找到插件：" .. name)
@@ -7,7 +7,7 @@ function _G.requirePlugin(name)
   return plugin
 end
 
-function _G.lspCap()
+function _G.lsp_cap()
   print(vim.inspect(vim.lsp.buf_get_clients()[1].resolved_capabilities))
 end
 
