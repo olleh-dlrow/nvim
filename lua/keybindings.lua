@@ -44,8 +44,9 @@ keymap("n", keys.n_save_all_quit, ":wqa<CR>")
 keymap("n", keys.n_force_quit, ":qa!<CR>")
 
 -- $跳到行尾不带空格 (交换$ 和 g_)
-keymap({ "v", "n" }, "$", "g_")
-keymap({ "v", "n" }, "g_", "$")
+-- warning: 这会影响到visual block选择到行结尾的操作，建议不要替换
+-- keymap({ "v", "n" }, "$", "g_")
+-- keymap({ "v", "n" }, "g_", "$")
 
 -- 上下滚动浏览
 keymap({ "n", "v" }, keys.n_v_5j, "5j")
