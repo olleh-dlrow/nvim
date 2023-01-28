@@ -20,17 +20,16 @@ local opts = {
 
 return {
   on_setup = function(server)
-    server.setup(opts)
---      local ok_rt, rust_tools = pcall(require, "rust-tools")
---      if not ok_rt then
---        print("Failed to load rust tools, will set up `rust_analyzer` without `rust-tools`.")
---        server.setup(opts)
---      else
---        -- We don't want to call lspconfig.rust_analyzer.setup() when using rust-tools
---        rust_tools.setup({
---          server = opts,
---          dap = require("dap.nvim-dap.config.rust"),
---        })
---      end
+    local ok_rt, rust_tools = pcall(require, "rust-tools")
+    if not ok_rt then
+      print("Failed to load rust tools, will set up `rust_analyzer` without `rust-tools`.")
+      server.setup(opts)
+    else
+      -- We don't want to call lspconfig.rust_analyzer.setup() when using rust-tools
+      rust_tools.setup({
+        server = opts,
+        -- dap = require("dap.nvim-dap.config.rust"),
+      })
+    end
   end,
 }

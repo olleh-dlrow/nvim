@@ -182,11 +182,11 @@ packer.startup({
     use("onsails/lspkind-nvim")
     use("tami5/lspsaga.nvim")
     -- 代码格式化
-    use("mhartington/formatter.nvim")
-    use({ "jose-elias-alvarez/null-ls.nvim", requires = "nvim-lua/plenary.nvim" })
+    -- use("mhartington/formatter.nvim")
+    -- use({ "jose-elias-alvarez/null-ls.nvim", requires = "nvim-lua/plenary.nvim" })
     -- TypeScript 增强
-    use({ "jose-elias-alvarez/nvim-lsp-ts-utils", requires = "nvim-lua/plenary.nvim" })
-    use("jose-elias-alvarez/typescript.nvim")
+    -- use({ "jose-elias-alvarez/nvim-lsp-ts-utils", requires = "nvim-lua/plenary.nvim" })
+    -- use("jose-elias-alvarez/typescript.nvim")
 
     -- Lua 增强
     use("folke/neodev.nvim")
@@ -248,28 +248,6 @@ packer.startup({
   end,
     -- warning: use packer.init to Custom Initialization
     -- https://github.com/wbthomason/packer.nvim#custom-initialization
---   config = {
---     -- 锁定插件版本在snapshots目录
---     snapshot_path = require("packer.util").join_paths(vim.fn.stdpath("config"), "snapshots"),
---     -- 这里锁定插件版本在v1，不会继续更新插件
---     snapshot = "v1",
--- 
---     -- snapshot = require("packer.util").join_paths(vim.fn.stdpath("config"), "snapshots") .. "/v1",
--- 
---     -- 最大并发数
---     max_jobs = 10,
---     -- 自定义源
---     git = {
---       -- default_url_format = "https://hub.fastgit.xyz/%s",
---       -- default_url_format = "https://mirror.ghproxy.com/https://github.com/%s",
---       -- default_url_format = "https://gitcode.net/mirrors/%s",
---       -- default_url_format = "https://gitclone.com/github.com/%s",
---     },
---     display = {
---     -- 使用浮动窗口显示
---       open_fn = function()
---         return require("packer.util").float({ border = "single" })
---       end,
---     },
---   },
+    -- config = {
+    -- },
 })

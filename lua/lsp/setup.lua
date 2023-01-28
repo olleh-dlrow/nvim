@@ -63,24 +63,6 @@ for i, cfg in pairs(server_cfgs) do
 end
 mason_config.setup({
   ensure_installed = ensure_installed_list
--- {
---  "sumneko_lua",      -- lua
---  "tsserver",         -- tss
---  "tailwindcss",      -- css
---  "bashls",
---  "cssls",
---  "dockerls",
---  "emmet_ls",
---  "html",
---  "jsonls",
---  "pyright",
---  "rust_analyzer",
---  "taplo",
---  "yamlls",
---  "gopls",
---  "clangd",
---  "cmake",
--- },
 })
 
 -- 安装列表
@@ -91,25 +73,6 @@ local servers = {}
 for _, cfg in pairs(server_cfgs) do
   servers[cfg.server_name] = require("lsp.config." .. cfg.script_suffix)
 end
--- local servers = {
---   sumneko_lua = require("lsp.config.lua"), -- lua/lsp/config/lua.lua
---   bashls = require("lsp.config.bash"),
---   pyright = require("lsp.config.pyright"),
---   html = require("lsp.config.html"),
---   cssls = require("lsp.config.css"),
---   emmet_ls = require("lsp.config.emmet"),
---   jsonls = require("lsp.config.json"),
---   tsserver = require("lsp.config.typescript"),
---   yamlls = require("lsp.config.yamlls"),
---   dockerls = require("lsp.config.docker"),
---   tailwindcss = require("lsp.config.tailwindcss"),
---   rust_analyzer = require("lsp.config.rust"),
---   taplo = require("lsp.config.taplo"), -- toml
---   gopls = require("lsp.config.gopls"),
---   -- remark_ls = require("lsp.config.markdown"),
---   clangd = require("lsp.config.clangd"),
---   cmake = require("lsp.config.cmake"),
--- }
 
 for name, config in pairs(servers) do
   if config ~= nil and type(config) == "table" then
