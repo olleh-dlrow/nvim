@@ -1,8 +1,4 @@
-local cfg = require("global_configs").comment
-
-if cfg == nil or not cfg.enable then
-  return
-end
+local cfg = require("global_configs").plugins.comment
 
 local status, comment = pcall(require, "Comment")
 if not status then
@@ -46,6 +42,7 @@ local opts = {
   end,
 }
 
+comment.setup(opts)
 -- ctrl + /
 -- map("n", "<C-->", "gcc", {
 --   noremap = false,

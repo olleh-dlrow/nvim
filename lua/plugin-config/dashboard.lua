@@ -1,9 +1,5 @@
 local cfg = require("global_configs").plugins.dash_board
 
-if cfg == nil or not cfg.enable then
-    return
-end
-
 local status, db = pcall(require, "dashboard")
 if not status then
   vim.notify("没有找到 dashboard")

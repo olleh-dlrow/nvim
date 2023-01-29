@@ -1,8 +1,4 @@
-local uTelescope = require("global_configs").plugins.telescope
-
-if uTelescope == nil or not uTelescope.enable then
-  return
-end
+local cfg = require("global_configs").plugins.telescope
 
 local status, telescope = pcall(require, "telescope")
 if not status then
@@ -21,17 +17,17 @@ telescope.setup({
     mappings = {
       i = {
         -- 上下移动
-        [uTelescope.move_selection_next] = "move_selection_next",
-        [uTelescope.move_selection_previous] = "move_selection_previous",
+        [cfg.move_selection_next] = "move_selection_next",
+        [cfg.move_selection_previous] = "move_selection_previous",
         -- 历史记录
-        [uTelescope.cycle_history_next] = "cycle_history_next",
-        [uTelescope.cycle_history_prev] = "cycle_history_prev",
+        [cfg.cycle_history_next] = "cycle_history_next",
+        [cfg.cycle_history_prev] = "cycle_history_prev",
         -- 关闭窗口
         -- ["<esc>"] = actions.close,
-        [uTelescope.close] = "close",
+        [cfg.close] = "close",
         -- 预览窗口上下滚动
-        [uTelescope.preview_scrolling_up] = "preview_scrolling_up",
-        [uTelescope.preview_scrolling_down] = "preview_scrolling_down",
+        [cfg.preview_scrolling_up] = "preview_scrolling_up",
+        [cfg.preview_scrolling_down] = "preview_scrolling_down",
       },
     },
   },
@@ -50,8 +46,8 @@ telescope.setup({
   },
 })
 
-keymap("n", uTelescope.find_files, ":Telescope find_files<CR>")
-keymap("n", uTelescope.live_grep, ":Telescope live_grep<CR>")
+keymap("n", cfg.find_files, ":Telescope find_files<CR>")
+keymap("n", cfg.live_grep, ":Telescope live_grep<CR>")
 
 pcall(telescope.load_extension, "env")
 -- To get ui-select loaded and working with telescope, you need to call

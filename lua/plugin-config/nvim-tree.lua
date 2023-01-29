@@ -2,10 +2,6 @@
 -- local nvim_tree = require'nvim-tree'
 local cfg = require("global_configs").plugins.nvim_tree
 
-if cfg == nil or not cfg.enable then
-  return
-end
-
 local status, nvim_tree = pcall(require, "nvim-tree")
 if not status then
   vim.notify("没有找到 nvim-tree")

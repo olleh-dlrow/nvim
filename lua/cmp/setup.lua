@@ -99,17 +99,17 @@ cmp.setup.cmdline("/", {
 -- 
 -- Use cmdline & path source for ':'.
 -- warning: 该补全插件会影响到tab的输出，它会将^I变成^Z，如果需要使用^I，可以先^V再tab
--- cmp.setup.cmdline(":", {
---   mapping = cmp.mapping.preset.cmdline(),
---   sources = cmp.config.sources(
---     { {
---     name = "path",
---     } },
---     { {
---     name = "cmdline",
---     } }
---     ),
--- })
+cmp.setup.cmdline(":", {
+  mapping = cmp.mapping.preset.cmdline(),
+  sources = cmp.config.sources(
+    { {
+    name = "path",
+    } },
+    { {
+    name = "cmdline",
+    } }
+    ),
+})
 
 cmp.setup.filetype({ "markdown", "help" }, {
   sources = { {

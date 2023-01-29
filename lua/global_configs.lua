@@ -236,6 +236,25 @@ local M = {
             },
         },
 
+        surround = {
+            enable = true,
+            rel_url ="kylechui/nvim-surround",
+            req_tbl = {
+                { "nvim-treesitter/nvim-treesitter" },
+                {  "nvim-treesitter/nvim-treesitter-textobjects" }
+            },
+            cfg_lua = "surround",
+        },
+
+        autopairs = {
+            enable = true,
+            rel_url = "windwp/nvim-autopairs",
+            cfg_lua = "autopairs",
+        },
+        --------------------------------------
+        --------------- lsp ------------------
+        --------------------------------------
+
         mason = {
             enable = true,
             rel_url = "williamboman/mason.nvim",
@@ -326,6 +345,9 @@ local M = {
             rel_url = "simrat39/rust-tools.nvim",
         },
 
+        --------------------------------------
+        ----------- colorscheme --------------
+        --------------------------------------
 		-- warning: 这里有个位置的问题，即如果使用config来require对应的主题，则无法
 		-- 应用设置，暂时的解决办法是，在colorscheme.lua中使用require，此时能够正常
 		-- 配置

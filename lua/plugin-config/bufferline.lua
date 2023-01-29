@@ -1,9 +1,5 @@
 local cfg = require("global_configs").plugins.buffer_line
 
-if cfg == nil or not cfg.enable then
-  return
-end
-
 local status, bufferline = pcall(require, "bufferline")
 if not status then
   vim.notify("没有找到 bufferline")

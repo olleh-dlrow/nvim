@@ -28,14 +28,14 @@ mason.setup({
   },
 })
 
-function new_server_config(_server_name, _script_suffix)
+local function new_server_config(_server_name, _script_suffix)
   return {
     server_name   = _server_name,
     script_suffix = _script_suffix,
   }
 end
 
-server_cfgs = {
+local server_cfgs = {
   new_server_config("sumneko_lua"   , "lua"           ), -- lua/lsp/config/lua.lua
   new_server_config("bashls"        , "bash"          ),
   new_server_config("pyright"       , "pyright"       ),

@@ -144,11 +144,11 @@ keymap("t", keys.terminal_to_normal, "<C-\\><C-n>")
 
 --------------------------------------------------------------------
 -- 插件快捷键
-local pluginKeys = {}
+local plugin_keys = {}
 
 -- lsp 回调函数快捷键设置
 local lsp = global_configs.lsp
-pluginKeys.mapLSP = function(mapbuf)
+plugin_keys.mapLSP = function(mapbuf)
   -- rename
   --[[
   Lspsaga 替换 rn
@@ -221,7 +221,7 @@ pluginKeys.mapLSP = function(mapbuf)
 end
 
 -- typescript 快捷键
-pluginKeys.mapTsLSP = function(bufnr)
+plugin_keys.mapTsLSP = function(bufnr)
   local bufopts = { noremap = true, silent = true, buffer = bufnr }
   keymap("n", lsp.ts_organize, ":TSLspOrganize<CR>", bufopts)
   keymap("n", lsp.ts_rename_file, ":TSLspRenameFile<CR>", bufopts)
@@ -229,7 +229,7 @@ pluginKeys.mapTsLSP = function(bufnr)
 end
 
 -- nvim-dap
-pluginKeys.mapDAP = function()
+plugin_keys.mapDAP = function()
   -- 开始
   map("n", "<leader>dd", ":RustDebuggables<CR>", opt)
   -- 结束
@@ -258,7 +258,7 @@ pluginKeys.mapDAP = function()
 end
 
 -- vimspector
-pluginKeys.mapVimspector = function()
+plugin_keys.mapVimspector = function()
   -- 开始
   map("n", "<leader>dd", ":call vimspector#Launch()<CR>", opt)
   -- 结束
@@ -275,7 +275,7 @@ pluginKeys.mapVimspector = function()
 end
 
 -- gitsigns
-pluginKeys.gitsigns_on_attach = function(bufnr)
+plugin_keys.gitsigns_on_attach = function(bufnr)
   local gs = package.loaded.gitsigns
 
   local function map(mode, l, r, opts)
@@ -331,4 +331,4 @@ pluginKeys.gitsigns_on_attach = function(bufnr)
   map({ "o", "x" }, "ig", ":<C-U>Gitsigns select_hunk<CR>")
 end
 
-return pluginKeys
+return plugin_keys
