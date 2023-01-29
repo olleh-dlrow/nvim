@@ -41,7 +41,7 @@ packer.init({
     -- 锁定插件版本在snapshots目录
     snapshot_path = require("packer.util").join_paths(vim.fn.stdpath("config"), "snapshots"),
     -- 这里锁定插件版本在v1，不会继续更新插件
-    snapshot = "v1.json",
+    -- snapshot = "v1.json",
 
     -- snapshot = require("packer.util").join_paths(vim.fn.stdpath("config"), "snapshots") .. "/v1",
 
@@ -63,22 +63,71 @@ packer.init({
     -- 预览哪些插件需要更新
     preview_updates = true,
 })
-
 packer.startup({
   function(use)
     -- Packer 可以升级自己
-    use("wbthomason/packer.nvim")
-    -------------------------- plugins -------------------------------------------
+        use("wbthomason/packer.nvim")
+        -------------------------- plugins -------------------------------------------
 
-    for _, cfg in pairs(plugin_cfgs) do
+    -- use {
+    --     'glepnir/dashboard-nvim',
+    --     event = 'VimEnter',
+    --     config = function()
+    --         require('dashboard').setup (
+    --             {
+    --                 theme = 'hyper',
+    --                 config = {
+    --                 week_header = {
+    --                 enable = true,
+    --                 },
+    --                 shortcut = {
+    --                     { desc = ' fsdafasd', group = '@property', action = 'Lazy update', key = 'u' },
+    --                     {
+    --                     desc = ' fsadfsd',
+    --                     group = 'Label',
+    --                     action = 'Telescope find_files',
+    --                     key = 'f',
+    --                     },
+    --                     {
+    --                     desc = ' fasdfsf',
+    --                     group = 'DiagnosticHint',
+    --                     action = 'Telescope app',
+    --                     key = 'a',
+    --                     },
+    --                     {
+    --                     desc = ' fsadff',
+    --                     group = 'Number',
+    --                     action = 'Telescope dotfiles',
+    --                     key = 'd',
+    --                     },
+    --                 },
+    --                 }
+    --             })   -- config
+    --         end,
+    --     requires = {'nvim-tree/nvim-web-devicons'}
+    -- }
+
+    for name, cfg in pairs(plugin_cfgs) do
         if cfg.uninstall then
-            return
+            goto continue
         end
 
-        use({
-            cfg.rel_url,
-            requires = cfg.req_tbl,
-        })
+        -- if cfg.cfg_lua ~= nil then
+            -- debug = debug .. name .. " " .. tostring(cfg.cfg_lua) .. "\n"
+            use({
+                cfg.rel_url,
+                requires = cfg.req_tbl,
+                event = cfg.event,
+                config = (cfg.cfg_lua and cfg.cfg_lua) or "",
+            })
+        -- else
+            -- use({
+            --     cfg.rel_url,
+            --     requires = cfg.req_tbl,
+            --     event = cfg.event,
+            -- })
+        -- end
+        ::continue::
     end
 
     if packer_bootstrap then
@@ -87,8 +136,10 @@ packer.startup({
   end,
 })
 
-for _, cfg in pairs(plugin_cfgs) do
-    if cfg.enable and cfg.cfg_lua ~= nil then
-        require("plugin-config." .. cfg.cfg_lua)
-    end
-end
+-- for name, cfg in pairs(plugin_cfgs) do
+--     if not cfg.uninstall and cfg.enable and cfg.cfg_lua then
+--         debug = debug .. name .. " " .. cfg.cfg_lua .. "\n"
+--         load(cfg.cfg_lua)()
+--         -- require("plugin-config." .. cfg.cfg_lua)
+--     end
+-- end

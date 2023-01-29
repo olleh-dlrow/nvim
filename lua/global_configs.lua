@@ -1,3 +1,9 @@
+-- warning: packer.use.config可以设置为string或function，之后使用loadstring进行程序加载
+-- 问题在于，如果使用function作为入参，那么通过某个变量传入就可能出问题，因此这里使用string解析
+local function get_load_string(script_name)
+    return "require(\"plugin-config." .. script_name .. "\")"
+end
+
 local M = {
     config_path = vim.fn.stdpath("config"),
     enable_magic_search = true,
@@ -94,7 +100,7 @@ local M = {
             enable  = true,
             rel_url = "kyazdani42/nvim-tree.lua",
             req_tbl = {"kyazdani42/nvim-web-devicons"},
-            cfg_lua = "nvim-tree",
+            cfg_lua = get_load_string("nvim-tree"),
 
             -- toggle = "<A-m>",
             toggle = "<leader>m",
@@ -134,7 +140,7 @@ local M = {
             enable  = true,
             rel_url = "akinsho/bufferline.nvim",
             req_tbl = { "kyazdani42/nvim-web-devicons", "moll/vim-bbye" },
-            cfg_lua = "bufferline",
+            cfg_lua = get_load_string("bufferline"),
 
             prev = "<C-h>",
             next = "<C-l>",
@@ -150,7 +156,7 @@ local M = {
 			enable = true,
             rel_url = "nvim-lualine/lualine.nvim",
             req_tbl = { "kyazdani42/nvim-web-devicons" },
-            cfg_lua = "lualine"
+            cfg_lua = get_load_string("lualine")
         },
 
         tree_sitter = {
@@ -163,7 +169,7 @@ local M = {
 				{ "nvim-treesitter/nvim-treesitter-refactor" },
 				{ "nvim-treesitter/nvim-treesitter-textobjects" },
 			},
-            cfg_lua = "nvim-treesitter"
+            cfg_lua = get_load_string("nvim-treesitter")
         },
 
 		-- Bug: https://github.com/nvim-telescope/telescope.nvim/issues/699
@@ -178,7 +184,7 @@ local M = {
 				{ "nvim-telescope/telescope-ui-select.nvim" },
                 { "nvim-lua/plenary.nvim" },
 			},
-            cfg_lua = "telescope",
+            cfg_lua = get_load_string("telescope"),
 
             find_files = "<C-p>",
             live_grep = "<C-f>",
@@ -202,27 +208,30 @@ local M = {
         -- warning: config has some changes after this version
         -- commit = "f7d623457d6621b25a1292b24e366fae40cb79ab",
         dash_board = {
+            -- uninstall = true,
             enable = true,
             rel_url = "glepnir/dashboard-nvim",
-            cfg_lua = "dashboard",
+            req_tbl = {"nvim-tree/nvim-web-devicons"},
+            cfg_lua = get_load_string("dashboard"),
+            event = "VimEnter",
         },
 
         project = {
             enable = true,
             rel_url = "ahmedkhalf/project.nvim",
-            cfg_lua = "project",
+            cfg_lua = get_load_string("project"),
         },
 
         inline_blankline = {
             enable = true,
             rel_url = "lukas-reineke/indent-blankline.nvim",
-            cfg_lua = "indent-blankline",
+            cfg_lua = get_load_string("indent-blankline"),
         },
 
         comment = {
             enable = true,
             rel_url = "numToStr/Comment.nvim",
-            cfg_lua = "comment",
+            cfg_lua = get_load_string("comment"),
 
             -- Normal 模式快捷键
             toggler = {
@@ -243,13 +252,13 @@ local M = {
                 { "nvim-treesitter/nvim-treesitter" },
                 {  "nvim-treesitter/nvim-treesitter-textobjects" }
             },
-            cfg_lua = "surround",
+            cfg_lua = get_load_string("surround"),
         },
 
         autopairs = {
             enable = true,
             rel_url = "windwp/nvim-autopairs",
-            cfg_lua = "autopairs",
+            cfg_lua = get_load_string("autopairs"),
         },
         --------------------------------------
         --------------- lsp ------------------
