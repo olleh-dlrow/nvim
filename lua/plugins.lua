@@ -69,64 +69,17 @@ packer.startup({
         use("wbthomason/packer.nvim")
         -------------------------- plugins -------------------------------------------
 
-    -- use {
-    --     'glepnir/dashboard-nvim',
-    --     event = 'VimEnter',
-    --     config = function()
-    --         require('dashboard').setup (
-    --             {
-    --                 theme = 'hyper',
-    --                 config = {
-    --                 week_header = {
-    --                 enable = true,
-    --                 },
-    --                 shortcut = {
-    --                     { desc = ' fsdafasd', group = '@property', action = 'Lazy update', key = 'u' },
-    --                     {
-    --                     desc = ' fsadfsd',
-    --                     group = 'Label',
-    --                     action = 'Telescope find_files',
-    --                     key = 'f',
-    --                     },
-    --                     {
-    --                     desc = ' fasdfsf',
-    --                     group = 'DiagnosticHint',
-    --                     action = 'Telescope app',
-    --                     key = 'a',
-    --                     },
-    --                     {
-    --                     desc = ' fsadff',
-    --                     group = 'Number',
-    --                     action = 'Telescope dotfiles',
-    --                     key = 'd',
-    --                     },
-    --                 },
-    --                 }
-    --             })   -- config
-    --         end,
-    --     requires = {'nvim-tree/nvim-web-devicons'}
-    -- }
-
-    for name, cfg in pairs(plugin_cfgs) do
+    for _, cfg in pairs(plugin_cfgs) do
         if cfg.uninstall then
             goto continue
         end
 
-        -- if cfg.cfg_lua ~= nil then
-            -- debug = debug .. name .. " " .. tostring(cfg.cfg_lua) .. "\n"
-            use({
-                cfg.rel_url,
-                requires = cfg.req_tbl,
-                event = cfg.event,
-                config = (cfg.cfg_lua and cfg.cfg_lua) or "",
-            })
-        -- else
-            -- use({
-            --     cfg.rel_url,
-            --     requires = cfg.req_tbl,
-            --     event = cfg.event,
-            -- })
-        -- end
+        use({
+            cfg.rel_url,
+            requires = cfg.req_tbl,
+            event = cfg.event,
+            config = (cfg.cfg_lua and cfg.cfg_lua) or "",
+        })
         ::continue::
     end
 
@@ -136,10 +89,3 @@ packer.startup({
   end,
 })
 
--- for name, cfg in pairs(plugin_cfgs) do
---     if not cfg.uninstall and cfg.enable and cfg.cfg_lua then
---         debug = debug .. name .. " " .. cfg.cfg_lua .. "\n"
---         load(cfg.cfg_lua)()
---         -- require("plugin-config." .. cfg.cfg_lua)
---     end
--- end

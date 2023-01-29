@@ -176,6 +176,20 @@ Bug：在配置脚本中，有一个use.config的选项，它主要是在加载�
 
 
 
+**一些插件修改后不能正常更新**
+
+需要重新编译一下PackerCompile plugin-name
+
+
+
+**插件快照管理**
+
+为了防止插件更新出现错误，需要定时创建版本快照，此时需要设置packer.init参数中的snapshots和path，packer在加载完后会自动回滚到该版本，因此平时可以将其关掉，当需要主要更新的内容发生失败时再使用rollback指令
+
+在使用Sync和Update指令更新插件时，为了防止自动更新，可以设置preview\_update选项预览更新内容
+
+
+
 **dashboard的配置**
 
 显示界面的插件，目前仍在大量更新，这导致有些功能不够稳定，目前还是使用较旧的主题。支持打开项目、最近的文件、文件搜索、修改配置等
@@ -198,10 +212,6 @@ Quickfix + vimgrep 可以实现全局查找和替换，具体方法参考《Vim�
 :cfdo update
 ``````
 
-
-**一些插件修改后不能正常更新**
-
-需要重新编译一下PackerCompile plugin-name
 
 
 
