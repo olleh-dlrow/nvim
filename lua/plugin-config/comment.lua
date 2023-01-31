@@ -1,10 +1,5 @@
 local cfg = require("global_configs").plugins.comment
-
-local status, comment = pcall(require, "Comment")
-if not status then
-  vim.notify("没有找到 Comment")
-  return
-end
+local comment = require_plugin("Comment")
 
 local opts = {
   mappings = {

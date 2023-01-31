@@ -43,6 +43,7 @@ local server_cfgs = {
   new_server_config("rust_analyzer" , "rust"          ),
   new_server_config("clangd"        , "clangd"        ),
   new_server_config("cmake"         , "cmake"         ),
+  new_server_config("omnisharp_mono", "omnisharp_mono"),
 --new_server_config("taplo"         , "taplo"         ), -- toml
 --new_server_config("gopls"         , "gopls"         ),
 --new_server_config("remark_ls"     , "markdown"      ),

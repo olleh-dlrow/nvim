@@ -1,8 +1,4 @@
-local status, indent_blankline = pcall(require, "indent_blankline")
-if not status then
-  vim.notify("没有找到 indent_blankline")
-  return
-end
+local indent_blankline = require_plugin("indent_blankline")
 
 indent_blankline.setup({
   -- 空行占位

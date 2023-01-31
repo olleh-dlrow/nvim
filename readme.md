@@ -114,6 +114,12 @@ Preference -> Profiles -> Default --> Keys --> Left Option key --> 选中 Esc+
 
 
 
+终端/写代码字体推荐： Nerd Font：支持更多的icon
++ firacode：好看的light字体
+or jetbrainsmono：支持thin和light，但是在vim下对icon的支持不太好
+
+
+
 **按键相关**
 
 要查看快捷键的话，使用bindkey -l找到keymap，再在对应的map下查找，方法为bindkey -M mapname
@@ -151,6 +157,12 @@ Preference -> Profiles -> Default --> Keys --> Left Option key --> 选中 Esc+
 [File opened with Telescope: find_files can't be folded (E490: No fold found) · Issue #699 · nvim-telescope/telescope.nvim (github.com)](https://github.com/nvim-telescope/telescope.nvim/issues/699)
 
 解决方法：先适用zx重置，再使用zc折叠
+
+
+
+**treesitter无法正常下载**
+
+解决办法：设置代理，在官方文档中搜proxy即可
 
 
 
@@ -208,9 +220,56 @@ Quickfix + vimgrep 可以实现全局查找和替换，具体方法参考《Vim�
 
 ```bash
 :vimgrep /word/   \*\*/\*.suffix
-:cfdo %s/word/new word/gc
+:cfdo %s/word/new_word/gc
 :cfdo update
 ``````
+
+
+
+**autopiars和coc completion_confirm冲突**
+
+两者在回车键上发生冲突，导致无法确认补全
+
+解决：https://github.com/windwp/nvim-autopairs/wiki/Completion-plugin
+
+
+
+**查询按键映射**
+
+```bash
+:verbose [i]map somekey
+```
+
+
+
+**omnisharp没有及时更新项目**
+
+- mason自带的：omnisharp-mono，生成文件后不能识别
+
+- Coc自带的：coc-omnisharp 不支持macOS
+
+- 独立的：omnisharp-vim 有ReloadProject，但是只在Coc中生效
+
+- Dotnet相关的不能用
+
+综合来看，目前使用coc+omnisharp-vim的方式，在添加、更改文件后使用ReloadProject指令更新代码补全和诊断功能
+
+
+
+**什么是undo level？它有什么用？**
+
+即撤销的级别或者粒度，在插入模式下，整个插入的操作序列都算做一个undo，这时可以通过break undo level来结束当前的undo，然后重新开始一个undo
+
+[How to change undo granularity in Vim? - Vi and Vim Stack Exchange](https://vi.stackexchange.com/questions/2376/how-to-change-undo-granularity-in-vim)
+
+
+
+**surround-nvim在插入模式下无法正常操作？**
+
+TODO
+
+
+
 
 
 

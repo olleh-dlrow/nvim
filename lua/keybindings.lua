@@ -24,7 +24,7 @@ vim.g.maplocalleader = keys.leader_key
 
 local opts_remap = {
   remap = true,
-  silent = true,
+  silent = false,
 }
 
 local opts_expr = {

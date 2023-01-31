@@ -1,11 +1,10 @@
 local cfg = require("global_configs").plugins.tree_sitter
+local treesitter = require_plugin("nvim-treesitter.configs")
 
-local status, treesitter = pcall(require, "nvim-treesitter.configs")
-if not status then
-  vim.notify("没有找到 nvim-treesitter")
-  return
-end
-
+-- warning: 设置下载parser的代理
+require("nvim-treesitter.install").command_extra_args = {
+    curl = { "--proxy", "http://127.0.0.1:7890" },
+}
 require("nvim-treesitter.install").prefer_git = true
 treesitter.setup({
   sync_install = false,
@@ -18,6 +17,7 @@ treesitter.setup({
     "vim",
     "lua",
     "json",
+    "c_sharp",
   },
   -- ensure_installed = "maintained",
 

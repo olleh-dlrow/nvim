@@ -1,7 +1,12 @@
 -- warning: packer.use.config可以设置为string或function，之后使用loadstring进行程序加载
 -- 问题在于，如果使用function作为入参，那么通过某个变量传入就可能出问题，因此这里使用string解析
 local function get_load_string(script_name)
-    return "require(\"plugin-config." .. script_name .. "\")"
+    -- local cmd = "local status, _ = pcall(require, \"" .. script_name .. "\")\n"
+    --             ..  "if not status then\n"
+    --             ..      "vim.notify(\"not find " .. script_name .. "\")\n"
+    --             ..      "return\n"
+    --             ..  "end\n"
+    return 'require_plugin("' .. script_name .. '")'
 end
 
 local M = {
@@ -100,7 +105,7 @@ local M = {
             enable  = true,
             rel_url = "kyazdani42/nvim-tree.lua",
             req_tbl = {"kyazdani42/nvim-web-devicons"},
-            cfg_lua = get_load_string("nvim-tree"),
+            cfg_lua = get_load_string("plugin-config.nvim-tree"),
 
             -- toggle = "<A-m>",
             toggle = "<leader>m",
@@ -140,7 +145,7 @@ local M = {
             enable  = true,
             rel_url = "akinsho/bufferline.nvim",
             req_tbl = { "kyazdani42/nvim-web-devicons", "moll/vim-bbye" },
-            cfg_lua = get_load_string("bufferline"),
+            cfg_lua = get_load_string("plugin-config.bufferline"),
 
             prev = "<C-h>",
             next = "<C-l>",
@@ -156,7 +161,7 @@ local M = {
 			enable = true,
             rel_url = "nvim-lualine/lualine.nvim",
             req_tbl = { "kyazdani42/nvim-web-devicons" },
-            cfg_lua = get_load_string("lualine")
+            cfg_lua = get_load_string("plugin-config.lualine")
         },
 
         tree_sitter = {
@@ -169,7 +174,7 @@ local M = {
 				{ "nvim-treesitter/nvim-treesitter-refactor" },
 				{ "nvim-treesitter/nvim-treesitter-textobjects" },
 			},
-            cfg_lua = get_load_string("nvim-treesitter")
+            cfg_lua = get_load_string("plugin-config.nvim-treesitter")
         },
 
 		-- Bug: https://github.com/nvim-telescope/telescope.nvim/issues/699
@@ -184,7 +189,7 @@ local M = {
 				{ "nvim-telescope/telescope-ui-select.nvim" },
                 { "nvim-lua/plenary.nvim" },
 			},
-            cfg_lua = get_load_string("telescope"),
+            cfg_lua = get_load_string("plugin-config.telescope"),
 
             find_files = "<C-p>",
             live_grep = "<C-f>",
@@ -211,27 +216,27 @@ local M = {
             -- uninstall = true,
             enable = true,
             rel_url = "glepnir/dashboard-nvim",
-            req_tbl = {"nvim-tree/nvim-web-devicons"},
-            cfg_lua = get_load_string("dashboard"),
+            req_tbl = {{"nvim-tree/nvim-web-devicons"}},
+            cfg_lua = get_load_string("plugin-config.dashboard"),
             event = "VimEnter",
         },
 
         project = {
             enable = true,
             rel_url = "ahmedkhalf/project.nvim",
-            cfg_lua = get_load_string("project"),
+            cfg_lua = get_load_string("plugin-config.project"),
         },
 
         inline_blankline = {
             enable = true,
             rel_url = "lukas-reineke/indent-blankline.nvim",
-            cfg_lua = get_load_string("indent-blankline"),
+            cfg_lua = get_load_string("plugin-config.indent-blankline"),
         },
 
         comment = {
             enable = true,
             rel_url = "numToStr/Comment.nvim",
-            cfg_lua = get_load_string("comment"),
+            cfg_lua = get_load_string("plugin-config.comment"),
 
             -- Normal 模式快捷键
             toggler = {
@@ -245,6 +250,7 @@ local M = {
             },
         },
 
+        -- warning: some errors with <c-g>s in insert mode
         surround = {
             enable = true,
             rel_url ="kylechui/nvim-surround",
@@ -252,108 +258,140 @@ local M = {
                 { "nvim-treesitter/nvim-treesitter" },
                 {  "nvim-treesitter/nvim-treesitter-textobjects" }
             },
-            cfg_lua = get_load_string("surround"),
+            cfg_lua = get_load_string("plugin-config.surround"),
         },
 
         autopairs = {
+            uninstall = false,
             enable = true,
             rel_url = "windwp/nvim-autopairs",
-            cfg_lua = get_load_string("autopairs"),
+            cfg_lua = get_load_string("plugin-config.autopairs"),
         },
         --------------------------------------
         --------------- lsp ------------------
         --------------------------------------
 
         mason = {
+            uninstall = false,
             enable = true,
             rel_url = "williamboman/mason.nvim",
         },
 
         mason_lspconfig = {
+            uninstall = false,
             enable = true,
             rel_url = "williamboman/mason-lspconfig.nvim",
         },
 
         nvim_lspconfig = {
+            uninstall = false,
             enable = true,
             rel_url = "neovim/nvim-lspconfig",
         },
 
         nvim_cmp = {
+            uninstall = false,
             enable = true,
             rel_url = "hrsh7th/nvim-cmp",
         },
 
         lua_snip = {
+            uninstall = false,
             enable = true,
             rel_url = "L3MON4D3/LuaSnip",
         },
 
         cmp_luasnip = {
+            uninstall = false,
             enable = true,
             rel_url = "saadparwaiz1/cmp_luasnip",
         },
 
         cmp_vsnip = {
+            uninstall = false,
             enable = true,
             rel_url = "hrsh7th/cmp-vsnip",
         },
 
         cmp_nvim_lsp = {
+            uninstall = false,
             enable = true,
             rel_url = "hrsh7th/cmp-nvim-lsp",
         },
 
         cmp_buffer = {
+            uninstall = false,
             enable = true,
             rel_url = "hrsh7th/cmp-buffer",
         },
 
         cmp_path = {
+            uninstall = false,
             enable = true,
             rel_url = "hrsh7th/cmp-path",
         },
 
         cmp_cmdline = {
+            uninstall = false,
             enable = true,
             rel_url = "hrsh7th/cmp-cmdline",
         },
 
         cmp_nvim_lsp_signature_help = {
+            uninstall = false,
             enable = true,
             rel_url = "hrsh7th/cmp-nvim-lsp-signature-help",
         },
 
         friendly_snippets = {
+            uninstall = false,
             enable = true,
             rel_url = "rafamadriz/friendly-snippets",
         },
 
         lspkind_nvim = {
+            uninstall = false,
             enable = true,
             rel_url = "onsails/lspkind-nvim",
         },
 
         lspsaga = {
+            uninstall = false,
             enable = true,
             rel_url = "tami5/lspsaga.nvim",
         },
 
         neodev = {
+            uninstall = false,
             enable = true,
             rel_url = "folke/neodev.nvim",
         },
 
         schemastore = {
+            uninstall = false,
             enable = true,
             rel_url = "b0o/schemastore.nvim",
         },
 
         rust_tools = {
+            uninstall = false,
             enable = true,
             rel_url = "simrat39/rust-tools.nvim",
         },
 
+        coc = {
+            uninstall = true,
+            enable = true,
+            rel_url = "neoclide/coc.nvim",
+            cfg_lua = get_load_string("coc.setup"),
+            branch = "release",
+        },
+
+        omnisharp_vim = {
+            uninstall = true,
+            enable = true,
+            rel_url = "OmniSharp/omnisharp-vim",
+        },
         --------------------------------------
         ----------- colorscheme --------------
         --------------------------------------

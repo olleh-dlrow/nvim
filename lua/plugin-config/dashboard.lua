@@ -1,10 +1,5 @@
 local cfg = require("global_configs").plugins.dash_board
-
-local status, dashboard = pcall(require, 'dashboard')
-if not status then
-  vim.notify("没有找到 dashboard")
-  return
-end
+local dashboard = require_plugin('dashboard')
 
 local hyper_opts = {
     theme = 'doom',

@@ -27,11 +27,7 @@ if fn.empty(fn.glob(install_path)) > 0 then
 end
 
 -- Use a protected call so we don't error out on first use
-local status_ok, packer = pcall(require, "packer")
-if not status_ok then
-  vim.notify("没有安装 packer.nvim")
-  return
-end
+local packer = require_plugin("packer")
 
 packer.init({
     -- 关于snapshot的使用：
@@ -78,7 +74,8 @@ packer.startup({
             cfg.rel_url,
             requires = cfg.req_tbl,
             event = cfg.event,
-            config = (cfg.cfg_lua and cfg.cfg_lua) or "",
+            config = ((cfg.enable and cfg.cfg_lua) and cfg.cfg_lua) or "",
+            branch = cfg.branch,
         })
         ::continue::
     end

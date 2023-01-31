@@ -1,10 +1,5 @@
 local cfg = require("global_configs").plugins.telescope
-
-local status, telescope = pcall(require, "telescope")
-if not status then
-  vim.notify("没有找到 telescope")
-  return
-end
+local telescope = require_plugin("telescope")
 
 -- local actions = require("telescope.actions")
 telescope.setup({

@@ -1,10 +1,5 @@
 local cfg = require("global_configs").plugins.buffer_line
-
-local status, bufferline = pcall(require, "bufferline")
-if not status then
-  vim.notify("没有找到 bufferline")
-  return
-end
+local bufferline = require_plugin("bufferline")
 -- bfferline 配置
 -- https://github.com/akinsho/bufferline.nvim#configuration
 bufferline.setup({

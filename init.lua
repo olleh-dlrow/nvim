@@ -7,7 +7,6 @@ require("plugins")
 require("colorscheme")
 require("autocmds")
 
-
 require("lsp.setup")
 require("cmp.setup")
 

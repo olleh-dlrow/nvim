@@ -1,12 +1,7 @@
 -- https://github.com/kyazdani42/nvim-tree.lua
 -- local nvim_tree = require'nvim-tree'
 local cfg = require("global_configs").plugins.nvim_tree
-
-local status, nvim_tree = pcall(require, "nvim-tree")
-if not status then
-  vim.notify("没有找到 nvim-tree")
-  return
-end
+local nvim_tree = require_plugin("nvim-tree")
 
 keymap("n", cfg.toggle, ":NvimTreeToggle<CR>")
 
