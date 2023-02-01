@@ -2,6 +2,11 @@
 -- local nvim_tree = require'nvim-tree'
 local cfg = require("global_configs").plugins.nvim_tree
 local nvim_tree = require_plugin("nvim-tree")
+local lib = require("nvim-tree.lib")
+local view = require("nvim-tree.view")
+
+local HEIGHT_RATIO = 0.8  -- You can change this
+local WIDTH_RATIO = 0.8   -- You can change this too
 
 keymap("n", cfg.toggle, ":NvimTreeToggle<CR>")
 
@@ -10,6 +15,10 @@ local list_keys = { -- 打开文件或文件夹
   {
     key = cfg.edit,
     action = "edit",
+  },
+  {
+    key = cfg.close,
+    action = "close",
   },
   {
     key = cfg.system_open,
@@ -34,6 +43,14 @@ local list_keys = { -- 打开文件或文件夹
   {
     key = cfg.toggle_custom,
     action = "toggle_custom",
+  },
+  {
+    key = cfg.collapse_all,
+    action = "collapse_all",
+  },
+  {
+    key = cfg.close_node,
+    action = "close_node",
   },
   {
     key = cfg.refresh,
@@ -114,10 +131,36 @@ nvim_tree.setup({
     -- custom = { "node_modules" },
   },
   view = {
-    -- 宽度
-    width = 25,
-    -- 也可以 'right'
-    side = "left",
+    float = {
+      enable = true,
+      open_win_config = function()
+        local screen_w = vim.opt.columns:get()
+        local screen_h = vim.opt.lines:get() - vim.opt.cmdheight:get()
+        local window_w = screen_w * WIDTH_RATIO
+        local window_h = screen_h * HEIGHT_RATIO
+        local window_w_int = math.floor(window_w)
+        local window_h_int = math.floor(window_h)
+        local center_x = (screen_w - window_w) / 2
+        local center_y = ((vim.opt.lines:get() - window_h) / 2)
+                         - vim.opt.cmdheight:get()
+        return {
+          -- none, single, double ,rounded, solid, shadow
+          border = 'rounded',
+          relative = 'editor',
+          row = center_y,
+          col = center_x,
+          width = window_w_int,
+          height = window_h_int,
+        }
+        end,
+    },
+    width = function()
+      return math.floor(vim.opt.columns:get() * WIDTH_RATIO)
+    end,
+    -- -- 宽度
+    -- width = 25,
+    -- -- 也可以 'right'
+    -- side = "left",
     -- 隐藏根目录
     hide_root_folder = false,
     -- 自定义列表中快捷键

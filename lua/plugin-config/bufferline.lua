@@ -1,4 +1,5 @@
 local cfg = require("global_configs").plugins.buffer_line
+local icons = require("global_configs").icons
 local bufferline = require_plugin("bufferline")
 -- bfferline 配置
 -- https://github.com/akinsho/bufferline.nvim#configuration
@@ -25,7 +26,7 @@ bufferline.setup({
     diagnostics_indicator = function(count, level, diagnostics_dict, context)
       local s = " "
       for e, n in pairs(diagnostics_dict) do
-        local sym = e == "error" and " " or (e == "warning" and " " or "")
+        local sym = e == "error" and icons.error or (e == "warning" and icons.warn or icons.hint)
         s = s .. n .. sym
       end
       return s

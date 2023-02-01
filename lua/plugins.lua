@@ -70,11 +70,15 @@ packer.startup({
             goto continue
         end
 
+        local cfg_cmd = ""
+        if cfg.enable and cfg.cfg_lua then
+            cfg_cmd = cfg.cfg_lua
+        end
         use({
             cfg.rel_url,
             requires = cfg.req_tbl,
             event = cfg.event,
-            config = ((cfg.enable and cfg.cfg_lua) and cfg.cfg_lua) or "",
+            config = cfg_cmd,
             branch = cfg.branch,
         })
         ::continue::

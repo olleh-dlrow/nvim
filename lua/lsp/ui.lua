@@ -1,3 +1,4 @@
+local cfg = require("global_configs")
 -- 自定义图标
 vim.diagnostic.config({
   virtual_text = true,
@@ -18,7 +19,7 @@ vim.diagnostic.config({
   },
 })
 
-local signs = { Error = " ", Warn = " ", Hint = " ", Info = " " }
+local signs = { Error = cfg.icons.error, Warn = cfg.icons.warn, Hint = cfg.icons.hint, Info = cfg.icons.info }
 for type, icon in pairs(signs) do
   local hl = "DiagnosticSign" .. type
   vim.fn.sign_define(hl, { text = icon, texthl = hl, numhl = hl })

@@ -10,6 +10,13 @@ local function get_load_string(script_name)
 end
 
 local M = {
+    icons = {
+        error = " ",
+        warn  = " ",
+        hint  = " ",
+        info  = " ",
+    },
+
     config_path = vim.fn.stdpath("config"),
     enable_magic_search = true,
 
@@ -110,6 +117,7 @@ local M = {
             -- toggle = "<A-m>",
             toggle = "<leader>m",
             edit = { "o", "<2-LeftMouse>" },
+            close = "<ESC>",
             system_open = "<CR>",
             -- v分屏打开文件
             vsplit = "sv",
@@ -123,6 +131,10 @@ local M = {
             toggle_custom = "u",
 
             refresh = "R",
+
+            collapse_all = "H",
+            close_node = "h",
+
             -- 文件操作
             create = "a",
             remove = "d",
@@ -139,6 +151,15 @@ local M = {
             cd = "]",
             -- 进入上一级
             dir_up = "[",
+        },
+
+        nvim_lsp_file_operations = {
+            enable = true,
+            rel_url = 'antosha417/nvim-lsp-file-operations',
+            req_tbl = {
+                { "nvim-lua/plenary.nvim" },
+                { "kyazdani42/nvim-tree.lua" },
+            },
         },
 
         buffer_line = {
@@ -266,6 +287,16 @@ local M = {
             enable = true,
             rel_url = "windwp/nvim-autopairs",
             cfg_lua = get_load_string("plugin-config.autopairs"),
+        },
+
+        -- css_color = {
+        --     enable = true,
+        --     rel_url = "ap/vim-css-color"
+        -- },
+
+        colorizer = {
+            enable = true,
+            rel_url = "chrisbra/Colorizer",
         },
         --------------------------------------
         --------------- lsp ------------------
@@ -454,12 +485,12 @@ local M = {
         goto_next = "gj",
         goto_prev = "gk",
         -- typescript
-        ts_organize = "gs",
-        ts_rename_file = "gR",
-        ts_add_missing_import = "gi",
-        ts_remove_unused = "gu",
-        ts_fix_all = "gf",
-        ts_goto_source = "gD",
+        -- ts_organize = "gs",
+        -- ts_rename_file = "gR",
+        -- ts_add_missing_import = "gi",
+        -- ts_remove_unused = "gu",
+        -- ts_fix_all = "gf",
+        -- ts_goto_source = "gD",
     },
 }
 
