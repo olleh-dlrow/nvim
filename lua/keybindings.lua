@@ -43,6 +43,8 @@ keymap("n", keys.n_save_all, ":wa<CR>")
 keymap("n", keys.n_save_all_quit, ":wqa<CR>")
 keymap("n", keys.n_force_quit, ":qa!<CR>")
 
+-- reload nvim
+keymap("n", keys.n_reload_nvim, ":source $MYVIMRC<CR>")
 -- $跳到行尾不带空格 (交换$ 和 g_)
 -- warning: 这会影响到visual block选择到行结尾的操作，建议不要替换
 -- keymap({ "v", "n" }, "$", "g_")

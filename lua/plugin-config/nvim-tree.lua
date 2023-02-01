@@ -124,6 +124,9 @@ nvim_tree.setup({
     enable = true,
     update_cwd = false,
   },
+  diagnostics = {
+    enable = true,
+  },
   filters = {
     -- 隐藏 .文件
     dotfiles = true,

@@ -28,6 +28,7 @@ local M = {
       c_next_item = "<C-j>",
       c_prev_item = "<C-k>",
       -- normal 模式
+      n_reload_nvim = "<leader>sv",
       n_save = "<leader>w", -- :w
       n_save_quit = "<leader>wq", --:wq
       n_save_all = "<leader>wa", -- :wa
@@ -302,122 +303,102 @@ local M = {
 
         mason = {
             uninstall = false,
-
             rel_url = "williamboman/mason.nvim",
         },
 
         mason_lspconfig = {
             uninstall = false,
-
             rel_url = "williamboman/mason-lspconfig.nvim",
         },
 
         nvim_lspconfig = {
             uninstall = false,
-
             rel_url = "neovim/nvim-lspconfig",
         },
 
         nvim_cmp = {
             uninstall = false,
-
             rel_url = "hrsh7th/nvim-cmp",
         },
 
         lua_snip = {
             uninstall = false,
-
             rel_url = "L3MON4D3/LuaSnip",
         },
 
         cmp_luasnip = {
             uninstall = false,
-
             rel_url = "saadparwaiz1/cmp_luasnip",
         },
 
         cmp_vsnip = {
             uninstall = false,
-
             rel_url = "hrsh7th/cmp-vsnip",
         },
 
         cmp_nvim_lsp = {
             uninstall = false,
-
             rel_url = "hrsh7th/cmp-nvim-lsp",
         },
 
         cmp_buffer = {
             uninstall = false,
-
             rel_url = "hrsh7th/cmp-buffer",
         },
 
         cmp_path = {
             uninstall = false,
-
             rel_url = "hrsh7th/cmp-path",
         },
 
         cmp_cmdline = {
             uninstall = false,
-
             rel_url = "hrsh7th/cmp-cmdline",
         },
 
         cmp_nvim_lsp_signature_help = {
             uninstall = false,
-
             rel_url = "hrsh7th/cmp-nvim-lsp-signature-help",
         },
 
         friendly_snippets = {
             uninstall = false,
-
             rel_url = "rafamadriz/friendly-snippets",
         },
 
         lspkind_nvim = {
             uninstall = false,
-
             rel_url = "onsails/lspkind-nvim",
         },
 
         lspsaga = {
             uninstall = false,
-
             rel_url = "tami5/lspsaga.nvim",
         },
 
         neodev = {
             uninstall = false,
-
             rel_url = "folke/neodev.nvim",
         },
 
         schemastore = {
             uninstall = false,
-
             rel_url = "b0o/schemastore.nvim",
         },
 
         rust_tools = {
             uninstall = false,
-
             rel_url = "simrat39/rust-tools.nvim",
         },
 
         coc = {
             uninstall = true,
-
             rel_url = "neoclide/coc.nvim",
             branch = "release",
         },
 
         omnisharp_vim = {
             uninstall = true,
-
             rel_url = "OmniSharp/omnisharp-vim",
         },
         --------------------------------------

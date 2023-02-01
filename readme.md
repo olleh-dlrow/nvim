@@ -7,10 +7,10 @@ Neovim具有更好的扩展性，能够自由地定制化很多功能和插件�
 但是，Neovim也有一些传统Vim所具有的缺点：
 
 - 学习周期较长，每次增加插件时也需要记忆新的操作方法，但好处是，这些操作形成习惯后就基本不会有什么大的变化了，不像其他的编辑工具之间操作不兼容。
-- 配置快捷键和插件功能的过程比较繁琐。由于Neovim使用的基本是开源插件，因此在插件的质量和问题修复上不能得到比较系统的保证，插件和插件之间也可能存在兼容的问题，如果某个插件的文档描述的不清楚，则使用者需要花费大量精力去研究某个配置项的具体功能含义，如果遇到比较棘手的问题，也只能通过阅读源代码的方式来排查问题，对于大量的动态语言而言，这是非常令人头疼的一件事 : (
+- 配置快捷键和插件功能的过程比较繁琐。由于Neovim使用的基本是开源插件，因此在插件的质量和问题修复上不能得到比较系统的保证，插件和插件之间也可能存在兼容的问题，如果某个插件的文档描述的不清楚，则使用者需要花费大量精力去研究某个配置项的具体功能含义，如果遇到比较棘手的问题，也只能通过阅读源代码的方式来排查问题，对于大量的动态语言而言，这是非常令人头疼的一件事 :(
 - 不适合做编辑以外的工作。相比于IDE，Neovim在编译、运行、调试等方面依然需要依赖大量的插件，并且效果也很难比IDE要好，配置起来也比文本编辑相关的插件更加麻烦，因此，我认为要么仅仅使用Neovim进行编辑，把运行调试的工作交给专业的IDE或者命令行，要么在IDE中装入好用的Vim插件
 
-总而言之，对于Neovim的学习和配置是一个长期积累的过程，它能够帮助你形成一套基于Vim哲学的文本编辑习惯，研究对于自己而言效率更高的编辑辅助工具，日常工作中更多的是将Neovim和其他IDE混用，在遇到具体问题时能够使用最合适的工具和功能来进行解决，以达到提高效率、享受生活的最终目的 : )
+总而言之，对于Neovim的学习和配置是一个长期积累的过程，它能够帮助你形成一套基于Vim哲学的文本编辑习惯，研究对于自己而言效率更高的编辑辅助工具，日常工作中更多的是将Neovim和其他IDE混用，在遇到具体问题时能够使用最合适的工具和功能来进行解决，以达到提高效率、享受生活的最终目的 :)
 
 
 
@@ -252,9 +252,7 @@ Quickfix + vimgrep 可以实现全局查找和替换，具体方法参考《Vim�
 
 - Dotnet相关的不能用
 
-综合来看，可以使用coc+omnisharp-vim的方式，在添加、更改文件后使用ReloadProject指令更新代码补全和诊断功能
-
-[Reload project by nickspoons · Pull Request #819 · OmniSharp/omnisharp-vim (github.com)](https://github.com/OmniSharp/omnisharp-vim/pull/819)
+综合来看，目前使用coc+omnisharp-vim的方式，在添加、更改文件后使用ReloadProject指令更新代码补全和诊断功能
 
 
 
@@ -272,36 +270,33 @@ TODO
 
 
 
-**窗口切换时光标在文件中的位置发生了变化？**
+**重新载入vim？**
 
-根据测试，将文件保存一次就没有问题了，怀疑是有什么缓存机制
+[How to reload neovims init.vim without restarting neovim - Vi and Vim Stack Exchange](https://vi.stackexchange.com/questions/26626/how-to-reload-neovims-init-vim-without-restarting-neovim)
 
-
-
-
-
-**coc.nvim vs mason**
-
-前者在代码补全方面确实很强，支持非常多的可配置项，但是，coc有点过多地依赖于自己的生态环境，它给了很多自动安装和配置的插件和方案，以便让自己更像VSCode，我认为这在一定程度上超出了它的适用范围（和自己的名字不符），一旦该生态环境中的某个插件放弃了更新，那么想要找到相同适配的是比较难的。而且，我认为如果解决方案过于统一，那还不如去使用VSCode
-
-mason是nvim官方推出的LSP管理插件，更具体的体验报告要等我读完官方文档后再来编写 : )
+使用source $MYVIMRC，可以绑定快捷键 \<leader>sv
 
 
 
+**buffer vs tab vs window？**
 
+大致来说，Buffer 负责保存数据，Window 负责展示数据，Tab 为 Window 提供排版布局，Buffer 和 Tab 对 Window 总是一对多的关系
 
-**tokyonight主题下的各插件配色方案修改**
+[(102条消息) [Vim\]如何理解并正确使用 Vim 中的 Buffer、Window 和 Tab_GanZiQim的博客-CSDN博客_vim 什么时候用windows 什么时候用buffer](https://blog.csdn.net/jy692405180/article/details/79775125)
 
-需要在extra模块修改
-
-> Please refer to default values for `colors` and `highlights` for the storm
-> <extras/lua/tokyonight_storm.lua>, moon <extras/lua/tokyonight_moon.lua>, night
-> <extras/lua/tokyonight_night.lua>, day <extras/lua/tokyonight_day.lua>
-
-然后调用on_colors或者on_highlights，详情见官方文档
+[editor - Using Vim's tabs like buffers - Stack Overflow](https://stackoverflow.com/questions/102384/using-vims-tabs-like-buffers#:~:text=Vim %3Ahelp window explains the confusion "tabs vs,so the name tab in vim maybe misleading.)
 
 
 
-**如何高亮16进制颜色？**
+**bufferline的buffer separator color和tokyonight不兼容**
 
-使用插件Colorizer :ColorToggle
+[[Bug\]: The color of the empty space on the right side of the last tab is not consistent with the separator color after upgrading to v2.7.0 · Issue #517 · akinsho/bufferline.nvim (github.com)](https://github.com/akinsho/bufferline.nvim/issues/517)
+
+作者认为是插件加载的顺序问题，但我的测试依然无法产生正确的效果，因此暂时搁置该特性
+
+
+
+## 计划
+
+- 使用界面管理各个功能：[liuchengxu/vim-which-key: Vim plugin that shows keybindings in popup (github.com)](https://github.com/liuchengxu/vim-which-key)
+- 
