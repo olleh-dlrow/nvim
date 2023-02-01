@@ -109,7 +109,6 @@ local M = {
     -- plugin settings
     plugins = {
         nvim_tree = {
-            enable  = true,
             rel_url = "kyazdani42/nvim-tree.lua",
             req_tbl = {"kyazdani42/nvim-web-devicons"},
             cfg_lua = get_load_string("plugin-config.nvim-tree"),
@@ -154,7 +153,7 @@ local M = {
         },
 
         nvim_lsp_file_operations = {
-            enable = true,
+
             rel_url = 'antosha417/nvim-lsp-file-operations',
             req_tbl = {
                 { "nvim-lua/plenary.nvim" },
@@ -163,7 +162,7 @@ local M = {
         },
 
         buffer_line = {
-            enable  = true,
+
             rel_url = "akinsho/bufferline.nvim",
             req_tbl = { "kyazdani42/nvim-web-devicons", "moll/vim-bbye" },
             cfg_lua = get_load_string("plugin-config.bufferline"),
@@ -179,14 +178,13 @@ local M = {
         },
 
         lua_line = {
-			enable = true,
             rel_url = "nvim-lualine/lualine.nvim",
             req_tbl = { "kyazdani42/nvim-web-devicons" },
             cfg_lua = get_load_string("plugin-config.lualine")
         },
 
         tree_sitter = {
-            enable = true,
+
             rel_url = "nvim-treesitter/nvim-treesitter",
             req_tbl = {
 				{ "p00f/nvim-ts-rainbow" },
@@ -202,7 +200,7 @@ local M = {
 		-- Sol: use zx before zc or zo 
 		-- Ref: see bug.
         telescope = {
-            enable = true,
+
             rel_url = "nvim-telescope/telescope.nvim",
             req_tbl = {
                 -- telescope extensions
@@ -235,7 +233,7 @@ local M = {
         -- commit = "f7d623457d6621b25a1292b24e366fae40cb79ab",
         dash_board = {
             -- uninstall = true,
-            enable = true,
+
             rel_url = "glepnir/dashboard-nvim",
             req_tbl = {{"nvim-tree/nvim-web-devicons"}},
             cfg_lua = get_load_string("plugin-config.dashboard"),
@@ -243,19 +241,19 @@ local M = {
         },
 
         project = {
-            enable = true,
+
             rel_url = "ahmedkhalf/project.nvim",
             cfg_lua = get_load_string("plugin-config.project"),
         },
 
         inline_blankline = {
-            enable = true,
+
             rel_url = "lukas-reineke/indent-blankline.nvim",
             cfg_lua = get_load_string("plugin-config.indent-blankline"),
         },
 
         comment = {
-            enable = true,
+
             rel_url = "numToStr/Comment.nvim",
             cfg_lua = get_load_string("plugin-config.comment"),
 
@@ -273,7 +271,7 @@ local M = {
 
         -- warning: some errors with <c-g>s in insert mode
         surround = {
-            enable = true,
+
             rel_url ="kylechui/nvim-surround",
             req_tbl = {
                 { "nvim-treesitter/nvim-treesitter" },
@@ -284,18 +282,18 @@ local M = {
 
         autopairs = {
             uninstall = false,
-            enable = true,
+
             rel_url = "windwp/nvim-autopairs",
             cfg_lua = get_load_string("plugin-config.autopairs"),
         },
 
         -- css_color = {
-        --     enable = true,
+        --
         --     rel_url = "ap/vim-css-color"
         -- },
 
         colorizer = {
-            enable = true,
+
             rel_url = "chrisbra/Colorizer",
         },
         --------------------------------------
@@ -304,115 +302,115 @@ local M = {
 
         mason = {
             uninstall = false,
-            enable = true,
+
             rel_url = "williamboman/mason.nvim",
         },
 
         mason_lspconfig = {
             uninstall = false,
-            enable = true,
+
             rel_url = "williamboman/mason-lspconfig.nvim",
         },
 
         nvim_lspconfig = {
             uninstall = false,
-            enable = true,
+
             rel_url = "neovim/nvim-lspconfig",
         },
 
         nvim_cmp = {
             uninstall = false,
-            enable = true,
+
             rel_url = "hrsh7th/nvim-cmp",
         },
 
         lua_snip = {
             uninstall = false,
-            enable = true,
+
             rel_url = "L3MON4D3/LuaSnip",
         },
 
         cmp_luasnip = {
             uninstall = false,
-            enable = true,
+
             rel_url = "saadparwaiz1/cmp_luasnip",
         },
 
         cmp_vsnip = {
             uninstall = false,
-            enable = true,
+
             rel_url = "hrsh7th/cmp-vsnip",
         },
 
         cmp_nvim_lsp = {
             uninstall = false,
-            enable = true,
+
             rel_url = "hrsh7th/cmp-nvim-lsp",
         },
 
         cmp_buffer = {
             uninstall = false,
-            enable = true,
+
             rel_url = "hrsh7th/cmp-buffer",
         },
 
         cmp_path = {
             uninstall = false,
-            enable = true,
+
             rel_url = "hrsh7th/cmp-path",
         },
 
         cmp_cmdline = {
             uninstall = false,
-            enable = true,
+
             rel_url = "hrsh7th/cmp-cmdline",
         },
 
         cmp_nvim_lsp_signature_help = {
             uninstall = false,
-            enable = true,
+
             rel_url = "hrsh7th/cmp-nvim-lsp-signature-help",
         },
 
         friendly_snippets = {
             uninstall = false,
-            enable = true,
+
             rel_url = "rafamadriz/friendly-snippets",
         },
 
         lspkind_nvim = {
             uninstall = false,
-            enable = true,
+
             rel_url = "onsails/lspkind-nvim",
         },
 
         lspsaga = {
             uninstall = false,
-            enable = true,
+
             rel_url = "tami5/lspsaga.nvim",
         },
 
         neodev = {
             uninstall = false,
-            enable = true,
+
             rel_url = "folke/neodev.nvim",
         },
 
         schemastore = {
             uninstall = false,
-            enable = true,
+
             rel_url = "b0o/schemastore.nvim",
         },
 
         rust_tools = {
             uninstall = false,
-            enable = true,
+
             rel_url = "simrat39/rust-tools.nvim",
         },
 
         coc = {
             uninstall = true,
-            enable = true,
+
             rel_url = "neoclide/coc.nvim",
             cfg_lua = get_load_string("coc.setup"),
             branch = "release",
@@ -420,7 +418,7 @@ local M = {
 
         omnisharp_vim = {
             uninstall = true,
-            enable = true,
+
             rel_url = "OmniSharp/omnisharp-vim",
         },
         --------------------------------------
@@ -431,12 +429,12 @@ local M = {
 		-- 配置
 		-- tokyonight
         tokyonight = {
-            enable = true,
+
             rel_url = "folke/tokyonight.nvim",
         },
 
         -- mkdnflow = {
-        --     enable = true,
+        --
         --     next_link = "gn",
         --     prev_link = "gp",
         --     next_heading = "gj",
@@ -448,7 +446,7 @@ local M = {
 
 
         -- toggleterm = {
-        --     enable = true,
+        --
 
         --     -- <leader>ta 浮动命令行窗口
         --     toggle_window_A = "<leader>ta",
@@ -460,7 +458,7 @@ local M = {
 
         -- venn = {
         --     -- toggle keymappings for venn using <leader>v
-        --     enable = true,
+        --
         --     -- venn.nvim: enable or disable keymappings
         --     toggle = "<leader>v",
         --     -- draw a box by pressing "f" with visual selection
@@ -468,7 +466,7 @@ local M = {
         -- },
 
         -- zen = {
-        --     enable = true,
+        --
         --     toggle = "<leader>z",
         -- },
     },
