@@ -1,3 +1,4 @@
+local cfg = require("global_configs")
 require("utils.global")
 require("basic")
 require("keybindings")
@@ -7,6 +8,11 @@ require("plugins")
 require("colorscheme")
 require("autocmds")
 
-require("lsp.setup")
-require("cmp.setup")
+-- lsp
+if cfg.lsp.manager == "mason" then
+    require("lsp.setup")
+    require("cmp.setup")
+elseif cfg.lsp.manager == "coc" then
+    require("coc.setup")
+end
 

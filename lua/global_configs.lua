@@ -412,7 +412,6 @@ local M = {
             uninstall = true,
 
             rel_url = "neoclide/coc.nvim",
-            cfg_lua = get_load_string("coc.setup"),
             branch = "release",
         },
 
@@ -472,6 +471,7 @@ local M = {
     },
 
     lsp = {
+        manager = "mason", -- ["mason", "coc", nil]
         rename = "<leader>rn",
         code_action = "<leader>ca",
         format = "<leader>f",
