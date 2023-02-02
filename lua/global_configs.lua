@@ -27,6 +27,8 @@ local M = {
       -- : 模式
       c_next_item = "<C-j>",
       c_prev_item = "<C-k>",
+      -- c_history_next = "<C-n>",
+      -- c_history_prev = "<C-p>",
       -- normal 模式
       n_reload_nvim = "<leader>sv",
       n_save = "<leader>w", -- :w
@@ -153,6 +155,10 @@ local M = {
             dir_up = "[",
         },
 
+        nvim_web_devicons = {
+            rel_url = "kyazdani42/nvim-web-devicons",
+        },
+
         nvim_lsp_file_operations = {
 
             rel_url = 'antosha417/nvim-lsp-file-operations',
@@ -163,7 +169,7 @@ local M = {
         },
 
         buffer_line = {
-
+            disable = true,
             rel_url = "akinsho/bufferline.nvim",
             req_tbl = { "kyazdani42/nvim-web-devicons", "moll/vim-bbye" },
             cfg_lua = get_load_string("plugin-config.bufferline"),
@@ -179,8 +185,9 @@ local M = {
         },
 
         lua_line = {
+            disable = false,
             rel_url = "nvim-lualine/lualine.nvim",
-            req_tbl = { "kyazdani42/nvim-web-devicons" },
+            req_tbl = { "kyazdani42/nvim-web-devicons", "folke/tokyonight.nvim" },
             cfg_lua = get_load_string("plugin-config.lualine")
         },
 
@@ -211,8 +218,11 @@ local M = {
 			},
             cfg_lua = get_load_string("plugin-config.telescope"),
 
-            find_files = "<C-p>",
-            live_grep = "<C-f>",
+            find_files  = "<leader>ff",
+            live_grep   = "<leader>fg",
+            buffers     = "<leader>fb",
+            help_tags   = "<leader>fh",
+            oldfiles    = "<leader>fo",
 
             -- 上下移动
             move_selection_next = "<C-j>",
@@ -220,14 +230,15 @@ local M = {
             -- move_selection_next = "<C-n>",
             -- move_selection_previous = "<C-p>",
             -- 历史记录
-            cycle_history_next = "<Down>",
-            cycle_history_prev = "<Up>",
+            cycle_history_next = "<C-n>",
+            cycle_history_prev = "<C-p>",
             -- 关闭窗口
             -- close = "<C-c>",
             close = "<esc>",
             -- 预览窗口上下滚动
             preview_scrolling_up = "<C-u>",
             preview_scrolling_down = "<C-d>",
+            which_key = "<C-h>",
         },
 
         -- warning: config has some changes after this version
@@ -288,15 +299,11 @@ local M = {
             cfg_lua = get_load_string("plugin-config.autopairs"),
         },
 
-        -- css_color = {
-        --
-        --     rel_url = "ap/vim-css-color"
-        -- },
-
         colorizer = {
 
             rel_url = "chrisbra/Colorizer",
         },
+
         --------------------------------------
         --------------- lsp ------------------
         --------------------------------------

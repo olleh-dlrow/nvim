@@ -6,52 +6,54 @@ local bufferline = require_plugin("bufferline")
 bufferline.setup({
   highlights = {
       buffer_selected = {
-          bold = false,
+          bold = true,
           italic = false,
       },
       diagnostic_selected = {
-          bold = false,
+          bold = true,
           italic = false,
       },
       hint_diagnostic_selected = {
-          bold = false,
+          bold = true,
           italic = false,
       },
       info_diagnostic_selected = {
-          bold = false,
+          bold = true,
           italic = false,
       },
       warning_diagnostic_selected = {
-          bold = false,
+          bold = true,
           italic = false,
       },
       error_diagnostic_selected = {
-          bold = false,
+          bold = true,
           italic = false,
       },
       hint_selected = {
-          bold = false,
+          bold = true,
           italic = false,
       },
       info_selected = {
-          bold = false,
+          bold = true,
           italic = false,
       },
       warning_selected = {
-          bold = false,
+          bold = true,
           italic = false,
       },
       error_selected = {
-          bold = false,
+          bold = true,
           italic = false,
       },
   },
   options = {
     indicator = {
-        style = 'none',
+        -- icon = '',-- '▎ ', -- this should be omitted if indicator style is not 'icon'
+        style = 'none', --'icon' | 'underline' | 'none',
     },
-    -- warning: slant color is wrong when use tokyonight theme
-    separator_style = "thin",
+    truncate_names = false,
+    -- -- warning: slant color is wrong when use tokyonight theme
+    separator_style = {'',''},
     show_buffer_close_icons = false,
     -- 关闭 Tab 的命令
     close_command = "Bdelete! %d",

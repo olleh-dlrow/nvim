@@ -18,6 +18,7 @@ treesitter.setup({
     "lua",
     "json",
     "c_sharp",
+    "markdown",
   },
   -- ensure_installed = "maintained",
 

@@ -1,8 +1,7 @@
 local cfg = require("global_configs").plugins.telescope
 local telescope = require_plugin("telescope")
 
--- local actions = require("telescope.actions")
-telescope.setup({
+local opts = {
   defaults = {
     -- 打开弹窗后进入的初始模式，默认为 insert，也可以是 normal
     initial_mode = "insert",
@@ -23,14 +22,15 @@ telescope.setup({
         -- 预览窗口上下滚动
         [cfg.preview_scrolling_up] = "preview_scrolling_up",
         [cfg.preview_scrolling_down] = "preview_scrolling_down",
+        [cfg.which_key] = "which_key",
       },
     },
   },
-  pickers = {
-    find_files = {
-      -- theme = "dropdown", -- 可选参数： dropdown, cursor, ivy
-    },
-  },
+  -- pickers = {
+  --   find_files = {
+  --     -- theme = "dropdown", -- 可选参数： dropdown, cursor, ivy
+  --   },
+  -- },
   extensions = {
     ["ui-select"] = {
       require("telescope.themes").get_dropdown({
@@ -39,11 +39,17 @@ telescope.setup({
       }),
     },
   },
-})
+}
+-- local actions = require("telescope.actions")
+telescope.setup(opts)
 
 keymap("n", cfg.find_files, ":Telescope find_files<CR>")
 keymap("n", cfg.live_grep, ":Telescope live_grep<CR>")
+keymap("n", cfg.buffers, ":Telescope buffers<CR>")
+keymap("n", cfg.help_tags, ":Telescope help_tags<CR>")
+keymap("n", cfg.oldfiles, ":Telescope oldfiles<CR>")
 
+keymap("n", cfg.help_tags, ":Telescope help_tags<CR>")
 pcall(telescope.load_extension, "env")
 -- To get ui-select loaded and working with telescope, you need to call
 -- load_extension, somewhere after setup function:

@@ -1,5 +1,5 @@
 local lualine = require_plugin("lualine")
-
+local colors = require_plugin("tokyonight.colors").setup()
 lualine.setup({
   options = {
     -- 指定皮肤
@@ -16,9 +16,17 @@ lualine.setup({
       right = "",
     },
     globalstatus = true,
+    always_divide_middle = false,
   },
   extensions = { "nvim-tree" },
   sections = {
+    lualine_c = {
+        {
+            "filename",
+            path = 1,
+            color = { gui='bold' },
+        },
+    },
     -- lualine_c = {
     --   "filename",
     --   {
@@ -28,7 +36,9 @@ lualine.setup({
     --   },
     -- },
     lualine_x = {
-      "filesize",
+      {
+        "filesize",
+      },
       {
         "fileformat",
         -- symbols = {
@@ -45,5 +55,31 @@ lualine.setup({
       "encoding",
       "filetype",
     },
+
   },
+    winbar = {
+        lualine_a = {},
+        lualine_b = {
+            -- {'filetype', icon_only = true, color = {bg = colors.bg_statusline}},
+            {'filename', path = 1, color = {bg = colors.fg_gutter, fg = colors.cyan, gui = 'bold'}, separator = {right = ' '}--[[ {left=' ', right=' '} ]]},
+            {'diagnostics', color = {bg = colors.fg_gutter}, separator = {right = ' '}},
+        },
+        lualine_c = {},
+        lualine_x = {},
+        lualine_y = {},
+        lualine_z = {}
+    },
+
+    inactive_winbar = {
+        lualine_a = {},
+        lualine_b = {
+            -- {'filetype', icon_only = true, color = {bg = colors.bg_statusline}, },
+            {'filename', path = 1, separator = {right = ' '}},
+            {'diagnostics', separator = {right = ' '}},
+        },
+        lualine_c = {},
+        lualine_x = {},
+        lualine_y = {},
+        lualine_z = {}
+    }
 })

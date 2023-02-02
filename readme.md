@@ -296,6 +296,22 @@ TODO
 
 
 
+**telescope无法预览？**
+
+其实是因为窗口太小或者字体太大，我认为这是插件设计的问题，当看不见预览功能时，首先想到的一定是插件设置是否出现了问题，作者至少应该在readme或者其他地方给出明显的提示！！（当然也可能是我没看到，但这一定是它不够明显）
+
+
+
+**StatusLine颜色修改的问题？**
+
+在默认的Nvim中，可以通过``verbose hi StatusLine``来查看当前的设置，如果需要将其修改为透明，需要设置``hi StatusLine cterm=NONE, gui=NONE``，此时背景就和终端相同
+
+在主题tokyonight中，可以在on_highlights函数或者on_colors中设置，具体设置见：
+
+[tokyonight.nvim/theme.lua at main · folke/tokyonight.nvim (github.com)](https://github.com/folke/tokyonight.nvim/blob/main/lua/tokyonight/theme.lua)
+
+
+
 ## 计划
 
 - 使用界面管理各个功能：[liuchengxu/vim-which-key: Vim plugin that shows keybindings in popup (github.com)](https://github.com/liuchengxu/vim-which-key)
