@@ -101,16 +101,16 @@ if keys.s_windows ~= nil and keys.s_windows.enable then
   keymap("n", skey.close, "<C-w>c")
   -- 关闭其他
   keymap("n", skey.close_others, "<C-w>o") -- close others
-  -- alt + hjkl  窗口之间跳转
+  -- <leader> + hjkl  窗口之间跳转
   keymap("n", skey.jump_left, "<C-w>h")
   keymap("n", skey.jump_down, "<C-w>j")
   keymap("n", skey.jump_up, "<C-w>k")
   keymap("n", skey.jump_right, "<C-w>l")
   -- 比例控制
-  keymap("n", skey.width_decrease, ":vertical resize -5<CR>")
-  keymap("n", skey.width_increase, ":vertical resize +5<CR>")
-  keymap("n", skey.height_decrease, ":horizontal resize -5<CR>")
-  keymap("n", skey.height_increase, ":horizontal resize +5<CR>")
+  keymap("n", skey.width_decrease, ":vertical resize -2<CR>")
+  keymap("n", skey.width_increase, ":vertical resize +2<CR>")
+  keymap("n", skey.height_decrease, ":horizontal resize -2<CR>")
+  keymap("n", skey.height_increase, ":horizontal resize +2<CR>")
   keymap("n", skey.size_equal, "<C-w>=")
 end
 

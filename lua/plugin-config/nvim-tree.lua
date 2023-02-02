@@ -12,105 +12,116 @@ keymap("n", cfg.toggle, ":NvimTreeToggle<CR>")
 
 -- 列表操作快捷键
 local list_keys = { -- 打开文件或文件夹
-  {
-    key = cfg.edit,
-    action = "edit",
-  },
-  {
-    key = cfg.close,
-    action = "close",
-  },
-  {
-    key = cfg.system_open,
-    action = "system_open",
-  }, -- v分屏打开文件
-  {
-    key = cfg.vsplit,
-    action = "vsplit",
-  }, -- h分屏打开文件
-  {
-    key = cfg.split,
-    action = "split",
-  }, -- gitignore
-  {
-    key = cfg.toggle_git_ignored,
-    action = "toggle_git_ignored",
-  }, -- Hide (dotfiles)
-  {
-    key = cfg.toggle_dotfiles,
-    action = "toggle_dotfiles",
-  }, -- toggle filters > custom
-  {
-    key = cfg.toggle_custom,
-    action = "toggle_custom",
-  },
-  {
-    key = cfg.collapse_all,
-    action = "collapse_all",
-  },
-  {
-    key = cfg.close_node,
-    action = "close_node",
-  },
-  {
-    key = cfg.refresh,
-    action = "refresh",
-  }, -- 文件操作
-  {
-    key = cfg.create,
-    action = "create",
-  },
-  {
-    key = cfg.remove,
-    action = "remove",
-  },
-  {
-    key = cfg.rename,
-    action = "rename",
-  },
-  {
-    key = cfg.copy,
-    action = "copy",
-  },
-  {
-    key = cfg.cut,
-    action = "cut",
-  },
-  {
-    key = cfg.paste,
-    action = "paste",
-  },
-  {
-    key = cfg.copy_name,
-    action = "copy_name",
-  },
-  {
-    key = cfg.copy_path,
-    action = "copy_path",
-  },
-  {
-    key = cfg.copy_absolute_path,
-    action = "copy_absolute_path",
-  },
-  {
-    key = cfg.toggle_file_info,
-    action = "toggle_file_info",
-  },
-  {
-    key = cfg.tabnew,
-    action = "tabnew",
-  }, -- 进入下一级
-  {
-    key = cfg.cd,
-    action = "cd",
-  }, -- 进入上一级
-  {
-    key = cfg.dir_up,
-    action = "dir_up",
-  },
+  -- {
+  --   key = cfg.edit,
+  --   action = "edit",
+  -- },
+  -- {
+  --   key = cfg.close,
+  --   action = "close",
+  -- },
+  -- {
+  --   key = cfg.system_open,
+  --   action = "system_open",
+  -- },
+  -- v分屏打开文件
+  -- {
+  --   key = cfg.vsplit,
+  --   action = "vsplit",
+  -- },
+  -- -- h分屏打开文件
+  -- {
+  --   key = cfg.split,
+  --   action = "split",
+  -- },
+    -- gitignore
+  -- {
+  --   key = cfg.toggle_git_ignored,
+  --   action = "toggle_git_ignored",
+  -- }, -- Hide (dotfiles)
+  -- {
+  --   key = cfg.toggle_dotfiles,
+  --   action = "toggle_dotfiles",
+  -- }, -- toggle filters > custom
+  -- {
+  --   key = cfg.toggle_custom,
+  --   action = "toggle_custom",
+  -- },
+  -- {
+  --   key = cfg.collapse_all,
+  --   action = "collapse_all",
+  -- },
+  -- {
+  --   key = cfg.close_node,
+  --   action = "close_node",
+  -- },
+  -- {
+  --   key = cfg.refresh,
+  --   action = "refresh",
+  -- }, -- 文件操作
+  -- {
+  --   key = cfg.create,
+  --   action = "create",
+  -- },
+  -- {
+  --   key = cfg.remove,
+  --   action = "remove",
+  -- },
+  -- {
+  --   key = cfg.rename,
+  --   action = "rename",
+  -- },
+  -- {
+  --   key = cfg.copy,
+  --   action = "copy",
+  -- },
+  -- {
+  --   key = cfg.cut,
+  --   action = "cut",
+  -- },
+  -- {
+  --   key = cfg.paste,
+  --   action = "paste",
+  -- },
+  -- {
+  --   key = cfg.copy_name,
+  --   action = "copy_name",
+  -- },
+  -- {
+  --   key = cfg.copy_path,
+  --   action = "copy_path",
+  -- },
+  -- {
+  --   key = cfg.copy_absolute_path,
+  --   action = "copy_absolute_path",
+  -- },
+  -- {
+  --   key = cfg.toggle_file_info,
+  --   action = "toggle_file_info",
+  -- },
+  -- {
+  --   key = cfg.tabnew,
+  --   action = "tabnew",
+  -- }, -- 进入下一级
+  -- {
+  --   key = cfg.cd,
+  --   action = "cd",
+  -- }, -- 进入上一级
+  -- {
+  --   key = cfg.dir_up,
+  --   action = "dir_up",
+  -- },
 }
 
 nvim_tree.setup({
+  -- project.nvim configuration
+  sync_root_with_cwd = true,
+  respect_buf_cwd = true,
+  update_focused_file = {
+    enable = true,
+    update_root = true
+  },
+  -- end
   open_on_setup = false,
   -- 完全禁止内置netrw
   disable_netrw = true,
@@ -169,7 +180,7 @@ nvim_tree.setup({
     -- 自定义列表中快捷键
     mappings = {
       -- 只用内置快捷键
-      custom_only = true,
+      custom_only = false,
       list = list_keys,
     },
     -- 不显示行数

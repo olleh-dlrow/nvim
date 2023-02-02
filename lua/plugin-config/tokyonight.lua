@@ -3,7 +3,7 @@ vim.o.showtabline=0
 
 tokyonight.setup({
     style = "storm", -- The theme comes in three styles, `storm`, `moon`, a darker variant `night` and `day`
-    transparent = vim.g.transparent_enabled, -- Enable this to disable setting the background color
+    transparent = ( vim.g.transparent_enabled and true ) or false, -- Enable this to disable setting the background color
     styles = {
         -- Style to be applied to different syntax groups
         -- Value is any valid attr-list value for `:help nvim_set_hl`

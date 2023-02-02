@@ -4,7 +4,7 @@ local telescope = require_plugin("telescope")
 local opts = {
   defaults = {
     -- 打开弹窗后进入的初始模式，默认为 insert，也可以是 normal
-    initial_mode = "insert",
+    initial_mode = "normal",
     -- vertical , center , cursor
     layout_strategy = "horizontal",
     -- 窗口内快捷键
@@ -18,12 +18,15 @@ local opts = {
         [cfg.cycle_history_prev] = "cycle_history_prev",
         -- 关闭窗口
         -- ["<esc>"] = actions.close,
-        [cfg.close] = "close",
+        -- [cfg.close] = "close",
         -- 预览窗口上下滚动
-        [cfg.preview_scrolling_up] = "preview_scrolling_up",
-        [cfg.preview_scrolling_down] = "preview_scrolling_down",
-        [cfg.which_key] = "which_key",
+        -- [cfg.preview_scrolling_up] = "preview_scrolling_up",
+        -- [cfg.preview_scrolling_down] = "preview_scrolling_down",
       },
+      n = {
+        [cfg.cycle_history_next] = "cycle_history_next",
+        [cfg.cycle_history_prev] = "cycle_history_prev",
+      }
     },
   },
   -- pickers = {

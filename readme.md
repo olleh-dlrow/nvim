@@ -266,7 +266,7 @@ Quickfix + vimgrep 可以实现全局查找和替换，具体方法参考《Vim�
 
 **surround-nvim在插入模式下无法正常操作？**
 
-TODO
+可能是某个键发生冲突造成的乱码
 
 
 
@@ -312,7 +312,32 @@ TODO
 
 
 
+**如何快速定位UI颜色相关的问题？**
+
+确定是哪个group出现了问题：直接使用telescope highlights搜索，或者verbose hi group-name
+
+调整颜色，测试该group是否是关心的
+
+切换不同的主题，定位颜色问题是出在主题上还是nvim本身上，比如statusline的颜色可能直接来自于Nvim主题自身的配置，winbar和tabline也经常和nvim自身有关，之后再确定是否和插件本身的设置有关
+
+
+
+nvim和project.nvim无法正常同步？
+
+见设置：[ahmedkhalf/project.nvim: The superior project management solution for neovim. (github.com)](https://github.com/ahmedkhalf/project.nvim#-features)
+
+
+
+
+
 ## 计划
 
 - 使用界面管理各个功能：[liuchengxu/vim-which-key: Vim plugin that shows keybindings in popup (github.com)](https://github.com/liuchengxu/vim-which-key)
-- 
+-
+
+
+
+
+!!!!!!!!!!!!!!!!!!!!
+!!! 没事别瞎更新 !!!
+!!!!!!!!!!!!!!!!!!!!

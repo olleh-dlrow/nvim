@@ -61,11 +61,11 @@ local M = {
       -- window settings
       s_windows = {
 
-        enable = true,
+        enable = false,
 
         -- 窗口开关
-        split_vertically = "sv",
-        split_horizontally = "sh",
+        split_vertically = "<C-w>v",
+        split_horizontally = "<C-w>x",
         close = "sc",
         close_others = "so",
 
@@ -81,9 +81,9 @@ local M = {
         jump_up = "<leader>k",
         jump_down = "<leader>j",
 
-        -- 窗口比例控制
-        width_decrease = "s,",
-        width_increase = "s.",
+        -- 窗口比例控制, x轴正方向右，y轴正方向上
+        width_decrease = "sh",
+        width_increase = "sl",
         height_decrease = "sj",
         height_increase = "sk",
         size_equal = "s=",
@@ -118,41 +118,41 @@ local M = {
 
             -- toggle = "<A-m>",
             toggle = "<leader>m",
-            edit = { "o", "<2-LeftMouse>" },
-            close = "<ESC>",
-            system_open = "<CR>",
-            -- v分屏打开文件
-            vsplit = "sv",
-            -- h分屏打开文件
-            split = "sh",
-            -- toggle .gitignore (git enable)
-            toggle_git_ignored = "i",
-            -- Hide (dotfiles)
-            toggle_dotfiles = ".",
-            -- togglle custom config
-            toggle_custom = "u",
-
-            refresh = "R",
-
-            collapse_all = "H",
-            close_node = "h",
-
-            -- 文件操作
-            create = "a",
-            remove = "d",
-            rename = "r",
-            cut = "x",
-            copy = "c",
-            paste = "p",
-            copy_name = "y",
-            copy_path = "Y",
-            copy_absolute_path = "gy",
-            toggle_file_info = "I",
-            tabnew = "t",
-            -- 进入下一级
-            cd = "]",
-            -- 进入上一级
-            dir_up = "[",
+            -- edit = { "o", "<2-LeftMouse>" },
+            -- close = "<ESC>",
+            -- system_open = "<CR>",
+            -- -- v分屏打开文件
+            -- vsplit = "<C-w>v",
+            -- -- h分屏打开文件
+            -- split = "<C-w>s",
+            -- -- toggle .gitignore (git enable)
+            -- toggle_git_ignored = "i",
+            -- -- Hide (dotfiles)
+            -- toggle_dotfiles = ".",
+            -- -- togglle custom config
+            -- toggle_custom = "u",
+            --
+            -- refresh = "R",
+            --
+            -- collapse_all = "H",
+            -- close_node = "h",
+            --
+            -- -- 文件操作
+            -- create = "a",
+            -- remove = "d",
+            -- rename = "r",
+            -- cut = "x",
+            -- copy = "c",
+            -- paste = "p",
+            -- copy_name = "y",
+            -- copy_path = "Y",
+            -- copy_absolute_path = "gy",
+            -- toggle_file_info = "I",
+            -- tabnew = "t",
+            -- -- 进入下一级
+            -- cd = "]",
+            -- -- 进入上一级
+            -- dir_up = "[",
         },
 
         nvim_web_devicons = {
@@ -227,8 +227,6 @@ local M = {
             -- 上下移动
             move_selection_next = "<C-j>",
             move_selection_previous = "<C-k>",
-            -- move_selection_next = "<C-n>",
-            -- move_selection_previous = "<C-p>",
             -- 历史记录
             cycle_history_next = "<C-n>",
             cycle_history_prev = "<C-p>",
@@ -238,7 +236,6 @@ local M = {
             -- 预览窗口上下滚动
             preview_scrolling_up = "<C-u>",
             preview_scrolling_down = "<C-d>",
-            which_key = "<C-h>",
         },
 
         -- warning: config has some changes after this version

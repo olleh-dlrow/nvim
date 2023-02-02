@@ -1,4 +1,7 @@
 local lualine = require_plugin("lualine")
+-- see: https://github.com/folke/tokyonight.nvim/blob/main/extras/lua/tokyonight_storm.lua
+-- see: https://github.com/folke/tokyonight.nvim/blob/main/lua/tokyonight/theme.lua
+-- to config the concrate items
 local colors = require_plugin("tokyonight.colors").setup()
 lualine.setup({
   options = {
