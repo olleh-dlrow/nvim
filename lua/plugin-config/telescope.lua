@@ -1,5 +1,9 @@
 local cfg = require("global_configs").plugins.telescope
 local telescope = require_plugin("telescope")
+local action_layout = require("telescope.actions.layout")
+
+-- preview wrap
+vim.cmd[[autocmd User TelescopePreviewerLoaded setlocal wrap]]
 
 local opts = {
   defaults = {
@@ -16,7 +20,7 @@ local opts = {
         -- 历史记录
         [cfg.cycle_history_next] = "cycle_history_next",
         [cfg.cycle_history_prev] = "cycle_history_prev",
-        -- 关闭窗口
+        [cfg.toggle_preview] = action_layout.toggle_preview,        -- 关闭窗口
         -- ["<esc>"] = actions.close,
         -- [cfg.close] = "close",
         -- 预览窗口上下滚动
@@ -26,14 +30,26 @@ local opts = {
       n = {
         [cfg.cycle_history_next] = "cycle_history_next",
         [cfg.cycle_history_prev] = "cycle_history_prev",
+        [cfg.toggle_preview] = action_layout.toggle_preview,        -- 关闭窗口
       }
     },
+    vimgrep_arguments = {
+      "rg",
+      "--color=never",
+      "--no-heading",
+      "--with-filename",
+      "--line-number",
+      "--column",
+      "--smart-case",
+      "--trim" -- add this value
+    },
   },
-  -- pickers = {
-  --   find_files = {
-  --     -- theme = "dropdown", -- 可选参数： dropdown, cursor, ivy
-  --   },
-  -- },
+  pickers = {
+    find_files = {
+      -- theme = "dropdown", -- 可选参数： dropdown, cursor, ivy
+        find_command = { "fd", "--type", "f", "--strip-cwd-prefix" }, -- Remove ./ from fd results
+    },
+  },
   extensions = {
     ["ui-select"] = {
       require("telescope.themes").get_dropdown({

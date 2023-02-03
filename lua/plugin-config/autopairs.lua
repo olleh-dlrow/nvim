@@ -1,11 +1,9 @@
-local cfg = require("global_configs")
+local cfg = require("global_configs").plugins.autopairs
 local autopairs = require_plugin("nvim-autopairs")
 
-local remap = vim.api.nvim_set_keymap
-
 local opts = {
-    map_cr = true,
-    map_bs = true,
+    map_cr = cfg.map_cr,
+    map_bs = cfg.map_bs,
 }
 
 autopairs.setup(opts)

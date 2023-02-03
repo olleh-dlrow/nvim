@@ -7,16 +7,19 @@ function _G.require_plugin(name)
   return plugin
 end
 
-function _G.lsp_cap()
-  print(vim.inspect(vim.lsp.buf_get_clients()[1].resolved_capabilities))
-end
-
-function _G.log(v)
-  print(vim.inspect(v))
-  return v
-end
+-- function _G.lsp_cap()
+--   print(vim.inspect(vim.lsp.buf_get_clients()[1].resolved_capabilities))
+-- end
+--
+-- function _G.log(v)
+--   print(vim.inspect(v))
+--   return v
+-- end
 
 function _G.keymap(mode, lhs, rhs, opts)
+  if lhs == '' or rhs == '' then
+    return
+  end
   if not (type(lhs) == "string") then
     return
   end

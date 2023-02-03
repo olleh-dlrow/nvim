@@ -1,7 +1,11 @@
 local cfg = require("global_configs")
+-- https://github.com/neovim/nvim-lspconfig/wiki/UI-Customization
 -- 自定义图标
 vim.diagnostic.config({
   virtual_text = true,
+  -- virtual_text = {
+  --   prefix = 'x', -- Could be '■', '●', '▎', 'x',
+  -- },
   signs = true,
   update_in_insert = false,
   underline = true,
@@ -24,3 +28,12 @@ for type, icon in pairs(signs) do
   local hl = "DiagnosticSign" .. type
   vim.fn.sign_define(hl, { text = icon, texthl = hl, numhl = hl })
 end
+
+-- :h vim.lsp.diagnostic.on_publish_diagnostics()
+vim.lsp.handlers["textDocument/publishDiagnostics"] = vim.lsp.with(
+    vim.lsp.diagnostic.on_publish_diagnostics, {
+        virtual_text = {
+            prefix = '●',
+        }
+    }
+)

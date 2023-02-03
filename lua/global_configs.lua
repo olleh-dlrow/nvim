@@ -45,17 +45,17 @@ local M = {
       -- cmp 快捷键
       cmp_complete = "<A-.>",
       cmp_abort = "<A-,>",
-      cmp_confirm = "<CR>",
+      cmp_confirm = "<TAB>",
       cmp_scroll_doc_up = "<C-u>",
       cmp_scroll_doc_down = "<C-d>",
       cmp_select_prev_item = "<C-k>",
       cmp_select_next_item = "<C-j>",
 
       -- luasnip
-      snip_jump_next = "<C-l>",
-      snip_jump_prev = "<C-h>",
-      snip_next_choice = "<C-j>",
-      snip_prev_choice = "<C-k>",
+      snip_jump_next = "", -- same with cmp_confirm
+      snip_jump_prev = "<S-TAB>",
+      -- snip_next_choice = "<C-j>",
+      -- snip_prev_choice = "<C-k>",
 
       -- 窗口设置
       -- window settings
@@ -98,12 +98,10 @@ local M = {
         close = "tc",
       },
 
-      fold = {
-        open = "Z",
-        close = "zz",
-      },
-
-      format = "<leader>f",
+      -- fold = {
+      --   open = "Z",
+      --   close = "zz",
+      -- },
 
       terminal_to_normal = "<Esc>",
     },
@@ -187,8 +185,16 @@ local M = {
         lua_line = {
             disable = false,
             rel_url = "nvim-lualine/lualine.nvim",
-            req_tbl = { "kyazdani42/nvim-web-devicons", "folke/tokyonight.nvim" },
+            req_tbl = {
+                "kyazdani42/nvim-web-devicons",
+                "folke/tokyonight.nvim",
+                'arkav/lualine-lsp-progress'
+            },
             cfg_lua = get_load_string("plugin-config.lualine")
+        },
+
+        lualine_lsp_progress = {
+            rel_url = 'arkav/lualine-lsp-progress',
         },
 
         tree_sitter = {
@@ -205,7 +211,7 @@ local M = {
         },
 
 		-- Bug: https://github.com/nvim-telescope/telescope.nvim/issues/699
-		-- Sol: use zx before zc or zo 
+		-- Sol: use zx before zc or zo
 		-- Ref: see bug.
         telescope = {
 
@@ -230,6 +236,7 @@ local M = {
             -- 历史记录
             cycle_history_next = "<C-n>",
             cycle_history_prev = "<C-p>",
+            toggle_preview = "<M-p>",
             -- 关闭窗口
             -- close = "<C-c>",
             close = "<esc>",
@@ -294,6 +301,8 @@ local M = {
 
             rel_url = "windwp/nvim-autopairs",
             cfg_lua = get_load_string("plugin-config.autopairs"),
+            map_cr = true,
+            map_bs = true,
         },
 
         colorizer = {
@@ -301,6 +310,9 @@ local M = {
             rel_url = "chrisbra/Colorizer",
         },
 
+        wakatime = {
+            rel_url = 'wakatime/vim-wakatime',
+        },
         --------------------------------------
         --------------- lsp ------------------
         --------------------------------------
@@ -320,30 +332,56 @@ local M = {
             rel_url = "neovim/nvim-lspconfig",
         },
 
-        nvim_cmp = {
+        -- lsp_colors = {
+        --     rel_url = 'folke/lsp-colors.nvim',
+        --     cfg_lua = get_load_string('plugin-config.lsp-colors'),
+        -- },
+
+        -- better UI for lsp oeprations
+        lspsaga = {
             uninstall = false,
-            rel_url = "hrsh7th/nvim-cmp",
+            rel_url = "tami5/lspsaga.nvim",
+            event = "BufRead",
+            cfg_lua = get_load_string("lsp.lspsaga"),
+            req_tbl = { {"nvim-tree/nvim-web-devicons"} },
         },
 
-        lua_snip = {
+        -- help for neo lua api
+        neodev = {
             uninstall = false,
-            rel_url = "L3MON4D3/LuaSnip",
+            rel_url = "folke/neodev.nvim",
         },
 
-        cmp_luasnip = {
+        -- json schemas
+        schemastore = {
             uninstall = false,
-            rel_url = "saadparwaiz1/cmp_luasnip",
+            rel_url = "b0o/schemastore.nvim",
         },
 
-        cmp_vsnip = {
+        rust_tools = {
             uninstall = false,
-            rel_url = "hrsh7th/cmp-vsnip",
+            rel_url = "simrat39/rust-tools.nvim",
         },
+
+        omnisharp_vim = {
+            uninstall = true,
+            rel_url = "OmniSharp/omnisharp-vim",
+        },
+
+        --------------------------------------
+        --------------- cmp ------------------
+        --------------------------------------
 
         cmp_nvim_lsp = {
             uninstall = false,
             rel_url = "hrsh7th/cmp-nvim-lsp",
         },
+
+        nvim_cmp = {
+            uninstall = false,
+            rel_url = "hrsh7th/nvim-cmp",
+        },
+
 
         cmp_buffer = {
             uninstall = false,
@@ -365,34 +403,27 @@ local M = {
             rel_url = "hrsh7th/cmp-nvim-lsp-signature-help",
         },
 
-        friendly_snippets = {
-            uninstall = false,
-            rel_url = "rafamadriz/friendly-snippets",
-        },
-
         lspkind_nvim = {
             uninstall = false,
             rel_url = "onsails/lspkind-nvim",
         },
 
-        lspsaga = {
+        -- snippets
+        -- TODO: 学习各种snippets的使用
+        -- https://github.com/L3MON4D3/LuaSnip
+        lua_snip = {
             uninstall = false,
-            rel_url = "tami5/lspsaga.nvim",
+            rel_url = "L3MON4D3/LuaSnip",
         },
 
-        neodev = {
+        cmp_luasnip = {
             uninstall = false,
-            rel_url = "folke/neodev.nvim",
+            rel_url = "saadparwaiz1/cmp_luasnip",
         },
-
-        schemastore = {
+        -- Set of preconfigured snippets for different languages.
+        friendly_snippets = {
             uninstall = false,
-            rel_url = "b0o/schemastore.nvim",
-        },
-
-        rust_tools = {
-            uninstall = false,
-            rel_url = "simrat39/rust-tools.nvim",
+            rel_url = "rafamadriz/friendly-snippets",
         },
 
         coc = {
@@ -401,10 +432,6 @@ local M = {
             branch = "release",
         },
 
-        omnisharp_vim = {
-            uninstall = true,
-            rel_url = "OmniSharp/omnisharp-vim",
-        },
         --------------------------------------
         ----------- colorscheme --------------
         --------------------------------------

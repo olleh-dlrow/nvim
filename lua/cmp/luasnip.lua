@@ -3,7 +3,7 @@ if not status then
   return
 end
 
-local status, config = pcall(require, "uConfig")
+local status, config = pcall(require, "global_configs")
 if not status then
   return
 end
@@ -38,27 +38,27 @@ ls.config.set_config({
   },
 })
 
-vim.keymap.set({ "i", "s" }, config.keys.snip_jump_next, function()
-  if ls.expand_or_jumpable() then
-    ls.expand_or_jump()
-  end
-end)
-
-vim.keymap.set({ "i", "s" }, config.keys.snip_jump_prev, function()
-  if ls.jumpable(-1) then
-    ls.jump(-1)
-  end
-end)
-
-vim.keymap.set({ "i", "s" }, config.keys.snip_next_choice, function()
-  if ls.choice_active() then
-    ls.change_choice(1)
-  end
-end)
-
-vim.keymap.set({ "i", "s" }, config.keys.snip_prev_choice, function()
-  if ls.choice_active() then
-    ls.change_choice(-1)
-  end
-end)
-
+-- vim.keymap.set({ "i", "s" }, config.keys.snip_jump_next, function()
+--   if ls.expand_or_jumpable() then
+--     ls.expand_or_jump()
+--   end
+-- end)
+--
+-- vim.keymap.set({ "i", "s" }, config.keys.snip_jump_prev, function()
+--   if ls.jumpable(-1) then
+--     ls.jump(-1)
+--   end
+-- end)
+--
+-- vim.keymap.set({ "i", "s" }, config.keys.snip_next_choice, function()
+--   if ls.choice_active() then
+--     ls.change_choice(1)
+--   end
+-- end)
+--
+-- vim.keymap.set({ "i", "s" }, config.keys.snip_prev_choice, function()
+--   if ls.choice_active() then
+--     ls.change_choice(-1)
+--   end
+-- end)
+--

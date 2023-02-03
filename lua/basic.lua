@@ -86,4 +86,5 @@ vim.o.showtabline = 2
 vim.o.showmode = false
 -- 配置剪切板
 vim.opt.clipboard = "unnamedplus"
+-- fold折叠
 vim.opt.foldtext = "v:lua.require('utils.simple_fold').simple_fold()"

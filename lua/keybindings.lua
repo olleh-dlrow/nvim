@@ -2,16 +2,12 @@ local global_configs = require("global_configs")
 local keys = global_configs.keys
 
 -- Modes
---   normal_mode = "n",
---   insert_mode = "i",
---   visual_mode = "v",
---   visual_block_mode = "x",
---   term_mode = "t",
---   command_mode = "c",
-
--- 本地变量
-local map = vim.api.nvim_set_keymap
-
+-- normal_mode = "n",
+-- insert_mode = "i",
+-- visual_mode = "v",
+-- visual_block_mode = "x",
+-- term_mode = "t",
+-- command_mode = "c",
 local opt = {
   noremap = true,
   silent = true,
@@ -33,8 +29,8 @@ local opts_expr = {
 }
 
 -- 命令行下 Ctrl+j/k  上一个下一个
-keymap("c", keys.c_next_item, "<C-n>", opts_remap)
-keymap("c", keys.c_prev_item, "<C-p>", opts_remap)
+-- keymap("c", keys.c_next_item, "<C-n>", opts_remap)
+-- keymap("c", keys.c_prev_item, "<C-p>", opts_remap)
 
 -- save && quit
 keymap("n", keys.n_save, ":w<CR>")
@@ -125,10 +121,8 @@ if keys.s_tab ~= nil then
 end
 
 -- treesitter 折叠
-keymap("n", keys.fold.open, ":foldopen<CR>")
-keymap("n", keys.fold.close, ":foldclose<CR>")
-
-keymap("n", keys.format, "<cmd>lua vim.lsp.buf.formatting()<CR>")
+-- keymap("n", keys.fold.open, ":foldopen<CR>")
+-- keymap("n", keys.fold.close, ":foldclose<CR>")
 
 -- Esc 回 Normal 模式
 keymap("t", keys.terminal_to_normal, "<C-\\><C-n>")
@@ -204,10 +198,6 @@ plugin_keys.mapLSP = function(mapbuf)
   mapbuf("n", "gk", "<cmd>lua vim.diagnostic.goto_prev()<CR>", opt)
   --]]
   -- diagnostic
-  -- mapbuf("n", "gp", "<cmd>Lspsaga show_line_diagnostics<CR>", opt)
-  -- mapbuf("n", "gj", "<cmd>Lspsaga diagnostic_jump_next<cr>", opt)
-  -- mapbuf("n", "gk", "<cmd>Lspsaga diagnostic_jump_prev<cr>", opt)
-
   mapbuf("n", lsp.open_flow, "<cmd>lua vim.diagnostic.open_float()<CR>")
   mapbuf("n", lsp.goto_next, "<cmd>lua vim.diagnostic.goto_next()<CR>")
   mapbuf("n", lsp.goto_prev, "<cmd>lua vim.diagnostic.goto_prev()<CR>")
@@ -222,59 +212,59 @@ plugin_keys.mapLSP = function(mapbuf)
   -- mapbuf('n', '<space>D', '<cmd>lua vim.lsp.buf.type_definition()<CR>', opt)
 end
 
--- typescript 快捷键
-plugin_keys.mapTsLSP = function(bufnr)
-  local bufopts = { noremap = true, silent = true, buffer = bufnr }
-  keymap("n", lsp.ts_organize, ":TSLspOrganize<CR>", bufopts)
-  keymap("n", lsp.ts_rename_file, ":TSLspRenameFile<CR>", bufopts)
-  keymap("n", lsp.ts_add_missing_import, ":TSLspImportAll<CR>", bufopts)
-end
-
--- nvim-dap
-plugin_keys.mapDAP = function()
-  -- 开始
-  map("n", "<leader>dd", ":RustDebuggables<CR>", opt)
-  -- 结束
-  map(
-    "n",
-    "<leader>de",
-    ":lua require'dap'.close()<CR>"
-      .. ":lua require'dap'.terminate()<CR>"
-      .. ":lua require'dap.repl'.close()<CR>"
-      .. ":lua require'dapui'.close()<CR>"
-      .. ":lua require('dap').clear_breakpoints()<CR>"
-      .. "<C-w>o<CR>",
-    opt
-  )
-  -- 继续
-  map("n", "<leader>dc", ":lua require'dap'.continue()<CR>", opt)
-  -- 设置断点
-  map("n", "<leader>dt", ":lua require('dap').toggle_breakpoint()<CR>", opt)
-  map("n", "<leader>dT", ":lua require('dap').clear_breakpoints()<CR>", opt)
-  --  stepOver, stepOut, stepInto
-  map("n", "<leader>dj", ":lua require'dap'.step_over()<CR>", opt)
-  map("n", "<leader>dk", ":lua require'dap'.step_out()<CR>", opt)
-  map("n", "<leader>dl", ":lua require'dap'.step_into()<CR>", opt)
-  -- 弹窗
-  map("n", "<leader>dh", ":lua require'dapui'.eval()<CR>", opt)
-end
-
--- vimspector
-plugin_keys.mapVimspector = function()
-  -- 开始
-  map("n", "<leader>dd", ":call vimspector#Launch()<CR>", opt)
-  -- 结束
-  map("n", "<Leader>de", ":call vimspector#Reset()<CR>", opt)
-  -- 继续
-  map("n", "<Leader>dc", ":call vimspector#Continue()<CR>", opt)
-  -- 设置断点
-  map("n", "<Leader>dt", ":call vimspector#ToggleBreakpoint()<CR>", opt)
-  map("n", "<Leader>dT", ":call vimspector#ClearBreakpoints()<CR>", opt)
-  --  stepOver, stepOut, stepInto
-  map("n", "<leader>dj", "<Plug>VimspectorStepOver", opt)
-  map("n", "<leader>dk", "<Plug>VimspectorStepOut", opt)
-  map("n", "<leader>dl", "<Plug>VimspectorStepInto", opt)
-end
+-- -- typescript 快捷键
+-- plugin_keys.mapTsLSP = function(bufnr)
+--   local bufopts = { noremap = true, silent = true, buffer = bufnr }
+--   keymap("n", lsp.ts_organize, ":TSLspOrganize<CR>", bufopts)
+--   keymap("n", lsp.ts_rename_file, ":TSLspRenameFile<CR>", bufopts)
+--   keymap("n", lsp.ts_add_missing_import, ":TSLspImportAll<CR>", bufopts)
+-- end
+--
+-- -- nvim-dap
+-- plugin_keys.mapDAP = function()
+--   -- 开始
+--   map("n", "<leader>dd", ":RustDebuggables<CR>", opt)
+--   -- 结束
+--   map(
+--     "n",
+--     "<leader>de",
+--     ":lua require'dap'.close()<CR>"
+--       .. ":lua require'dap'.terminate()<CR>"
+--       .. ":lua require'dap.repl'.close()<CR>"
+--       .. ":lua require'dapui'.close()<CR>"
+--       .. ":lua require('dap').clear_breakpoints()<CR>"
+--       .. "<C-w>o<CR>",
+--     opt
+--   )
+--   -- 继续
+--   map("n", "<leader>dc", ":lua require'dap'.continue()<CR>", opt)
+--   -- 设置断点
+--   map("n", "<leader>dt", ":lua require('dap').toggle_breakpoint()<CR>", opt)
+--   map("n", "<leader>dT", ":lua require('dap').clear_breakpoints()<CR>", opt)
+--   --  stepOver, stepOut, stepInto
+--   map("n", "<leader>dj", ":lua require'dap'.step_over()<CR>", opt)
+--   map("n", "<leader>dk", ":lua require'dap'.step_out()<CR>", opt)
+--   map("n", "<leader>dl", ":lua require'dap'.step_into()<CR>", opt)
+--   -- 弹窗
+--   map("n", "<leader>dh", ":lua require'dapui'.eval()<CR>", opt)
+-- end
+--
+-- -- vimspector
+-- plugin_keys.mapVimspector = function()
+--   -- 开始
+--   map("n", "<leader>dd", ":call vimspector#Launch()<CR>", opt)
+--   -- 结束
+--   map("n", "<Leader>de", ":call vimspector#Reset()<CR>", opt)
+--   -- 继续
+--   map("n", "<Leader>dc", ":call vimspector#Continue()<CR>", opt)
+--   -- 设置断点
+--   map("n", "<Leader>dt", ":call vimspector#ToggleBreakpoint()<CR>", opt)
+--   map("n", "<Leader>dT", ":call vimspector#ClearBreakpoints()<CR>", opt)
+--   --  stepOver, stepOut, stepInto
+--   map("n", "<leader>dj", "<Plug>VimspectorStepOver", opt)
+--   map("n", "<leader>dk", "<Plug>VimspectorStepOut", opt)
+--   map("n", "<leader>dl", "<Plug>VimspectorStepInto", opt)
+-- end
 
 -- gitsigns
 plugin_keys.gitsigns_on_attach = function(bufnr)

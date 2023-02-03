@@ -29,6 +29,11 @@ lualine.setup({
             path = 1,
             color = { gui='bold' },
         },
+        {
+            --  arkav/lualine-lsp-progress
+            "lsp_progress",
+            spinner_symbols = { " ", " ", " ", " ", " ", " " },
+        },
     },
     -- lualine_c = {
     --   "filename",
