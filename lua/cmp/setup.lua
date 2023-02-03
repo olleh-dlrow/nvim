@@ -72,7 +72,7 @@ local mapping = {
   -- ),
     cmp.mapping(function(fallback)
         if cmp.visible() then
-            cmp.select_prev_item()
+            cmp.select_prev_item({behavior = cmp.SelectBehavior.Select})
         -- You could replace the expand_or_jumpable() calls with expand_or_locally_jumpable() 
         -- they way you will only jump inside the snippet region
         elseif luasnip.jumpable(-1) then
@@ -90,7 +90,7 @@ local mapping = {
   -- ),
     cmp.mapping(function(fallback)
         if cmp.visible() then
-            cmp.select_next_item()
+            cmp.select_next_item({behavior = cmp.SelectBehavior.Select})
         elseif has_words_before() then
             cmp.complete()
         else

@@ -27,4 +27,15 @@ M.flags = {
   debounce_text_changes = 150,
 }
 
+M.on_attach = function (client, bufnr)
+    if client.server_capabilities.documentSymbolProvider then
+        local navic = require_plugin("nvim-navic")
+        if navic then
+            navic.attach(client, bufnr)
+        end
+    else
+        vim.notify("current server not support document symbol!")
+    end
+end
+
 return M

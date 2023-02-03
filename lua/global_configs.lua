@@ -52,7 +52,7 @@ local M = {
       cmp_select_next_item = "<C-j>",
 
       -- luasnip
-      snip_jump_next = "", -- same with cmp_confirm
+      snip_jump_next = "<TAB>", -- same with cmp_confirm
       snip_jump_prev = "<S-TAB>",
       -- snip_next_choice = "<C-j>",
       -- snip_prev_choice = "<C-k>",
@@ -340,8 +340,7 @@ local M = {
         -- better UI for lsp oeprations
         lspsaga = {
             uninstall = false,
-            rel_url = "tami5/lspsaga.nvim",
-            event = "BufRead",
+            rel_url = "glepnir/lspsaga.nvim",
             cfg_lua = get_load_string("lsp.lspsaga"),
             req_tbl = { {"nvim-tree/nvim-web-devicons"} },
         },
@@ -368,6 +367,10 @@ local M = {
             rel_url = "OmniSharp/omnisharp-vim",
         },
 
+        nvim_navic = {
+            rel_url = "SmiteshP/nvim-navic",
+            req_tbl = {"neovim/nvim-lspconfig"},
+        },
         --------------------------------------
         --------------- cmp ------------------
         --------------------------------------
@@ -484,16 +487,23 @@ local M = {
 
     lsp = {
         manager = "mason", -- ["mason", "coc", nil]
+        ui_mode = "lspsaga", -- ["nvim", "lspsaga", nil]
         rename = "<leader>rn",
         code_action = "<leader>ca",
         format = "<leader>f",
-        definition = "gd",
+        peek_definition = "gd",
+        definition = "gD",
         references = "gr",
         hover = "gh",
         -- diagnostic
         open_flow = "gp",
-        goto_next = "gj",
-        goto_prev = "gk",
+        goto_next = "]e",
+        goto_prev = "[e",
+        goto_next_error = "]E",
+        goto_prev_error = "[E",
+        toggle_outline = "<leader>o",
+        incoming_calls = "<leader>ci",
+        outgoing_calls = "<leader>co",
         -- typescript
         -- ts_organize = "gs",
         -- ts_rename_file = "gR",

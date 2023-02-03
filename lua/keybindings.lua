@@ -144,59 +144,41 @@ local plugin_keys = {}
 
 -- lsp 回调函数快捷键设置
 local lsp = global_configs.lsp
-plugin_keys.mapLSP = function(mapbuf)
-  -- rename
-  --[[
-  Lspsaga 替换 rn
-  mapbuf("n", "<leader>rn", "<cmd>Lspsaga rename<CR>", opt)
-  --]]
-  mapbuf("n", lsp.rename, "<cmd>lua vim.lsp.buf.rename()<CR>")
-  -- code action
-  --[[
-  Lspsaga 替换 ca
-  mapbuf("n", "<leader>ca", "<cmd>Lspsaga code_action<CR>", opt)
-  --]]
-  mapbuf("n", lsp.code_action, "<cmd>lua vim.lsp.buf.code_action()<CR>")
-  -- go xx
-  --[[
-    mapbuf('n', 'gd', '<cmd>Lspsaga preview_definition<CR>', opt)
-  mapbuf("n", "gd", "<cmd>lua vim.lsp.buf.definition()<CR>", opt)
-  --]]
 
+local nvim_map = function(mapbuf)
+  -- rename
+  mapbuf("n", lsp.rename, "<cmd>lua vim.lsp.buf.rename()<CR>")
+
+  -- code action
+  mapbuf("n", lsp.code_action, "<cmd>lua vim.lsp.buf.code_action()<CR>")
+
+  -- go xx
+  -- mapbuf("n", "gd", "<cmd>lua vim.lsp.buf.definition()<CR>", opt)
   mapbuf("n", lsp.definition, function()
     require("telescope.builtin").lsp_definitions({
       initial_mode = "normal",
       -- ignore_filename = false,
     })
   end)
-  --[[
-  mapbuf("n", "gh", "<cmd>Lspsaga hover_doc<cr>", opt)
-  Lspsaga 替换 gh
-  --]]
+
+  -- hover
   mapbuf("n", lsp.hover, "<cmd>lua vim.lsp.buf.hover()<CR>")
-  --[[
-  Lspsaga 替换 gr
-  mapbuf("n", "gr", "<cmd>lua vim.lsp.buf.references()<CR>", opt)
-  mapbuf("n", "gr", "<cmd>Lspsaga lsp_finder<CR>", opt)
-  --]]
+
+  -- references
+  -- mapbuf("n", "gr", "<cmd>lua vim.lsp.buf.references()<CR>", opt)
   mapbuf(
     "n",
     lsp.references,
     "<cmd>lua require'telescope.builtin'.lsp_references(require('telescope.themes').get_ivy())<CR>"
   )
 
+  -- format
   if vim.fn.has("nvim-0.8") == 1 then
     mapbuf("n", lsp.format, "<cmd>lua vim.lsp.buf.format({ async = true })<CR>")
   else
     mapbuf("n", lsp.format, "<cmd>lua vim.lsp.buf.formatting()<CR>")
   end
 
-  --[[
-  Lspsaga 替换 gp, gj, gk
-  mapbuf("n", "gp", "<cmd>lua vim.diagnostic.open_float()<CR>", opt)
-  mapbuf("n", "gj", "<cmd>lua vim.diagnostic.goto_next()<CR>", opt)
-  mapbuf("n", "gk", "<cmd>lua vim.diagnostic.goto_prev()<CR>", opt)
-  --]]
   -- diagnostic
   mapbuf("n", lsp.open_flow, "<cmd>lua vim.diagnostic.open_float()<CR>")
   mapbuf("n", lsp.goto_next, "<cmd>lua vim.diagnostic.goto_next()<CR>")
@@ -210,6 +192,92 @@ plugin_keys.mapLSP = function(mapbuf)
   -- mapbuf('n', '<space>wr', '<cmd>lua vim.lsp.buf.remove_workspace_folder()<CR>', opt)
   -- mapbuf('n', '<space>wl', '<cmd>lua print(vim.inspect(vim.lsp.buf.list_workspace_folders()))<CR>', opt)
   -- mapbuf('n', '<space>D', '<cmd>lua vim.lsp.buf.type_definition()<CR>', opt)
+end
+
+local lspsaga_map = function (mapbuf)
+    -- LSP finder - Find the symbol's definition
+    -- If there is no definition, it will instead be hidden
+    -- When you use an action in finder like "open vsplit",
+    -- you can use <C-t> to jump back
+    mapbuf("n", lsp.references, "<cmd>Lspsaga lsp_finder<CR>")
+
+    -- Code action
+    mapbuf({"n","v"}, lsp.code_action, "<cmd>Lspsaga code_action<CR>")
+
+    -- Rename all occurrences of the hovered word for the entire file
+    -- mapbuf("n", lsp.rename, "<cmd>Lspsaga rename<CR>")
+
+    -- Rename all occurrences of the hovered word for the selected files
+    mapbuf("n", lsp.rename, "<cmd>Lspsaga rename ++project<CR>")
+
+    -- Peek definition
+    -- You can edit the file containing the definition in the floating window
+    -- It also supports open/vsplit/etc operations, do refer to "definition_action_keys"
+    -- It also supports tagstack
+    -- Use <C-t> to jump back
+    mapbuf("n", lsp.peek_definition, "<cmd>Lspsaga peek_definition<CR>")
+
+    -- Go to definition
+    -- warning: has bug, can't use this
+    -- mapbuf("n",lsp.definition, "<cmd>Lspsaga goto_definition<CR>")
+
+    -- Show line diagnostics
+    -- You can pass argument ++unfocus to
+    -- unfocus the show_line_diagnostics floating window
+    mapbuf("n", lsp.open_flow, "<cmd>Lspsaga show_line_diagnostics<CR>")
+
+    -- Show cursor diagnostics
+    -- Like show_line_diagnostics, it supports passing the ++unfocus argument
+    -- mapbuf("n", "<leader>sc", "<cmd>Lspsaga show_cursor_diagnostics<CR>")
+
+    -- Show buffer diagnostics
+    -- mapbuf("n", "<leader>sb", "<cmd>Lspsaga show_buf_diagnostics<CR>")
+
+    -- Diagnostic jump
+    -- You can use <C-o> to jump back to your previous location
+    mapbuf("n", lsp.goto_prev, "<cmd>Lspsaga diagnostic_jump_prev<CR>")
+    mapbuf("n", lsp.goto_next, "<cmd>Lspsaga diagnostic_jump_next<CR>")
+
+    -- Diagnostic jump with filters such as only jumping to an error
+    mapbuf("n", lsp.goto_prev_error, function()
+    require("lspsaga.diagnostic"):goto_prev({ severity = vim.diagnostic.severity.ERROR })
+    end)
+    mapbuf("n", lsp.goto_next_error, function()
+    require("lspsaga.diagnostic"):goto_next({ severity = vim.diagnostic.severity.ERROR })
+    end)
+
+    -- Toggle outline
+    mapbuf("n", lsp.toggle_outline, "<cmd>Lspsaga outline<CR>")
+
+    -- Hover Doc
+    -- If there is no hover doc,
+    -- there will be a notification stating that
+    -- there is no information available.
+    -- To disable it just use ":Lspsaga hover_doc ++quiet"
+    -- Pressing the key twice will enter the hover window
+    mapbuf("n", lsp.hover, "<cmd>Lspsaga hover_doc<CR>")
+
+    -- If you want to keep the hover window in the top right hand corner,
+    -- you can pass the ++keep argument
+    -- Note that if you use hover with ++keep, pressing this key again will
+    -- close the hover window. If you want to jump to the hover window
+    -- you should use the wincmd command "<C-w>w"
+    -- mapbuf("n", "K", "<cmd>Lspsaga hover_doc ++keep<CR>")
+
+    -- Call hierarchy
+    mapbuf("n", lsp.incoming_calls, "<cmd>Lspsaga incoming_calls<CR>")
+    mapbuf("n", lsp.outgoing_calls, "<cmd>Lspsaga outgoing_calls<CR>")
+
+    -- Floating terminal
+    -- mapbuf({"n", "t"}, "<A-d>", "<cmd>Lspsaga term_toggle<CR>")
+end
+
+if lsp.ui_mode == "lspsaga" then
+    plugin_keys.mapLSP = lspsaga_map
+elseif lsp.ui_mode == "nvim" then
+    plugin_keys.mapLSP = nvim_map
+else
+    plugin_keys.mapLSP = nil
 end
 
 -- -- typescript 快捷键
