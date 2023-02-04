@@ -219,7 +219,7 @@ local lspsaga_map = function (mapbuf)
 
     -- Go to definition
     -- warning: has bug, can't use this
-    -- mapbuf("n",lsp.definition, "<cmd>Lspsaga goto_definition<CR>")
+    mapbuf("n",lsp.definition, "<cmd>Lspsaga goto_definition<CR>")
 
     -- Show line diagnostics
     -- You can pass argument ++unfocus to
