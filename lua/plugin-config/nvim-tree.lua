@@ -214,9 +214,14 @@ nvim_tree.setup({
         none = "  ",
       },
     },
+    highlight_modified = "all",
+
     icons = {
       webdev_colors = true,
       git_placement = "after",
     },
+  },
+  modified = {
+    enable = true
   },
 })

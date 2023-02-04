@@ -208,10 +208,10 @@ local lspsaga_map = function (mapbuf)
     mapbuf({"n","v"}, lsp.code_action, "<cmd>Lspsaga code_action<CR>")
 
     -- Rename all occurrences of the hovered word for the entire file
-    -- mapbuf("n", lsp.rename, "<cmd>Lspsaga rename<CR>")
+    mapbuf("n", lsp.rename, "<cmd>Lspsaga rename<CR>")
 
     -- Rename all occurrences of the hovered word for the selected files
-    mapbuf("n", lsp.rename, "<cmd>Lspsaga rename ++project<CR>")
+    -- mapbuf("n", lsp.rename, "<cmd>Lspsaga rename ++project<CR>")
 
     -- Peek definition
     -- You can edit the file containing the definition in the floating window

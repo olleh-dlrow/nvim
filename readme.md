@@ -320,15 +320,17 @@ Quickfix + vimgrep 可以实现全局查找和替换，具体方法参考《Vim�
 
 切换不同的主题，定位颜色问题是出在主题上还是nvim本身上，比如statusline的颜色可能直接来自于Nvim主题自身的配置，winbar和tabline也经常和nvim自身有关，之后再确定是否和插件本身的设置有关
 
+关于highlight的各种概念，可以参考这篇文章：[VIM学习笔记 语法高亮 (Syntax Highlight) - 知乎 (zhihu.com)](https://zhuanlan.zhihu.com/p/25292625)
 
 
-nvim和project.nvim无法正常同步？
+
+**nvim和project.nvim无法正常同步？**
 
 见设置：[ahmedkhalf/project.nvim: The superior project management solution for neovim. (github.com)](https://github.com/ahmedkhalf/project.nvim#-features)
 
 
 
-vim变量替换？
+**vim变量替换？**
 
 有时候需要保留原字符串中的一些内容，这时可以给其制定变量，例如
 
@@ -366,8 +368,8 @@ func(args) -> args
 
 ## 计划
 
-- 使用界面管理各个功能：[liuchengxu/vim-which-key: Vim plugin that shows keybindings in popup (github.com)](https://github.com/liuchengxu/vim-which-key)
--
+- 使用界面管理各个功能：[liuchengxu/vim-which-key: Vim plugin that shows keybindings in popup (github.com)](https://github.com/liuchengxu/vim-which-key) √
+- 
 
 
 
