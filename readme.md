@@ -328,6 +328,20 @@ nvim和project.nvim无法正常同步？
 
 
 
+vim变量替换？
+
+有时候需要保留原字符串中的一些内容，这时可以给其制定变量，例如
+
+func(args) -> args
+
+可以使用
+
+```bash
+:s/func(\(.*\))/\1/g
+```
+
+[神级编辑器 Vim 使用-正则替换篇 - 知乎 (zhihu.com)](https://zhuanlan.zhihu.com/p/346058975)
+
 
 
 ## 计划

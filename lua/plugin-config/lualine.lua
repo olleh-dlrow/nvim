@@ -47,8 +47,8 @@ end
             -- },
             {
                 --  arkav/lualine-lsp-progress
-                "lsp_progress",
-                spinner_symbols = { " ", " ", " ", " ", " ", " " },
+                -- "lsp_progress",
+                -- spinner_symbols = { " ", " ", " ", " ", " ", " " },
             },
         },
         lualine_x = {

@@ -1,13 +1,5 @@
 -- warning: packer.use.config可以设置为string或function，之后使用loadstring进行程序加载
 -- 问题在于，如果使用function作为入参，那么通过某个变量传入就可能出问题，因此这里使用string解析
-local function get_load_string(script_name)
-    -- local cmd = "local status, _ = pcall(require, \"" .. script_name .. "\")\n"
-    --             ..  "if not status then\n"
-    --             ..      "vim.notify(\"not find " .. script_name .. "\")\n"
-    --             ..      "return\n"
-    --             ..  "end\n"
-    return 'require_plugin("' .. script_name .. '")'
-end
 
 local M = {
     icons = {
@@ -57,6 +49,9 @@ local M = {
       -- snip_next_choice = "<C-j>",
       -- snip_prev_choice = "<C-k>",
 
+      -- quickfix
+      quickfix_next = "<F8>",
+      quickfix_prev = "<F7>",
       -- 窗口设置
       -- window settings
       s_windows = {
@@ -82,10 +77,10 @@ local M = {
         jump_down = "<leader>j",
 
         -- 窗口比例控制, x轴正方向右，y轴正方向上
-        width_decrease = "sh",
-        width_increase = "sl",
-        height_decrease = "sj",
-        height_increase = "sk",
+        width_decrease = "{",
+        width_increase = "}",
+        height_decrease = "-",
+        height_increase = "+",
         size_equal = "s=",
       },
 
@@ -112,7 +107,7 @@ local M = {
         nvim_tree = {
             rel_url = "kyazdani42/nvim-tree.lua",
             req_tbl = {"kyazdani42/nvim-web-devicons"},
-            cfg_lua = get_load_string("plugin-config.nvim-tree"),
+            cfg_lua = "plugin-config.nvim-tree",
 
             -- toggle = "<A-m>",
             toggle = "<leader>m",
@@ -170,7 +165,7 @@ local M = {
             disable = true,
             rel_url = "akinsho/bufferline.nvim",
             req_tbl = { "kyazdani42/nvim-web-devicons", "moll/vim-bbye" },
-            cfg_lua = get_load_string("plugin-config.bufferline"),
+            cfg_lua = "plugin-config.bufferline",
 
             prev = "<C-h>",
             next = "<C-l>",
@@ -190,12 +185,9 @@ local M = {
                 "folke/tokyonight.nvim",
                 'arkav/lualine-lsp-progress'
             },
-            cfg_lua = get_load_string("plugin-config.lualine")
+            cfg_lua = "plugin-config.lualine"
         },
 
-        lualine_lsp_progress = {
-            rel_url = 'arkav/lualine-lsp-progress',
-        },
 
         tree_sitter = {
 
@@ -207,7 +199,7 @@ local M = {
 				{ "nvim-treesitter/nvim-treesitter-refactor" },
 				{ "nvim-treesitter/nvim-treesitter-textobjects" },
 			},
-            cfg_lua = get_load_string("plugin-config.nvim-treesitter")
+            cfg_lua = "plugin-config.nvim-treesitter"
         },
 
 		-- Bug: https://github.com/nvim-telescope/telescope.nvim/issues/699
@@ -222,7 +214,7 @@ local M = {
 				{ "nvim-telescope/telescope-ui-select.nvim" },
                 { "nvim-lua/plenary.nvim" },
 			},
-            cfg_lua = get_load_string("plugin-config.telescope"),
+            cfg_lua = "plugin-config.telescope",
 
             find_files  = "<leader>ff",
             live_grep   = "<leader>fg",
@@ -252,26 +244,26 @@ local M = {
 
             rel_url = "glepnir/dashboard-nvim",
             req_tbl = {{"nvim-tree/nvim-web-devicons"}},
-            cfg_lua = get_load_string("plugin-config.dashboard"),
+            cfg_lua = "plugin-config.dashboard",
             event = "VimEnter",
         },
 
         project = {
 
             rel_url = "ahmedkhalf/project.nvim",
-            cfg_lua = get_load_string("plugin-config.project"),
+            cfg_lua = "plugin-config.project",
         },
 
         inline_blankline = {
 
             rel_url = "lukas-reineke/indent-blankline.nvim",
-            cfg_lua = get_load_string("plugin-config.indent-blankline"),
+            cfg_lua = "plugin-config.indent-blankline",
         },
 
         comment = {
 
             rel_url = "numToStr/Comment.nvim",
-            cfg_lua = get_load_string("plugin-config.comment"),
+            cfg_lua = "plugin-config.comment",
 
             -- Normal 模式快捷键
             toggler = {
@@ -293,14 +285,14 @@ local M = {
                 { "nvim-treesitter/nvim-treesitter" },
                 {  "nvim-treesitter/nvim-treesitter-textobjects" }
             },
-            cfg_lua = get_load_string("plugin-config.surround"),
+            cfg_lua = "plugin-config.surround",
         },
 
         autopairs = {
             uninstall = false,
 
             rel_url = "windwp/nvim-autopairs",
-            cfg_lua = get_load_string("plugin-config.autopairs"),
+            cfg_lua = "plugin-config.autopairs",
             map_cr = true,
             map_bs = true,
         },
@@ -313,6 +305,12 @@ local M = {
         wakatime = {
             rel_url = 'wakatime/vim-wakatime',
         },
+
+        which_key = {
+            rel_url = "folke/which-key.nvim",
+            cfg_lua = "plugin-config.which_key",
+        },
+
         --------------------------------------
         --------------- lsp ------------------
         --------------------------------------
@@ -334,14 +332,14 @@ local M = {
 
         -- lsp_colors = {
         --     rel_url = 'folke/lsp-colors.nvim',
-        --     cfg_lua = get_load_string('plugin-config.lsp-colors'),
+        --     cfg_lua = 'plugin-config.lsp-colors',
         -- },
 
         -- better UI for lsp oeprations
         lspsaga = {
             uninstall = false,
             rel_url = "glepnir/lspsaga.nvim",
-            cfg_lua = get_load_string("lsp.lspsaga"),
+            cfg_lua = "lsp.lspsaga",
             req_tbl = { {"nvim-tree/nvim-web-devicons"} },
         },
 
@@ -370,6 +368,21 @@ local M = {
         nvim_navic = {
             rel_url = "SmiteshP/nvim-navic",
             req_tbl = {"neovim/nvim-lspconfig"},
+        },
+
+        lualine_lsp_progress = {
+            disable = true,
+            rel_url = 'arkav/lualine-lsp-progress',
+        },
+
+        fidget = {
+            rel_url ='j-hui/fidget.nvim',
+            cfg_lua = 'plugin-config.fidget'
+        },
+
+        symbols_outline = {
+            rel_url = 'simrat39/symbols-outline.nvim',
+            cfg_lua = 'plugin-config.symbols_outline'
         },
         --------------------------------------
         --------------- cmp ------------------

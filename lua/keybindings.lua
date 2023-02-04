@@ -67,6 +67,9 @@ else
   })
 end
 
+keymap("n", keys.quickfix_next, "<CMD>cn<CR>")
+keymap("n", keys.quickfix_prev, "<CMD>cp<CR>")
+
 -------------------- fix ------------------------------
 
 -- fix :set wrap

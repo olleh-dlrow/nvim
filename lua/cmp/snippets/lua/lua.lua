@@ -1,4 +1,4 @@
-ls = require("luasnip") --{{{
+ls = require("luasnip")
 local s = ls.s --> snippet
 local i = ls.i --> insert node
 local t = ls.t --> text node

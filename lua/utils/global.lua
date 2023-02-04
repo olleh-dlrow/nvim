@@ -16,6 +16,15 @@ end
 --   return v
 -- end
 
+function _G.my_dbg(v)
+    print(vim.inspect(v))
+    local file = io.open('temp.txt', 'a')
+    io.output(file)
+    io.write(v)
+    io.close(file)
+    return v
+end
+
 function _G.keymap(mode, lhs, rhs, opts)
   if lhs == '' or rhs == '' then
     return

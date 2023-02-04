@@ -1,5 +1,15 @@
 local plugin_cfgs = require("global_configs").plugins
 
+
+local function get_load_string(script_name)
+    -- local cmd = "local status, _ = pcall(require, \"" .. script_name .. "\")\n"
+    --             ..  "if not status then\n"
+    --             ..      "vim.notify(\"not find " .. script_name .. "\")\n"
+    --             ..      "return\n"
+    --             ..  "end\n"
+    return 'require_plugin("' .. script_name .. '")'
+end
+
 -- 自动安装 Packer.nvim
 -- 插件安装目录
 -- ~/.local/share/nvim/site/pack/packer/
@@ -62,23 +72,20 @@ packer.init({
 packer.startup({
   function(use)
     -- Packer 可以升级自己
-        use("wbthomason/packer.nvim")
+    use("wbthomason/packer.nvim")
         -------------------------- plugins -------------------------------------------
 
     for _, cfg in pairs(plugin_cfgs) do
-        if cfg.uninstall then
-            goto continue
+        if not cfg.uninstall then
+            use({
+                cfg.rel_url,
+                disable = cfg.disable,
+                requires = cfg.req_tbl,
+                event = cfg.event,
+                config = (cfg.cfg_lua and get_load_string(cfg.cfg_lua)) or "",
+                branch = cfg.branch,
+            })
         end
-
-        use({
-            cfg.rel_url,
-            disable = cfg.disable,
-            requires = cfg.req_tbl,
-            event = cfg.event,
-            config = (cfg.cfg_lua and cfg.cfg_lua) or "",
-            branch = cfg.branch,
-        })
-        ::continue::
     end
 
     if packer_bootstrap then
