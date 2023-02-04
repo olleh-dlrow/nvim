@@ -202,8 +202,8 @@ local lspsaga_map = function (mapbuf)
     -- If there is no definition, it will instead be hidden
     -- When you use an action in finder like "open vsplit",
     -- you can use <C-t> to jump back
-    mapbuf("n", lsp.references, "<cmd>Lspsaga lsp_finder<CR>")
-
+    mapbuf("n", lsp.finder, "<cmd>Lspsaga lsp_finder<CR>")
+    mapbuf("n", lsp.references, "<cmd>TroubleToggle lsp_references<CR>")
     -- Code action
     mapbuf({"n","v"}, lsp.code_action, "<cmd>Lspsaga code_action<CR>")
 
@@ -251,6 +251,9 @@ local lspsaga_map = function (mapbuf)
 
     -- Toggle outline
     mapbuf("n", lsp.toggle_outline, "<cmd>Lspsaga outline<CR>")
+    mapbuf("n", lsp.toggle_symbols_tree_outline, "<cmd>SymbolsOutline<CR>")
+    mapbuf("n", lsp.toggle_workspace_diagnostics, "<cmd>TroubleToggle workspace_diagnostics<cr>")
+    mapbuf("n", lsp.toggle_document_diagnostics, "<cmd>TroubleToggle document_diagnostics<cr>")
 
     -- Hover Doc
     -- If there is no hover doc,

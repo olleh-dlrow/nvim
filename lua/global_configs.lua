@@ -52,6 +52,11 @@ local M = {
       -- quickfix
       quickfix_next = "<F8>",
       quickfix_prev = "<F7>",
+
+      -- trouble toggle
+      toggle_quickfix = "<leader>xq",
+      toggle_loclist = "<leader>xl",
+      toggle_close = "<leader>xx",
       -- 窗口设置
       -- window settings
       s_windows = {
@@ -311,6 +316,12 @@ local M = {
             cfg_lua = "plugin-config.which_key",
         },
 
+        trouble = {
+            rel_url = "folke/trouble.nvim",
+            cfg_lua = "plugin-config.trouble",
+            req_tbl = {"nvim-tree/nvim-web-devicons"},
+        },
+
         --------------------------------------
         --------------- lsp ------------------
         --------------------------------------
@@ -506,7 +517,8 @@ local M = {
         format = "<leader>f",
         peek_definition = "gd",
         definition = "gD",
-        references = "gr",
+        finder = "gr",
+        references = "gR",
         hover = "gh",
         -- diagnostic
         open_flow = "gp",
@@ -514,9 +526,15 @@ local M = {
         goto_prev = "[e",
         goto_next_error = "]E",
         goto_prev_error = "[E",
-        toggle_outline = "<leader>o",
+
+
+        toggle_outline = "<leader>O",
+        toggle_symbols_tree_outline = "<leader>o",
         incoming_calls = "<leader>ci",
         outgoing_calls = "<leader>co",
+
+        toggle_workspace_diagnostics = "<leader>xw",
+        toggle_document_diagnostics = "<leader>xd",
         -- typescript
         -- ts_organize = "gs",
         -- ts_rename_file = "gR",
@@ -524,6 +542,7 @@ local M = {
         -- ts_remove_unused = "gu",
         -- ts_fix_all = "gf",
         -- ts_goto_source = "gD",
+
     },
 }
 

@@ -344,6 +344,26 @@ func(args) -> args
 
 
 
+**按键显示<80>u^D..是怎么回事？**
+
+猜测可能是按键冲突，也可能是有多个映射，比如安装which-key后\<C-w\>就会变成这样，暂时没有发现什么大的影响
+
+
+
+**如何查看当前的workspace？**
+
+```bash
+:lua print(vim.inspect(vim.lsp.buf.list_workspace_folders()))
+```
+
+
+
+**lua workspace diagnostics无法显示所有文件中的问题？**
+
+这似乎是lua server的原因，它只会显示打开过的文件里的错误
+
+
+
 ## 计划
 
 - 使用界面管理各个功能：[liuchengxu/vim-which-key: Vim plugin that shows keybindings in popup (github.com)](https://github.com/liuchengxu/vim-which-key)
