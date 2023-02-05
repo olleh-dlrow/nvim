@@ -81,9 +81,8 @@ autocmd("BufWinEnter", {
   pattern = saveable_type,
   command = "silent! loadview",
 })
-autocmd("BufWrite", {
+autocmd("BufWinLeave", {
   group = myAutoGroup,
   pattern = saveable_type,
   command = "mkview",
 })
-
