@@ -372,6 +372,14 @@ func(args) -> args
 
 
 
+**为什么搜索高亮被修改了？**
+
+有些主题会修改你的默认配置，再主动改回来就好了，比如下面这个插件就开启了搜索高亮：
+
+[Highlight colors · mg979/vim-visual-multi Wiki (github.com)](https://github.com/mg979/vim-visual-multi/wiki/Highlight-colors)
+
+
+
 ## 计划
 
 - 使用界面管理各个功能：[liuchengxu/vim-which-key: Vim plugin that shows keybindings in popup (github.com)](https://github.com/liuchengxu/vim-which-key) √

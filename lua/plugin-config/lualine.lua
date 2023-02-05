@@ -36,7 +36,8 @@ end
         lualine_b = {
             -- { 'diff' },
             {
-                show_navic
+                show_navic,
+                separator = {right = ' '},
             }
         },
         lualine_c = {

@@ -202,7 +202,7 @@ local M = {
 
 
         tree_sitter = {
-
+            disable = false,
             rel_url = "nvim-treesitter/nvim-treesitter",
             req_tbl = {
 				{ "p00f/nvim-ts-rainbow" },
@@ -266,8 +266,7 @@ local M = {
             cfg_lua = "plugin-config.project",
         },
 
-        inline_blankline = {
-
+        indent_blankline = {
             rel_url = "lukas-reineke/indent-blankline.nvim",
             cfg_lua = "plugin-config.indent-blankline",
         },
@@ -302,15 +301,16 @@ local M = {
 
         autopairs = {
             uninstall = false,
-
             rel_url = "windwp/nvim-autopairs",
             cfg_lua = "plugin-config.autopairs",
             map_cr = true,
-            map_bs = true,
+            -- warning: confict with vim-visual-multi, but it's not a very important function, just unuse it :)
+            -- https://github.com/jiangmiao/auto-pairs/issues/326
+            -- https://github.com/mg979/vim-visual-multi/issues/172
+            map_bs = false,
         },
 
         colorizer = {
-
             rel_url = "chrisbra/Colorizer",
         },
 
@@ -333,6 +333,12 @@ local M = {
             rel_url = 'phaazon/hop.nvim',
             branch = "v2",
             cfg_lua = "plugin-config.hop",
+        },
+
+        multi_cursor = {
+            disable = false,
+            rel_url = 'mg979/vim-visual-multi',
+            cfg_lua = "plugin-config.multi_cursor",
         },
 
         --------------------------------------
@@ -392,6 +398,7 @@ local M = {
         nvim_navic = {
             rel_url = "SmiteshP/nvim-navic",
             req_tbl = {"neovim/nvim-lspconfig"},
+            cfg_lua = "plugin-config.navic"
         },
 
         lualine_lsp_progress = {
@@ -532,7 +539,7 @@ local M = {
         definition = "gD",
         finder = "gr",
         references = "gR",
-        hover = "gh",
+        hover = "K",
         -- diagnostic
         open_flow = "gp",
         goto_next = "]e",

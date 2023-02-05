@@ -18,3 +18,8 @@ if not status then
 end
 
 pcall(vim.cmd, "colorscheme " .. colorscheme)
+
+-- https://stackoverflow.com/questions/33936915/how-to-underline-rather-than-highlight-the-current-line-in-vim
+-- vim.cmd[[hi clear CursorLine]]
+-- vim.cmd[[hi CursorLine cterm=underline gui=underline]]
+--

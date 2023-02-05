@@ -3,7 +3,6 @@ if not vim.g.vscode then
     require("utils.global")
     require("basic")
     require("keybindings")
-    -- warning: 插件需要在主题设置之前加载需要的主题
     require("colorscheme")
     -- plugins
     require("plugins")
