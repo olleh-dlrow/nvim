@@ -23,11 +23,11 @@ local M = {
       -- c_history_prev = "<C-p>",
       -- normal 模式
       n_reload_nvim = "<leader>sv",
-      n_save = "<leader>w", -- :w
-      n_save_quit = "<leader>wq", --:wq
-      n_save_all = "<leader>wa", -- :wa
+      n_save = "", -- :w
+      n_save_quit = "", --:wq
+      n_save_all = "", -- :wa
       -- n_save_all_quit = "<leader>qa", -- :wqa
-      n_force_quit = "<leader>q", -- :qa!
+      n_force_quit = "", -- :qa!
       n_v_5j = "<C-j>",
       n_v_5k = "<C-k>",
 
@@ -57,6 +57,12 @@ local M = {
       toggle_quickfix = "<leader>xq",
       toggle_loclist = "<leader>xl",
       toggle_close = "<leader>xx",
+    -- hop
+      hop_word = "<leader>w",
+      hop_hint_char1_after = "f",
+      hop_hint_char1_before = "F",
+      hop_hint_pre_char1_after = "t",
+      hop_hint_pre_char1_before = "T",
       -- 窗口设置
       -- window settings
       s_windows = {
@@ -87,6 +93,7 @@ local M = {
         height_decrease = "-",
         height_increase = "+",
         size_equal = "s=",
+
       },
 
       s_tab = {
@@ -320,6 +327,12 @@ local M = {
             rel_url = "folke/trouble.nvim",
             cfg_lua = "plugin-config.trouble",
             req_tbl = {"nvim-tree/nvim-web-devicons"},
+        },
+
+        hop = {
+            rel_url = 'phaazon/hop.nvim',
+            branch = "v2",
+            cfg_lua = "plugin-config.hop",
         },
 
         --------------------------------------

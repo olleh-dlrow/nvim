@@ -26,15 +26,18 @@ function _G.my_dbg(v)
 end
 
 function _G.keymap(mode, lhs, rhs, opts)
+  if not lhs or not rhs then
+    return
+  end
   if lhs == '' or rhs == '' then
     return
   end
-  if not (type(lhs) == "string") then
-    return
-  end
-  if not (type(rhs) == "string") then
-    return
-  end
+  -- if not (type(lhs) == "string") then
+  --   return
+  -- end
+  -- if not (type(rhs) == "string") then
+  --   return
+  -- end
   opts = opts or {}
   local default_opts = {
     remap = false,

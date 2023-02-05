@@ -366,6 +366,12 @@ func(args) -> args
 
 
 
+**如何查看buffer list里面的文件是否修改？**
+
+处于修改状态的文件前面会有一个加号
+
+
+
 ## 计划
 
 - 使用界面管理各个功能：[liuchengxu/vim-which-key: Vim plugin that shows keybindings in popup (github.com)](https://github.com/liuchengxu/vim-which-key) √
