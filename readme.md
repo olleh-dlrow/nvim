@@ -398,6 +398,20 @@ func(args) -> args
 
 
 
+**live_grep失效？**
+
+原因：telescope无法找到ripgrep，可以通过``g<``来查看输出的信息：
+
+[VIM学习笔记 信息(message) - 知乎 (zhihu.com)](https://zhuanlan.zhihu.com/p/161370897)
+
+这主要是因为conda改变了环境，导致找不到rg
+
+
+
+**lspsaga的finder无法正常跳转？**
+
+暂时不清楚具体原因，但是将autocmds中的mkview的触发时机改成BufWrite就好了
+
 
 
 ## 计划

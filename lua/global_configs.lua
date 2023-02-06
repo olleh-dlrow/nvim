@@ -36,7 +36,7 @@ local M = {
 
       -- cmp 快捷键
       cmp_complete = "<A-.>",
-      cmp_abort = "<A-,>",
+      cmp_abort = "<C-e>",
       cmp_confirm = "<TAB>",
       cmp_scroll_doc_up = "<C-u>",
       cmp_scroll_doc_down = "<C-d>",
@@ -460,6 +460,9 @@ local M = {
             rel_url = "onsails/lspkind-nvim",
         },
 
+        cmp_dictionary = {
+            rel_url = 'uga-rosa/cmp-dictionary',
+        },
         -- snippets
         -- TODO: 学习各种snippets的使用
         -- https://github.com/L3MON4D3/LuaSnip
