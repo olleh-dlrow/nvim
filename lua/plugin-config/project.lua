@@ -7,21 +7,22 @@ local project = require_plugin("project_nvim")
 
 -- vim.g.nvim_tree_respect_buf_cwd = 1
 project.setup({
-  detection_methods = { "pattern" },
-  patterns = {
-    "README.md",
-    "Cargo.toml",
-    "package.json",
-    "*.sln",
-    ".git",
-    "_darcs",
-    ".hg",
-    ".bzr",
-    ".svn",
-    "Makefile",
-  },
+    detection_methods = { "pattern" },
+    patterns = {
+        "README.md",
+        "Cargo.toml",
+        "package.json",
+        "*.sln",
+        ".git",
+        "_darcs",
+        ".hg",
+        ".bzr",
+        ".svn",
+        "Makefile",
+        ".stylua.toml",
+        "stylua.toml",
+    },
 })
 
 local telescope = require_plugin("telescope")
 pcall(telescope.load_extension, "projects")
-

@@ -114,7 +114,7 @@ local M = {
       terminal_to_normal = "<Esc>",
 
       -- lspsaga terminal
-      terminal_toggle = "<leader>t",
+      terminal_toggle = "<A-d>",
     },
 
     -- 插件设置
