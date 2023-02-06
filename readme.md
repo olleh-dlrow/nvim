@@ -388,6 +388,14 @@ func(args) -> args
 
 解决方法：暂时还不确定是不是真的对所有情况都有效，可以先配置好需要的选项，然后手动:mkview，之后再加载起来就好了
 
+参考资料：
+
+[(1) Does neovim have an equivalent of "vimfiles" : neovim (reddit.com)](https://www.reddit.com/r/neovim/comments/688980/does_neovim_have_an_equivalent_of_vimfiles/)
+
+这个没搞清楚怎么配：
+
+[Vim specific mkview and loadview in order to avoid issues - Stack Overflow](https://stackoverflow.com/questions/26917336/vim-specific-mkview-and-loadview-in-order-to-avoid-issues)
+
 
 
 

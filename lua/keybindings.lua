@@ -274,8 +274,12 @@ local lspsaga_map = function (mapbuf)
     mapbuf("n", lsp.incoming_calls, "<cmd>Lspsaga incoming_calls<CR>")
     mapbuf("n", lsp.outgoing_calls, "<cmd>Lspsaga outgoing_calls<CR>")
 
-    -- Floating terminal
-    -- mapbuf({"n", "t"}, "<A-d>", "<cmd>Lspsaga term_toggle<CR>")
+    -- format
+    if vim.fn.has("nvim-0.8") == 1 then
+        mapbuf("n", lsp.format, "<cmd>lua vim.lsp.buf.format({ async = true })<CR>")
+    else
+        mapbuf("n", lsp.format, "<cmd>lua vim.lsp.buf.formatting()<CR>")
+    end
 end
 
 if lsp.ui_mode == "lspsaga" then

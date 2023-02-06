@@ -110,7 +110,11 @@ local M = {
       --   close = "zz",
       -- },
 
+      -- terminal
       terminal_to_normal = "<Esc>",
+
+      -- lspsaga terminal
+      terminal_toggle = "<leader>t",
     },
 
     -- 插件设置
@@ -360,11 +364,6 @@ local M = {
             rel_url = "neovim/nvim-lspconfig",
         },
 
-        -- lsp_colors = {
-        --     rel_url = 'folke/lsp-colors.nvim',
-        --     cfg_lua = 'plugin-config.lsp-colors',
-        -- },
-
         -- better UI for lsp oeprations
         lspsaga = {
             uninstall = false,
@@ -415,6 +414,12 @@ local M = {
             rel_url = 'simrat39/symbols-outline.nvim',
             cfg_lua = 'plugin-config.symbols_outline'
         },
+
+        -- null_ls = {
+        --     rel_url = "jose-elias-alvarez/null-ls.nvim",
+        --     cfg_lua = "plugin-config.null_ls",
+        --     req_tbl = { "nvim-lua/plenary.nvim" },
+        -- },
         --------------------------------------
         --------------- cmp ------------------
         --------------------------------------
@@ -522,11 +527,6 @@ local M = {
         --     -- draw a box by pressing "f" with visual selection
         --     draw_box = "f",
         -- },
-
-        -- zen = {
-        --
-        --     toggle = "<leader>z",
-        -- },
     },
 
     lsp = {
@@ -534,7 +534,7 @@ local M = {
         ui_mode = "lspsaga", -- ["nvim", "lspsaga", nil]
         rename = "<leader>rn",
         code_action = "<leader>ca",
-        format = "<leader>f",
+        format = "<leader>fm",
         peek_definition = "gd",
         definition = "gD",
         finder = "gr",

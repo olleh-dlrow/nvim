@@ -1,3 +1,4 @@
+local cfg = require("global_configs")
 require("lspsaga").setup({
     lightbulb = {
         enable = true,
@@ -8,4 +9,6 @@ require("lspsaga").setup({
     },
 })
 
+-- floating terminal
+keymap({"n", "t"}, cfg.keys.terminal_toggle, "<cmd>Lspsaga term_toggle<CR>")
 
