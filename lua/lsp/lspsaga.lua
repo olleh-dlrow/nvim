@@ -10,5 +10,5 @@ require("lspsaga").setup({
 })
 
 -- floating terminal
-keymap({"n", "t"}, cfg.keys.terminal_toggle, "<cmd>Lspsaga term_toggle<CR>")
+-- keymap({"n", "t"}, cfg.keys.terminal_toggle, "<cmd>Lspsaga term_toggle<CR>")
 

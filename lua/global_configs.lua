@@ -15,106 +15,106 @@ local M = {
     -- 按键设置
     -- key settings
     keys = {
-      leader_key = " ",
-      -- : 模式
-      c_next_item = "<C-j>",
-      c_prev_item = "<C-k>",
-      -- c_history_next = "<C-n>",
-      -- c_history_prev = "<C-p>",
-      -- normal 模式
-      n_reload_nvim = "<leader>sv",
-      n_save = "", -- :w
-      n_save_quit = "", --:wq
-      n_save_all = "", -- :wa
-      -- n_save_all_quit = "<leader>qa", -- :wqa
-      n_force_quit = "", -- :qa!
-      n_v_5j = "<C-j>",
-      n_v_5k = "<C-k>",
+        leader_key = " ",
+        -- : 模式
+        c_next_item = "<C-j>",
+        c_prev_item = "<C-k>",
+        -- c_history_next = "<C-n>",
+        -- c_history_prev = "<C-p>",
+        -- normal 模式
+        n_reload_nvim = "<leader>sv",
+        n_save = "", -- :w
+        n_save_quit = "", --:wq
+        n_save_all = "", -- :wa
+        -- n_save_all_quit = "<leader>qa", -- :wqa
+        n_force_quit = "", -- :qa!
+        n_v_5j = "<C-j>",
+        n_v_5k = "<C-k>",
 
-      n_v_10k = "<C-u>",
-      n_v_10j = "<C-d>",
+        n_v_10k = "<C-u>",
+        n_v_10j = "<C-d>",
 
-      -- cmp 快捷键
-      cmp_complete = "<A-.>",
-      cmp_abort = "<C-e>",
-      cmp_confirm = "<TAB>",
-      cmp_scroll_doc_up = "<C-u>",
-      cmp_scroll_doc_down = "<C-d>",
-      cmp_select_prev_item = "<C-k>",
-      cmp_select_next_item = "<C-j>",
+        -- cmp 快捷键
+        cmp_complete = "<A-.>",
+        cmp_abort = "<C-e>",
+        cmp_confirm = "<TAB>",
+        cmp_scroll_doc_up = "<C-u>",
+        cmp_scroll_doc_down = "<C-d>",
+        cmp_select_prev_item = "<C-k>",
+        cmp_select_next_item = "<C-j>",
 
-      -- luasnip
-      snip_jump_next = "<TAB>", -- same with cmp_confirm
-      snip_jump_prev = "<S-TAB>",
-      -- snip_next_choice = "<C-j>",
-      -- snip_prev_choice = "<C-k>",
+        -- luasnip
+        snip_jump_next = "<TAB>", -- same with cmp_confirm
+        snip_jump_prev = "<S-TAB>",
+        -- snip_next_choice = "<C-j>",
+        -- snip_prev_choice = "<C-k>",
 
-      -- quickfix
-      quickfix_next = "<F8>",
-      quickfix_prev = "<F7>",
+        -- quickfix
+        quickfix_next = "<F8>",
+        quickfix_prev = "<F7>",
 
-      -- trouble toggle
-      toggle_quickfix = "<leader>xq",
-      toggle_loclist = "<leader>xl",
-      toggle_close = "<leader>xx",
-    -- hop
-      hop_word = "<leader>w",
-      hop_hint_char1_after = "f",
-      hop_hint_char1_before = "F",
-      hop_hint_pre_char1_after = "t",
-      hop_hint_pre_char1_before = "T",
-      -- 窗口设置
-      -- window settings
-      s_windows = {
+        -- trouble toggle
+        toggle_quickfix = "<leader>xq",
+        toggle_loclist = "<leader>xl",
+        toggle_close = "<leader>xx",
+        -- hop
+        hop_word = "<leader>w",
+        hop_hint_char1_after = "f",
+        hop_hint_char1_before = "F",
+        hop_hint_pre_char1_after = "t",
+        hop_hint_pre_char1_before = "T",
+        -- 窗口设置
+        -- window settings
+        s_windows = {
 
-        enable = false,
+            enable = false,
 
-        -- 窗口开关
-        split_vertically = "<C-w>v",
-        split_horizontally = "<C-w>x",
-        close = "sc",
-        close_others = "so",
+            -- 窗口开关
+            split_vertically = "<C-w>v",
+            split_horizontally = "<C-w>x",
+            close = "sc",
+            close_others = "so",
 
-        -- 窗口跳转
-        -- jump_left = "<A-h>",
-        -- jump_right = "<A-l>",
-        -- jump_up = "<A-k>",
-        -- jump_down = "<A-j>",
+            -- 窗口跳转
+            -- jump_left = "<A-h>",
+            -- jump_right = "<A-l>",
+            -- jump_up = "<A-k>",
+            -- jump_down = "<A-j>",
 
-        -- <leader> + hjkl 窗口之间跳转
-        jump_left = "<leader>h",
-        jump_right = "<leader>l",
-        jump_up = "<leader>k",
-        jump_down = "<leader>j",
+            -- <leader> + hjkl 窗口之间跳转
+            jump_left = "<leader>h",
+            jump_right = "<leader>l",
+            jump_up = "<leader>k",
+            jump_down = "<leader>j",
 
-        -- 窗口比例控制, x轴正方向右，y轴正方向上
-        width_decrease = "{",
-        width_increase = "}",
-        height_decrease = "-",
-        height_increase = "+",
-        size_equal = "s=",
+            -- 窗口比例控制, x轴正方向右，y轴正方向上
+            width_decrease = "{",
+            width_increase = "}",
+            height_decrease = "-",
+            height_increase = "+",
+            size_equal = "s=",
 
-      },
+        },
 
-      s_tab = {
-        split = "ts",
-        prev = "th",
-        next = "tl",
-        first = "tj",
-        last = "tk",
-        close = "tc",
-      },
+        s_tab = {
+            split = "ts",
+            prev = "th",
+            next = "tl",
+            first = "tj",
+            last = "tk",
+            close = "tc",
+        },
 
-      -- fold = {
-      --   open = "Z",
-      --   close = "zz",
-      -- },
+        -- fold = {
+        --   open = "Z",
+        --   close = "zz",
+        -- },
 
-      -- terminal
-      terminal_to_normal = "<Esc>",
+        -- terminal
+        terminal_to_normal = "<Esc>",
 
-      -- lspsaga terminal
-      terminal_toggle = "<A-d>",
+        -- lspsaga terminal
+        terminal_toggle = "<C-t>",
     },
 
     -- 插件设置
@@ -122,7 +122,7 @@ local M = {
     plugins = {
         nvim_tree = {
             rel_url = "kyazdani42/nvim-tree.lua",
-            req_tbl = {"kyazdani42/nvim-web-devicons"},
+            req_tbl = { "kyazdani42/nvim-web-devicons" },
             cfg_lua = "plugin-config.nvim-tree",
 
             -- toggle = "<A-m>",
@@ -209,34 +209,34 @@ local M = {
             disable = false,
             rel_url = "nvim-treesitter/nvim-treesitter",
             req_tbl = {
-				{ "p00f/nvim-ts-rainbow" },
-				{ "JoosepAlviste/nvim-ts-context-commentstring" },
-				{ "windwp/nvim-ts-autotag" },
-				{ "nvim-treesitter/nvim-treesitter-refactor" },
-				{ "nvim-treesitter/nvim-treesitter-textobjects" },
-			},
+                { "p00f/nvim-ts-rainbow" },
+                { "JoosepAlviste/nvim-ts-context-commentstring" },
+                { "windwp/nvim-ts-autotag" },
+                { "nvim-treesitter/nvim-treesitter-refactor" },
+                { "nvim-treesitter/nvim-treesitter-textobjects" },
+            },
             cfg_lua = "plugin-config.nvim-treesitter"
         },
 
-		-- Bug: https://github.com/nvim-telescope/telescope.nvim/issues/699
-		-- Sol: use zx before zc or zo
-		-- Ref: see bug.
+        -- Bug: https://github.com/nvim-telescope/telescope.nvim/issues/699
+        -- Sol: use zx before zc or zo
+        -- Ref: see bug.
         telescope = {
 
             rel_url = "nvim-telescope/telescope.nvim",
             req_tbl = {
                 -- telescope extensions
-				{ "LinArcX/telescope-env.nvim" },
-				{ "nvim-telescope/telescope-ui-select.nvim" },
+                { "LinArcX/telescope-env.nvim" },
+                { "nvim-telescope/telescope-ui-select.nvim" },
                 { "nvim-lua/plenary.nvim" },
-			},
+            },
             cfg_lua = "plugin-config.telescope",
 
-            find_files  = "<leader>ff",
-            live_grep   = "<leader>fg",
-            buffers     = "<leader>fb",
-            help_tags   = "<leader>fh",
-            oldfiles    = "<leader>fo",
+            find_files = "<leader>ff",
+            live_grep  = "<leader>fg",
+            buffers    = "<leader>fb",
+            help_tags  = "<leader>fh",
+            oldfiles   = "<leader>fo",
 
             -- 上下移动
             move_selection_next = "<C-j>",
@@ -259,7 +259,7 @@ local M = {
             -- uninstall = true,
 
             rel_url = "glepnir/dashboard-nvim",
-            req_tbl = {{"nvim-tree/nvim-web-devicons"}},
+            req_tbl = { { "nvim-tree/nvim-web-devicons" } },
             cfg_lua = "plugin-config.dashboard",
             event = "VimEnter",
         },
@@ -295,10 +295,10 @@ local M = {
         -- warning: some errors with <c-g>s in insert mode
         surround = {
 
-            rel_url ="kylechui/nvim-surround",
+            rel_url = "kylechui/nvim-surround",
             req_tbl = {
                 { "nvim-treesitter/nvim-treesitter" },
-                {  "nvim-treesitter/nvim-treesitter-textobjects" }
+                { "nvim-treesitter/nvim-treesitter-textobjects" }
             },
             cfg_lua = "plugin-config.surround",
         },
@@ -330,7 +330,7 @@ local M = {
         trouble = {
             rel_url = "folke/trouble.nvim",
             cfg_lua = "plugin-config.trouble",
-            req_tbl = {"nvim-tree/nvim-web-devicons"},
+            req_tbl = { "nvim-tree/nvim-web-devicons" },
         },
 
         hop = {
@@ -345,6 +345,11 @@ local M = {
             cfg_lua = "plugin-config.multi_cursor",
         },
 
+        toggleterm = {
+            rel_url = "akinsho/toggleterm.nvim",
+            cfg_lua = "plugin-config.toggleterm",
+
+        },
         --------------------------------------
         --------------- lsp ------------------
         --------------------------------------
@@ -369,7 +374,7 @@ local M = {
             uninstall = false,
             rel_url = "glepnir/lspsaga.nvim",
             cfg_lua = "lsp.lspsaga",
-            req_tbl = { {"nvim-tree/nvim-web-devicons"} },
+            req_tbl = { { "nvim-tree/nvim-web-devicons" } },
         },
 
         -- help for neo lua api
@@ -396,7 +401,7 @@ local M = {
 
         nvim_navic = {
             rel_url = "SmiteshP/nvim-navic",
-            req_tbl = {"neovim/nvim-lspconfig"},
+            req_tbl = { "neovim/nvim-lspconfig" },
             cfg_lua = "plugin-config.navic"
         },
 
@@ -406,7 +411,7 @@ local M = {
         },
 
         fidget = {
-            rel_url ='j-hui/fidget.nvim',
+            rel_url = 'j-hui/fidget.nvim',
             cfg_lua = 'plugin-config.fidget'
         },
 
@@ -490,10 +495,10 @@ local M = {
         --------------------------------------
         ----------- colorscheme --------------
         --------------------------------------
-		-- warning: 这里有个位置的问题，即如果使用config来require对应的主题，则无法
-		-- 应用设置，暂时的解决办法是，在colorscheme.lua中使用require，此时能够正常
-		-- 配置
-		-- tokyonight
+        -- warning: 这里有个位置的问题，即如果使用config来require对应的主题，则无法
+        -- 应用设置，暂时的解决办法是，在colorscheme.lua中使用require，此时能够正常
+        -- 配置
+        -- tokyonight
         tokyonight = {
 
             rel_url = "folke/tokyonight.nvim",
@@ -511,16 +516,6 @@ local M = {
         -- },
 
 
-        -- toggleterm = {
-        --
-
-        --     -- <leader>ta 浮动命令行窗口
-        --     toggle_window_A = "<leader>ta",
-        --     -- <leader>tb 右侧命令行窗口
-        --     toggle_window_B = "<leader>tb",
-        --     -- <leader>tc 下方命令行窗口
-        --     toggle_window_C = "<leader>tc",
-        -- },
 
         -- venn = {
         --     -- toggle keymappings for venn using <leader>v
