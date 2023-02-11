@@ -5,3 +5,10 @@ vim.api.nvim_create_autocmd("BufEnter", {
         end
     end,
 })
+
+-- navic = require_plugin("nvim-navic")
+-- navic.setup({
+--     highlight = true,
+--     safe_output = false,
+-- })
+

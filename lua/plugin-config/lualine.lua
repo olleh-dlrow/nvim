@@ -33,24 +33,24 @@ end
     },
     extensions = { "nvim-tree" },
     sections = {
-        lualine_b = {
-            -- { 'diff' },
-            {
-                show_navic,
-                separator = {right = ' '},
-            }
-        },
+        -- lualine_b = {
+        --     -- { 'diff' },
+        --     -- {
+        --     --     show_navic,
+        --     --     separator = {right = ' '},
+        --     -- }
+        -- },
         lualine_c = {
-            -- {
-            --     "filename",
-            --     path = 1,
-            --     color = { gui='bold' },
-            -- },
             {
-                --  arkav/lualine-lsp-progress
-                -- "lsp_progress",
-                -- spinner_symbols = { " ", " ", " ", " ", " ", " " },
+                "filename",
+                path = 1,
+                color = { gui='bold' },
             },
+            -- {
+            --     -- arkav/lualine-lsp-progress
+            --     "lsp_progress",
+            --     spinner_symbols = { " ", " ", " ", " ", " ", " " },
+            -- },
         },
         lualine_x = {
         -- {
@@ -74,31 +74,31 @@ end
         },
 
     },
-    winbar = {
-        lualine_a = {
-        },
-        lualine_b = {
-            -- {'filetype', icon_only = true, color = {bg = colors.bg_statusline}},
-            {'filename', path = 1, color = {bg = colors.fg_gutter, fg = colors.cyan, gui = 'bold'}, separator = {right = ' '}--[[ {left=' ', right=' '} ]]},
-            {'diagnostics', color = {bg = colors.fg_gutter}, separator = {right = ' '}},
-        },
-        lualine_c = {
-        },
-        lualine_x = {},
-        lualine_y = {},
-        lualine_z = {}
-    },
-
-    inactive_winbar = {
-        lualine_a = {},
-        lualine_b = {
-            -- {'filetype', icon_only = true, color = {bg = colors.bg_statusline}, },
-            {'filename', path = 1, separator = {right = ' '}},
-            {'diagnostics', separator = {right = ' '}},
-        },
-        lualine_c = {},
-        lualine_x = {},
-        lualine_y = {},
-        lualine_z = {}
-    }
+    -- winbar = {
+    --     lualine_a = {
+    --     },
+    --     lualine_b = {
+    --         -- {'filetype', icon_only = true, color = {bg = colors.bg_statusline}},
+    --         {'filename', path = 1, color = {bg = colors.fg_gutter, fg = colors.cyan, gui = 'bold'}, separator = {right = ' '}--[[ {left=' ', right=' '} ]]},
+    --         {'diagnostics', color = {bg = colors.fg_gutter}, separator = {right = ' '}},
+    --     },
+    --     lualine_c = {
+    --     },
+    --     lualine_x = {},
+    --     lualine_y = {},
+    --     lualine_z = {}
+    -- },
+    --
+    -- inactive_winbar = {
+    --     lualine_a = {},
+    --     lualine_b = {
+    --         -- {'filetype', icon_only = true, color = {bg = colors.bg_statusline}, },
+    --         {'filename', path = 1, separator = {right = ' '}},
+    --         {'diagnostics', separator = {right = ' '}},
+    --     },
+    --     lualine_c = {},
+    --     lualine_x = {},
+    --     lualine_y = {},
+    --     lualine_z = {}
+    -- }
 })

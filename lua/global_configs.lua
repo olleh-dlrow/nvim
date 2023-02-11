@@ -178,14 +178,14 @@ local M = {
         },
 
         buffer_line = {
-            disable = true,
+            disable = false,
             rel_url = "akinsho/bufferline.nvim",
             req_tbl = { "kyazdani42/nvim-web-devicons", "moll/vim-bbye" },
             cfg_lua = "plugin-config.bufferline",
 
             prev = "<C-h>",
             next = "<C-l>",
-            close = "<C-w>",
+            close = "<C-c>",
             -- close = "<leader>bc",
             close_left = "<leader>bh",
             close_right = "<leader>bl",
@@ -311,7 +311,7 @@ local M = {
             -- warning: confict with vim-visual-multi, but it's not a very important function, just unuse it :)
             -- https://github.com/jiangmiao/auto-pairs/issues/326
             -- https://github.com/mg979/vim-visual-multi/issues/172
-            map_bs = false,
+            map_bs = true,
         },
 
         colorizer = {
@@ -406,7 +406,7 @@ local M = {
         },
 
         lualine_lsp_progress = {
-            disable = true,
+            disable = false,
             rel_url = 'arkav/lualine-lsp-progress',
         },
 

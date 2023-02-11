@@ -88,7 +88,7 @@ bufferline.setup({
 keymap("n", cfg.prev, ":BufferLineCyclePrev<CR>")
 keymap("n", cfg.next, ":BufferLineCycleNext<CR>")
 -- "moll/vim-bbye" 关闭当前 buffer
-keymap("n", cfg.close, ":Bdelete!<CR>")
+keymap("n", cfg.close, ":bdelete!<CR>")
 -- 关闭左/右侧标签页
 keymap("n", cfg.close_left, ":BufferLineCloseLeft<CR>")
 keymap("n", cfg.close_right, ":BufferLineCloseRight<CR>")

@@ -19,6 +19,7 @@ treesitter.setup({
     "json",
     "c_sharp",
     "markdown",
+    "markdown_inline"
   },
   -- ensure_installed = "maintained",
 
