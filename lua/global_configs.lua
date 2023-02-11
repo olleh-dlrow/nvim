@@ -257,7 +257,6 @@ local M = {
         -- commit = "f7d623457d6621b25a1292b24e366fae40cb79ab",
         dash_board = {
             -- uninstall = true,
-
             rel_url = "glepnir/dashboard-nvim",
             req_tbl = { { "nvim-tree/nvim-web-devicons" } },
             cfg_lua = "plugin-config.dashboard",
@@ -265,7 +264,6 @@ local M = {
         },
 
         project = {
-
             rel_url = "ahmedkhalf/project.nvim",
             cfg_lua = "plugin-config.project",
         },
@@ -350,6 +348,7 @@ local M = {
             cfg_lua = "plugin-config.toggleterm",
 
         },
+
         --------------------------------------
         --------------- lsp ------------------
         --------------------------------------
@@ -500,12 +499,10 @@ local M = {
         -- 配置
         -- tokyonight
         tokyonight = {
-
             rel_url = "folke/tokyonight.nvim",
         },
 
         -- mkdnflow = {
-        --
         --     next_link = "gn",
         --     prev_link = "gp",
         --     next_heading = "gj",
@@ -544,7 +541,6 @@ local M = {
         goto_prev = "[e",
         goto_next_error = "]E",
         goto_prev_error = "[E",
-
 
         toggle_outline = "<leader>O",
         toggle_symbols_tree_outline = "<leader>o",

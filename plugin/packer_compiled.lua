@@ -391,6 +391,14 @@ time([[Defining packer_plugins]], false)
 time([[Config for mason-lspconfig.nvim]], true)
 
 time([[Config for mason-lspconfig.nvim]], false)
+-- Config for: vim-wakatime
+time([[Config for vim-wakatime]], true)
+
+time([[Config for vim-wakatime]], false)
+-- Config for: which-key.nvim
+time([[Config for which-key.nvim]], true)
+require_plugin("plugin-config.which_key")
+time([[Config for which-key.nvim]], false)
 -- Config for: nvim-autopairs
 time([[Config for nvim-autopairs]], true)
 require_plugin("plugin-config.autopairs")
@@ -411,10 +419,6 @@ time([[Config for nvim-lspconfig]], false)
 time([[Config for nvim-surround]], true)
 require_plugin("plugin-config.surround")
 time([[Config for nvim-surround]], false)
--- Config for: cmp-nvim-lsp
-time([[Config for cmp-nvim-lsp]], true)
-
-time([[Config for cmp-nvim-lsp]], false)
 -- Config for: nvim-tree.lua
 time([[Config for nvim-tree.lua]], true)
 require_plugin("plugin-config.nvim-tree")
@@ -423,10 +427,10 @@ time([[Config for nvim-tree.lua]], false)
 time([[Config for nvim-treesitter]], true)
 require_plugin("plugin-config.nvim-treesitter")
 time([[Config for nvim-treesitter]], false)
--- Config for: neodev.nvim
-time([[Config for neodev.nvim]], true)
-
-time([[Config for neodev.nvim]], false)
+-- Config for: nvim-navic
+time([[Config for nvim-navic]], true)
+require_plugin("plugin-config.navic")
+time([[Config for nvim-navic]], false)
 -- Config for: Colorizer
 time([[Config for Colorizer]], true)
 
@@ -435,18 +439,22 @@ time([[Config for Colorizer]], false)
 time([[Config for Comment.nvim]], true)
 require_plugin("plugin-config.comment")
 time([[Config for Comment.nvim]], false)
--- Config for: mason.nvim
-time([[Config for mason.nvim]], true)
-
-time([[Config for mason.nvim]], false)
 -- Config for: LuaSnip
 time([[Config for LuaSnip]], true)
 
 time([[Config for LuaSnip]], false)
+-- Config for: bufferline.nvim
+time([[Config for bufferline.nvim]], true)
+require_plugin("plugin-config.bufferline")
+time([[Config for bufferline.nvim]], false)
 -- Config for: cmp-buffer
 time([[Config for cmp-buffer]], true)
 
 time([[Config for cmp-buffer]], false)
+-- Config for: cmp_luasnip
+time([[Config for cmp_luasnip]], true)
+
+time([[Config for cmp_luasnip]], false)
 -- Config for: nvim-web-devicons
 time([[Config for nvim-web-devicons]], true)
 
@@ -455,66 +463,58 @@ time([[Config for nvim-web-devicons]], false)
 time([[Config for cmp-dictionary]], true)
 
 time([[Config for cmp-dictionary]], false)
--- Config for: cmp-nvim-lsp-signature-help
-time([[Config for cmp-nvim-lsp-signature-help]], true)
-
-time([[Config for cmp-nvim-lsp-signature-help]], false)
--- Config for: rust-tools.nvim
-time([[Config for rust-tools.nvim]], true)
-
-time([[Config for rust-tools.nvim]], false)
--- Config for: schemastore.nvim
-time([[Config for schemastore.nvim]], true)
-
-time([[Config for schemastore.nvim]], false)
--- Config for: cmp-path
-time([[Config for cmp-path]], true)
-
-time([[Config for cmp-path]], false)
--- Config for: symbols-outline.nvim
-time([[Config for symbols-outline.nvim]], true)
-require_plugin("plugin-config.symbols_outline")
-time([[Config for symbols-outline.nvim]], false)
--- Config for: nvim-navic
-time([[Config for nvim-navic]], true)
-require_plugin("plugin-config.navic")
-time([[Config for nvim-navic]], false)
 -- Config for: project.nvim
 time([[Config for project.nvim]], true)
 require_plugin("plugin-config.project")
 time([[Config for project.nvim]], false)
--- Config for: cmp_luasnip
-time([[Config for cmp_luasnip]], true)
+-- Config for: mason.nvim
+time([[Config for mason.nvim]], true)
 
-time([[Config for cmp_luasnip]], false)
+time([[Config for mason.nvim]], false)
+-- Config for: schemastore.nvim
+time([[Config for schemastore.nvim]], true)
+
+time([[Config for schemastore.nvim]], false)
+-- Config for: cmp-nvim-lsp
+time([[Config for cmp-nvim-lsp]], true)
+
+time([[Config for cmp-nvim-lsp]], false)
+-- Config for: rust-tools.nvim
+time([[Config for rust-tools.nvim]], true)
+
+time([[Config for rust-tools.nvim]], false)
+-- Config for: symbols-outline.nvim
+time([[Config for symbols-outline.nvim]], true)
+require_plugin("plugin-config.symbols_outline")
+time([[Config for symbols-outline.nvim]], false)
 -- Config for: fidget.nvim
 time([[Config for fidget.nvim]], true)
 require_plugin("plugin-config.fidget")
 time([[Config for fidget.nvim]], false)
--- Config for: trouble.nvim
-time([[Config for trouble.nvim]], true)
-require_plugin("plugin-config.trouble")
-time([[Config for trouble.nvim]], false)
+-- Config for: cmp-nvim-lsp-signature-help
+time([[Config for cmp-nvim-lsp-signature-help]], true)
+
+time([[Config for cmp-nvim-lsp-signature-help]], false)
 -- Config for: friendly-snippets
 time([[Config for friendly-snippets]], true)
 
 time([[Config for friendly-snippets]], false)
--- Config for: indent-blankline.nvim
-time([[Config for indent-blankline.nvim]], true)
-require_plugin("plugin-config.indent-blankline")
-time([[Config for indent-blankline.nvim]], false)
+-- Config for: cmp-cmdline
+time([[Config for cmp-cmdline]], true)
+
+time([[Config for cmp-cmdline]], false)
 -- Config for: hop.nvim
 time([[Config for hop.nvim]], true)
 require_plugin("plugin-config.hop")
 time([[Config for hop.nvim]], false)
--- Config for: bufferline.nvim
-time([[Config for bufferline.nvim]], true)
-require_plugin("plugin-config.bufferline")
-time([[Config for bufferline.nvim]], false)
--- Config for: tokyonight.nvim
-time([[Config for tokyonight.nvim]], true)
-
-time([[Config for tokyonight.nvim]], false)
+-- Config for: telescope.nvim
+time([[Config for telescope.nvim]], true)
+require_plugin("plugin-config.telescope")
+time([[Config for telescope.nvim]], false)
+-- Config for: indent-blankline.nvim
+time([[Config for indent-blankline.nvim]], true)
+require_plugin("plugin-config.indent-blankline")
+time([[Config for indent-blankline.nvim]], false)
 -- Config for: toggleterm.nvim
 time([[Config for toggleterm.nvim]], true)
 require_plugin("plugin-config.toggleterm")
@@ -523,38 +523,38 @@ time([[Config for toggleterm.nvim]], false)
 time([[Config for lspkind-nvim]], true)
 
 time([[Config for lspkind-nvim]], false)
--- Config for: cmp-cmdline
-time([[Config for cmp-cmdline]], true)
+-- Config for: tokyonight.nvim
+time([[Config for tokyonight.nvim]], true)
 
-time([[Config for cmp-cmdline]], false)
+time([[Config for tokyonight.nvim]], false)
 -- Config for: lspsaga.nvim
 time([[Config for lspsaga.nvim]], true)
 require_plugin("lsp.lspsaga")
 time([[Config for lspsaga.nvim]], false)
+-- Config for: trouble.nvim
+time([[Config for trouble.nvim]], true)
+require_plugin("plugin-config.trouble")
+time([[Config for trouble.nvim]], false)
 -- Config for: lualine-lsp-progress
 time([[Config for lualine-lsp-progress]], true)
 
 time([[Config for lualine-lsp-progress]], false)
--- Config for: vim-wakatime
-time([[Config for vim-wakatime]], true)
+-- Config for: neodev.nvim
+time([[Config for neodev.nvim]], true)
 
-time([[Config for vim-wakatime]], false)
--- Config for: vim-visual-multi
-time([[Config for vim-visual-multi]], true)
-require_plugin("plugin-config.multi_cursor")
-time([[Config for vim-visual-multi]], false)
--- Config for: which-key.nvim
-time([[Config for which-key.nvim]], true)
-require_plugin("plugin-config.which_key")
-time([[Config for which-key.nvim]], false)
+time([[Config for neodev.nvim]], false)
+-- Config for: cmp-path
+time([[Config for cmp-path]], true)
+
+time([[Config for cmp-path]], false)
 -- Config for: lualine.nvim
 time([[Config for lualine.nvim]], true)
 require_plugin("plugin-config.lualine")
 time([[Config for lualine.nvim]], false)
--- Config for: telescope.nvim
-time([[Config for telescope.nvim]], true)
-require_plugin("plugin-config.telescope")
-time([[Config for telescope.nvim]], false)
+-- Config for: vim-visual-multi
+time([[Config for vim-visual-multi]], true)
+require_plugin("plugin-config.multi_cursor")
+time([[Config for vim-visual-multi]], false)
 vim.cmd [[augroup packer_load_aucmds]]
 vim.cmd [[au!]]
   -- Event lazy-loads

@@ -1,6 +1,5 @@
 local plugin_cfgs = require("global_configs").plugins
 
-
 local function get_load_string(script_name)
     -- local cmd = "local status, _ = pcall(require, \"" .. script_name .. "\")\n"
     --             ..  "if not status then\n"
@@ -74,7 +73,6 @@ packer.startup({
     -- Packer 可以升级自己
     use("wbthomason/packer.nvim")
         -------------------------- plugins -------------------------------------------
-
     for _, cfg in pairs(plugin_cfgs) do
         if not cfg.uninstall then
             use({
@@ -84,6 +82,7 @@ packer.startup({
                 event = cfg.event,
                 config = (cfg.cfg_lua and get_load_string(cfg.cfg_lua)) or "",
                 branch = cfg.branch,
+                run = cfg.run,
             })
         end
     end

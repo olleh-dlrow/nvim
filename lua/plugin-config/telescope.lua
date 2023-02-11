@@ -2,6 +2,11 @@ local cfg = require("global_configs").plugins.telescope
 local telescope = require_plugin("telescope")
 local action_layout = require("telescope.actions.layout")
 
+if vim.fn.executable("rg") ~= 1 then
+    vim.notify("not find ripgrep, please install it to use telescope")
+    return
+end
+
 -- preview wrap
 vim.cmd[[autocmd User TelescopePreviewerLoaded setlocal wrap]]
 
